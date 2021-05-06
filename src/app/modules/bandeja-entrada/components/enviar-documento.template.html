@@ -1,0 +1,192 @@
+<div class="ibox-content" style="border-top: 0;" [class.sk-loading]="loading">
+    <sk-three-bounce></sk-three-bounce>
+  <div class="row m-b-sm">
+    <div class="col-lg-12">
+      <button class="btn btn-primary m-r" [disabled]="loading" [swal]="enviarSwal"><i class="fa fa-send"></i> Enviar</button>
+      
+        
+      <div *ngIf="nuevoSeguimiento.urlDocumento!=null && nuevoSeguimiento.urlDocumento!=''; else sinDoc" class="fileinput fileinput-new m-r-xs" 
+            data-provides="fileinput"        
+            popover="Archivo Adjuntado"   
+            triggers="mouseenter:mouseleave">           
+        <span class="btn btn-info m-r btn-file" [class.disabled]="cargaAdjunto || loading">
+          <span class="fileinput-new">
+            <i [class]="(documentoAdjunto=='') ? 'fa fa-check' : 'fa fa-check'"></i> Adjuntar
+          </span>
+          <span class="fileinput-exists">
+            <i [class]="(documentoAdjunto=='') ? 'fa fa-check' : 'fa fa-check'"></i> Adjuntar
+          </span><input type="file" #file name="file" [disabled]="cargaAdjunto" (change)="OnAdjuntar(file)"/>
+        </span>
+      </div>
+      <ng-template #sinDoc>
+        <div class="fileinput fileinput-new m-r-xs" 
+              data-provides="fileinput"           
+              popover = "Debe Adjuntar un Documento"
+              triggers="mouseenter:mouseleave">
+          <span class="btn btn-info m-r btn-file" [class.disabled]="cargaAdjunto || loading">
+            <span class="fileinput-new">
+              <i [class]="(documentoAdjunto=='') ? 'fa fa-upload' : 'fa fa-upload'"></i> Adjuntar
+            </span>
+            <span class="fileinput-exists">
+              <i [class]="(documentoAdjunto=='') ? 'fa fa-upload' : 'fa fa-upload'"></i> Adjuntar
+            </span><input type="file" accept=".pdf" #file name="file" [disabled]="cargaAdjunto"  (change)="OnAdjuntar(file)"/>
+          </span>
+        </div>
+      </ng-template>
+
+      <button class="btn btn-default m-r" [disabled]="loading" [swal]="cancelarSwal"><i class="fa fa-close"></i> Cancelar</button>
+    </div>
+  
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox-content">
+
+        <form class="form-horizontal">
+          <div class="row m-b-xs">
+            <div class="col-sm-12">
+              <h4>Enviar documento a:</h4>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-offset-1 col-sm-1 control-label">Área:</label>
+            <div class="col-sm-4">
+              <ng-select [items]="listaAreas"
+                         bindLabel="descripcion"
+                         name="areas"
+                         [searchFn]="OnBuscarAreas"
+                         (change)="OnTrabajadores()"
+                         [clearable]="false"
+                         [(ngModel)]="itemDerivado.area">
+                         <ng-template ng-label-tmp let-clear="clear" let-item="item">
+                          <span class="m-xs"><span class="label label-primary">{{item.abreviatura}}</span> {{item.descripcion}}</span>
+                          <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+                        </ng-template>
+                        <ng-template ng-option-tmp let-item="item" let-index="index">
+                          <span class="label label-primary">{{item.abreviatura}}</span> {{item.descripcion}}
+                        </ng-template>
+              </ng-select>
+            </div>
+            <label class="col-sm-1 control-label">Trabajador:</label>
+            <div class="col-sm-4">
+              <ng-select [items]="listaTrabajadores"
+                         bindLabel="nombreCompleto"
+                         name="trabajador"
+                         [clearable]="false"
+                         [(ngModel)]="itemDerivado.trabajador">
+                         <ng-template ng-option-tmp let-item="item" let-index="index">
+                            <span *ngIf="item.jefe==1" class="label label-default pull-right">Jefe</span> {{item.nombreCompleto}}
+                         </ng-template>
+              </ng-select>
+            </div>
+            <div class="col-sm-1">
+              <button class="btn btn-info" [disabled]="cargaTrabajadores" (click)="OnAgregar()"><i class="fa fa-plus"></i></button>
+            </div>
+          </div>
+          <enviar-item-dirigido
+            *ngFor="let item of derivados; let i = index"
+            [index]="i"
+            [item]="item"
+            (eliminar)="OnEliminar($event)">
+          </enviar-item-dirigido>
+          <hr class="hr-line-dashed">
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Fecha Derivado:</label>
+            <div class="col-sm-3">
+              <div class="input-group">
+
+                <input bsDatepicker #dp2="bsDatepicker" name="fechaDerivacion" [(bsValue)]="fechaDerivacion" value="{{ fechaDerivacion | date:'dd/MM/yyyy' }}" type="text" class="form-control">
+
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+              </div>
+            </div>
+
+            <label class="col-sm-1 control-label">Con Plazo:</label>
+            <!--<div class="col-sm-2">
+              <ng-select [items]="['SI', 'NO']"
+                         [clearable]="false"
+                         name="plazo"
+                         (change)="OnPlazo()"
+                         [(ngModel)]="conPlazoTest">
+              </ng-select>
+            </div>-->
+
+            <div class="col-sm-2">
+              <select class="form-control" name="plazo" [(ngModel)]="conPlazoTest" (change)="OnPlazo()">
+                <option value="SI">SI</option>
+                <option value="NO">NO</option>
+              </select>
+            </div>
+
+            <label class="col-sm-1 control-label">Fecha Plazo:</label>
+            <div class="col-sm-3">
+              <div class="input-group">
+                <input bsDatepicker #dp="bsDatepicker"  name="fechaPlazo" [disabled]="editarPlazo" [(bsValue)]="fechaPlazo" (bsValueChange)="OnFechaPlazo()" value="{{ fechaPlazo | date:'dd/MM/yyyy' }}" type="text" class="form-control">
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Prioridad:</label>
+            <div class="col-sm-2">
+              <select class="form-control" name="prioridad">
+                <option value="URGENTE">URGENTE</option>
+                <option value="ALTA">ALTA</option>
+                <option value="MEDIA" selected="selected">MEDIA</option>
+                <option value="BAJA">BAJA</option>
+              </select>
+            </div>
+            <label class="col-sm-offset-1 col-sm-1 control-label">Estado:</label>
+            <div class="col-sm-2 m-t-xs"><span class="label label-danger">PENDIENTE</span></div>
+          </div>
+          <hr class="hr-line-dashed">
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Comentario:</label>
+            <div class="col-sm-9">
+              <textarea oninput="this.value = this.value.toUpperCase()" class="form-control" name="referencia" rows="4" [(ngModel)]="observacion"></textarea>
+            </div>
+          </div>
+          <hr class="hr-line-dashed">
+          <div class="form-group">
+            <div class="col-sm-3" *ngFor="let accion of acciones | keyvalues">
+              <div *ngIf="accion.key==03; else otrasAcciones" class="checkbox checkbox-primary">
+                <input name="acciones" id="accion-{{accion.key}}" value="{{accion}}" checked
+                       type="checkbox" (change)="OnChecked(accion.key)"><label for="accion-{{accion.key}}">{{accion.value}}</label>
+              </div>
+              <ng-template #otrasAcciones>
+                <div class="checkbox checkbox-primary">
+                    <input name="acciones" id="accion-{{accion.key}}" value="{{accion}}"
+                    type="checkbox" (change)="OnChecked(accion.key)"><label for="accion-{{accion.key}}">{{accion.value}}</label>
+                </div>
+              </ng-template>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<swal
+  #enviarSwal
+  type="question"
+  title="¿Está seguro que desea enviar el documento?"
+  confirmButtonText="Sí, enviar"
+  cancelButtonText="No gracias"
+  [allowOutsideClick]="false"
+  [showCancelButton]="true"
+  [focusCancel]="true"
+  (confirm)="OnEnviar()"
+></swal>
+
+<swal
+  #cancelarSwal
+  type="question"
+  title="¿Está seguro que ya no desea enviar el documento?"
+  confirmButtonText="Sí, cancelar"
+  cancelButtonText="No, seguir editando"
+  [allowOutsideClick]="false"
+  [showCancelButton]="true"
+  [focusCancel]="true"
+  (confirm)="OnCancelar()"
+></swal>

@@ -1,0 +1,93 @@
+
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>Grupos</h2>
+    <ol class="breadcrumb">
+      <li>
+        <a routerLink="starterview">Inicio</a>
+      </li>
+      <li>
+        <a>Configuración de Despacho</a>
+      </li>
+      <li class="active">
+        <strong>Grupos</strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2">
+
+  </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row m-b-md">
+    <div class="col-lg-12">
+      <a class="btn btn-primary m-r" (click)="OnGuardar()"><i class="fa fa-check"></i> Guardar</a>
+      <a class="btn btn-default m-r" (click)="OnRegresar()"><i class="fa fa-arrow-left"></i> Regresar</a>
+     </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+
+      <div class="ibox-content">
+
+          <form class="form-horizontal" [class.invalid]="invalid">
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Código :</label>
+            <div class="col-sm-4"><input type="text" class="form-control" disabled="disabled"  name="codigo" [ngModel]="item.codigo"></div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Descripción :</label>
+            <div class="col-sm-4"><input required type="text" class="form-control" #descripcion="ngModel" name="descripcion" [(ngModel)]="item.descripcion" [class.ng-invalid]="errors?.descripcion" (ngModelChange)="Validar(descripcion)" [tooltip]="errors?.descripcion" [tooltipIsOpen]="descripcion.dirty && (descripcion.invalid || errors?.descripcion)"  placement="top"></div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Abreviatura :</label>
+            <div class="col-sm-4"><input required type="text" class="form-control" #abreviatura="ngModel" name="abreviatura" [(ngModel)]="item.abreviatura" [class.ng-invalid]="errors?.abreviatura" (ngModelChange)="Validar(abreviatura)" [tooltip]="errors?.abreviatura" [tooltipIsOpen]="abreviatura.dirty && (abreviatura.invalid || errors?.abreviatura)"  placement="top"></div>
+
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Estado :</label>
+            <div class="col-sm-4">
+              <select class="form-control m-b-x" name="estado" [(ngModel)]="item.estado">
+                <option value="ACTIVO">ACTIVO</option>
+                <option value="INACTIVO">INACTIVO</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+                <label class="col-sm-2 control-label">Equipos:</label>
+                <div class="col-sm-10">
+                  <ng-select [items]="areas"
+                             bindLabel="descripcion"
+                             name="areas"
+                             [multiple]="true"
+                              [searchFn]="OnBuscarAreas"
+                             placeholder="Ingrese áreas de destino"
+                             [(ngModel)]="item.miembros">
+                             <ng-template ng-label-tmp let-clear="clear" let-item="item">
+                              <span class="m-xs">[{{item.abreviatura}}] {{item.descripcion}}</span>
+                              <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+                            </ng-template>
+                            <ng-template ng-option-tmp let-item="item" let-index="index">
+                              <span class="label label-primary">{{item.abreviatura}}</span> {{item.descripcion}}
+                            </ng-template>
+                  </ng-select>
+                </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Fecha :</label>
+            <div class="col-sm-4">
+              <div class="input-group date">
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" disabled="disabled" name="fecha" [ngModel]="item.fechaRegistro | date:'dd/MM/yyyy hh:mm:ss a'">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Responsable :</label>
+            <!--<div class="col-sm-4"><input required type="text" class="form-control" name="responsable" [(ngModel)]="item.responsable"></div> -->
+            <div class="col-sm-4"><input disabled="disabled" class="form-control" type="text" name="responsable" [(ngModel)]="item.responsable"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

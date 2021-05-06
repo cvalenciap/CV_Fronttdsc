@@ -1,0 +1,147 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-12">
+    <h2>Consulta por Seguimiento</h2>
+    <ol class="breadcrumb">
+      <li>
+        <a routerLink="starterview">Inicio</a>
+      </li>
+      <li>
+        <a>Reportes Generales</a>
+      </li>
+      <li class="active">
+        <strong>Consulta por Seguimiento</strong>
+      </li>
+    </ol>
+  </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-lg-12 m-b-xs">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="row m-b-sm">
+        <div class="col-sm-2">
+          <label>Número Doc.:</label>
+          <input type="text" autocomplete="off" class="form-control" placeholder="Ingrese Numero">
+        </div>
+        <div class="col-sm-2">
+          <label>Año Doc.:</label>
+          <ng-select name="cmbAnios"
+                     [items]="parametros.listaNano"
+                     bindLabel="anno"
+                     bindValue="anno"
+                     placeholder="Seleccione Año"
+                     [clearable]="false"
+                     [(ngModel)]="parametrosBusqueda.nano">
+          </ng-select>
+        </div>
+        <div class="col-sm-5">
+           <label>Área:</label>
+           <ng-select name="cmbAreas"
+                      [items]="parametros.listaAreas"
+                      bindLabel="descripcion"
+                      bindValue="codigo"
+                      placeholder="Seleccione Area"
+                      [searchFn]="OnBuscarAreas"
+                      [clearable]="false"
+                      [(ngModel)]="parametrosBusqueda.area">
+                      <ng-template ng-label-tmp let-clear="clear" let-item="item">
+                        <span class="m-xs"><span class="label label-primary">{{item.abreviatura}}</span> {{item.descripcion}}</span>
+                        <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+                      </ng-template>
+                      <ng-template ng-option-tmp let-item="item" let-index="index">
+                        <span class="label label-primary">{{item.abreviatura}}</span> {{item.descripcion}}
+                      </ng-template>
+           </ng-select>
+        </div>
+        <div class="col-sm-3">
+          <label>Tipo:</label>
+          <ng-select name="cmbTipoDocumento"
+                     [items]="parametros.listaTiposDocumento"
+                     bindLabel="descripcion"
+                     bindValue="codigo"
+                     placeholder="Seleccione Tipo"
+                     [clearable]="false"
+                     [(ngModel)]="this.parametrosBusqueda.tipoDocumento">
+          </ng-select>
+        </div>
+        <div class="col-sm-1">
+          <a class="btn btn-primary m-t-sm" (click)="OnBuscar()"><i class="fa fa-search"></i> Buscar</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+
+          <div class="ibox-content" [ngClass]="{'sk-loading': loading}">
+            <sk-three-bounce></sk-three-bounce>
+            <div class="table-responsive">
+              <table class="table table-bordered table-striped table-hover issue-tracker">
+                <thead>
+                <tr>
+                  <th class="text-center">Reg.</th>
+                  <th class="text-center">Seg.</th>
+                  <th class="text-center">Año</th>
+                  <th class="text-center">Fecha Doc.</th>
+                  <th class="text-center">Remitente</th>
+                  <th class="text-center">Asunto del Documento</th>
+                  <th class="text-center">Observación</th>
+                  <th class="text-center">Estado</th>
+                  <th class="text-center">Ir Doc.</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of items; let i = index">
+                  <td class="text-center">{{item.correlativo}}</td>
+                  <td class="text-center">{{item.seguimiento}}</td>
+                  <td class="text-center">{{item.nano}}</td>
+                  <td class="text-center">{{item.fechaDocumento | date:'dd/MM/yyyy'}}</td>
+                  <td>{{item.areaRemitente.descripcion}}</td>
+                  <td>{{item.asunto}}</td>
+                  <td>{{item.observacion}}</td>
+                  <td data-col="estado" class="text-center" [ngSwitch]="item.estado">
+                      <span *ngSwitchCase="'INGRESADO'" class="label label-default">INGRESADO</span>
+                      <span *ngSwitchCase="'PENDIENTE'" class="label label-info">PENDIENTE</span>
+                      <span *ngSwitchCase="'DERIVADO'" class="label label-warning">DERIVADO</span>
+                      <span *ngSwitchCase="'ATENDIDO'" class="label label-success">ATENDIDO</span>
+                      <span *ngSwitchCase="'OTROS'" class="label label-default">OTROS</span>
+                  </td>
+                  <td style="text-align: center" data-col="pdf" ><button  *ngIf="item.urlDocumento!=null" class="btn btn-xs btn-info" (click)="urlPDF=item.urlDocumento; visorPdfSwal.show(); $event.stopPropagation()"><i class="fa fa-paperclip"></i></button></td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="row">
+              <div class="col-md-4 col-sm-12 col-xs-12">
+                <pagination [(ngModel)]="paginacion.pagina" (pageChanged)="OnPageChanged($event)" [totalItems]="paginacion.totalRegistros" [itemsPerPage]="paginacion.registros" [boundaryLinks]="true" [maxSize]="5" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
+              </div>
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="text-center m-a-sm">
+                  <pagination-info [totalItems]="paginacion.totalRegistros" [itemsPerPage]="paginacion.registros" [page]="paginacion.pagina"></pagination-info>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="text-right m-a-sm">
+                  <pagination-set (optionChanged)="OnPageOptionChanged($event)"></pagination-set>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<swal
+  #visorPdfSwal
+  [showCloseButton]="true"
+  [allowOutsideClick]="false"
+  [showConfirmButton]="false"
+  customClass="pdf-swal">
+  <form *swalPartial>
+    <visor-pdf [url]="urlPDF"></visor-pdf>
+  </form>
+</swal>

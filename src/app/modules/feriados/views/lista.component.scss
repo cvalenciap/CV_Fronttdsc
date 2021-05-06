@@ -1,0 +1,10 @@
+.table {
+  tr {
+    td[data-col='estado'] {width: 100px}
+    td[data-col='fecha'] {width: 100px;}
+    td[data-col='codigo'] {width: 80px;}
+    td[data-col='tipo'] {width: 150px;}
+    td[data-col='fecha-registro'] {width: 100px;}
+    td[data-col='responsable'] {width: 150px;}
+  }
+}

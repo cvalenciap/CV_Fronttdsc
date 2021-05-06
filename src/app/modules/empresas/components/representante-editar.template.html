@@ -1,0 +1,95 @@
+
+<div>
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+          <div class="col-lg-12">
+              <div class="ibox-content">
+                <form class="form-horizontal" [ngClass]="{'invalid': invalid}">
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">Codigo :</label>
+                    <div *ngIf="item.codigo!=0" class="col-sm-4"><input type="text" class="form-control" value="" disabled="disabled" name="codigo" [ngModel]="item.codigo"></div>
+                    <div *ngIf="item.codigo==0" class="col-sm-4"><input type="text" class="form-control" value="" disabled="disabled" name="codigo"></div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">Nombre :</label>
+                    <div class="col-sm-6"><input required type="text" class="form-control" #nombre="ngModel" name="nombre" [(ngModel)]="item.nombre" [class.ng-invalid]="errors?.nombre" (ngModelChange)="Validar(nombre)" [tooltip]="errors?.nombre" [tooltipIsOpen]="nombre.dirty && (nombre.invalid || errors?.nombre)" placement="top" (ngModelChange)="Validar(nombre)" (change)="ModificacionTrigger()"></div>
+                  </div>
+                  <div class="row">
+                    <label class="col-sm-3 control-label">Tipo Representante :</label>
+                      <div class="col-sm-4">
+                        <ng-select [items]="listaTiposRepresentante"
+                                    bindLabel="descripcion"
+                                    bindValue="codigo"
+                                    [clearable]="false"
+                                    name="tipoRepresentante"
+                                    [(ngModel)]="item.tipoRepresentante.codigo"
+                                    (change)="ModificacionTrigger()">
+                        </ng-select>
+                      </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                      <label class="col-sm-3 control-label">Tipo Documento :</label>
+                      <div class="col-sm-4" >
+                        <ng-select [items]="listaTiposDocumento"
+                                    bindLabel="descripcion"
+                                    bindValue="codigo"
+                                    [clearable]="false"
+                                    name="tipoDocumento"
+                                    [(ngModel)]="item.tipoDocumento.codigo"
+                                    (change)="ModificacionTrigger()">
+                        </ng-select>
+                      </div>
+                  </div>
+                  <br>
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">Numero de Documento :</label>
+                    <div class="col-sm-6"><input  type="text" class="form-control" name="numeroDocumento" [(ngModel)]="item.numeroDocumento" (change)="ModificacionTrigger()" #numeroDocumento="ngModel" [class.ng-invalid]="errors?.numeroDocumento" (ngModelChange)="Validar(numeroDocumento)" [tooltip]="errors?.numeroDocumento" [tooltipIsOpen]="numeroDocumento.dirty && (numeroDocumento.invalid || errors?.numeroDocumento)" placement="top" ></div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">Direccion :</label>
+                    <div class="col-sm-6"><input  type="text" class="form-control" name="direccion" [(ngModel)]="item.direccion"  (change)="ModificacionTrigger()" #direccion="ngModel" [class.ng-invalid]="errors?.direccion" (ngModelChange)="Validar(direccion)" [tooltip]="errors?.direccion" [tooltipIsOpen]="direccion.dirty && (direccion.invalid || errors?.direccion)" placement="top" ></div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">Telefono :</label>
+                    <div class="col-sm-6"><input  type="text" class="form-control" name="telefono" [(ngModel)]="item.telefono" (change)="ModificacionTrigger()" #telefono="ngModel" [class.ng-invalid]="errors?.telefono" (ngModelChange)="Validar(telefono)" [tooltip]="errors?.telefono" [tooltipIsOpen]="telefono.dirty && (telefono.invalid || errors?.telefono)" placement="top" ></div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">Correo :</label>
+                    <div class="col-sm-6"><input  type="email" class="form-control" name="correo" [(ngModel)]="item.correo" (change)="ModificacionTrigger()" #correo="ngModel" [class.ng-invalid]="errors?.correo" (ngModelChange)="Validar(correo)" [tooltip]="errors?.correo" [tooltipIsOpen]="correo.dirty && (correo.invalid || errors?.correo)" placement="top" ></div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">Fax :</label>
+                    <div class="col-sm-6"><input  type="text" class="form-control" name="fax" [(ngModel)]="item.fax" (change)="ModificacionTrigger()" #fax="ngModel" [class.ng-invalid]="errors?.fax" (ngModelChange)="Validar(fax)" [tooltip]="errors?.fax" [tooltipIsOpen]="fax.dirty && (fax.invalid || errors?.fax)" placement="top" ></div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">Celular :</label>
+                    <div class="col-sm-6"><input  type="text" class="form-control" name="celular" [(ngModel)]="item.celular" (change)="ModificacionTrigger()" #celular="ngModel" [class.ng-invalid]="errors?.celular" (ngModelChange)="Validar(celular)" [tooltip]="errors?.celular" [tooltipIsOpen]="celular.dirty && (celular.invalid || errors?.celular)" placement="top" ></div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">Fecha :</label>
+                    <div class="col-sm-4">
+                      <div class="input-group date">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input bsDatepicker #dp="bsDatepicker" type="text" class="form-control" name="fechaRegistro" [disabled]="true" [ngModel]="item.fechaRegistro | date:'dd/MM/yyyy hh:mm:ss a'">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">Estado :</label>
+                    <div class="col-sm-4">
+                      <select class="form-control m-b" name="estado" [(ngModel)]="item.estado" (change)="ModificacionTrigger()">
+                        <option value="ACTIVO">ACTIVO</option>
+                        <option value="INACTIVO">INACTIVO</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">Responsable :</label>
+                    <div class="col-sm-6"><input type="text"  disabled="disabled" class="form-control" name="responsable" [ngModel]="item.responsable"></div>
+                  </div>
+                </form>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>

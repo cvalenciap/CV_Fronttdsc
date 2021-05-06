@@ -1,0 +1,38 @@
+<div class="loginColumns loginscreen animated fadeInDown">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="text-center m-t-xl">
+        <img src="assets/images/sedapal-logo-2.png">
+      </div>
+      <h2 class="font-bold text-center">{{name}}</h2>
+    </div>
+    <div class="col-md-6">
+      <div class="ibox-content" [ngClass]="{'sk-loading': loading && !error}">
+        <sk-wandering-cubes></sk-wandering-cubes>
+        <div class="alert alert-danger" *ngIf="error">{{error}}.</div>
+        <form class="m-t" #login="ngForm" role="form" (submit)="doLogin(login)">
+          <div class="form-group">
+            <input name="username" type="text" class="form-control" autocomplete="off" placeholder="Usuario" required [(ngModel)]="username">
+          </div>
+          <div class="form-group">
+            <input name="password" type="password" class="form-control" placeholder="Contraseña" required [(ngModel)]="password">
+          </div>
+          <button type="submit" class="btn btn-primary dim block full-width m-b">Ingresar</button>
+          <a (click)="doRecover()" class="reset-link">No recuerdo mi contraseña</a>
+        </form>
+        <p class="m-t">
+          <small>Integrado con la plataforma STDC de SEDAPAL.</small>
+        </p>
+      </div>
+    </div>
+  </div>
+  <hr/>
+  <div class="row">
+    <div class="col-md-6">
+      <span [innerHtml]="copyright"></span>
+    </div>
+    <div class="col-md-6 text-right">
+      <small>{{id}} ver. {{version}}</small>
+    </div>
+  </div>
+</div>

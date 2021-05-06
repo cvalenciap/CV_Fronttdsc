@@ -1,0 +1,52 @@
+<div class="">
+  <div class="row m-b-xs">
+    <div class="col-xs-12">
+      <div class="input-group">
+        <input type="text" placeholder="Buscar" class="form-control" [(ngModel)]="filtroDescripcion">
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default" (click)="OnBuscar()"><i class="fa fa-search"></i></button>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+
+      <div class="ibox-content" style="padding: 0; border: 0" [ngClass]="{'sk-loading': loading}">
+        <sk-three-bounce></sk-three-bounce>
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped table-hover m-b-xs">
+            <thead>
+            <tr>
+              <th class="text-center">Item</th>
+              <th>Descripción</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of items; let i = index;" (click)="OnItemSelected(i, item)" [class.selected]="i == selectedRow">
+              <td class="text-center"><code>{{item.codigo}}</code></td>
+              <td>{{item.descripcion}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 col-xs-12">
+            <pagination [(ngModel)]="paginacion.pagina" (pageChanged)="OnPageChanged($event)" [totalItems]="paginacion.totalRegistros" [itemsPerPage]="paginacion.registros" [boundaryLinks]="true" [maxSize]="5" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
+          </div>
+          <div class="col-sm-6 col-xs-12">
+            <div class="text-right">
+              <pagination-info [totalItems]="paginacion.totalRegistros" [itemsPerPage]="paginacion.registros" [page]="paginacion.pagina"></pagination-info>
+            </div>
+          </div>
+          <!--div class="col-sm-6 col-xs-12">
+            <div class="text-right m-a-sm">
+              <pagination-set (optionChanged)="OnPageOptionChanged($event)"></pagination-set>
+            </div>
+          </div-->
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

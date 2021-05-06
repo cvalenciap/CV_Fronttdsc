@@ -1,0 +1,76 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+  <div class="sidebar-collapse">
+    <ul class="nav metismenu" id="side-menu">
+      <li class="nav-header">
+        <div class="profile-element text-center">
+          <img src="assets/images/sedapal-logo-2.png">
+        </div>
+        <div class="logo-element">
+          <img src="assets/images/sedapal-gota.png">
+        </div>
+      </li>
+      <li [ngClass]="{active: activeRoute('inicio')}">
+        <a [routerLink]="['/inicio']"><i class="fa fa-home"></i> <span class="nav-label">Inicio</span></a>
+      </li>
+      <li [ngClass]="{active: activeRoute('mesa-partes')}" *ngIf="checkPermission('/mesa-partes')">
+        <!-- <a [routerLink]="['/mesa-partes']"><i class="fa fa-file-text"></i> <span class="nav-label">Mesa de Partes <span class="label label-info pull-right">{{contadores.count_mesaPorDigitalizar}}</span></span></a> -->
+        <!-- <a  [routerLink]="['/mesa-partes']" ><i class="fa fa-file-text"></i> <span class="nav-label">Mesa de Partes <span class="label label-info pull-right" data-toggle="tooltip" title="Total documentos por digitalizar">{{contadores.count_mesaPorDigitalizar}}</span></span></a>         -->
+        <!-- <span class="label label-info pull-right" data-toggle="tooltip" title="Total documentos por digitalizar">{{contadores.count_mesaPorDigitalizar}}</span> -->
+        <a  (click)="OnDireccionar('/mesa-partes')" ><i class="fa fa-file-text"></i> <span class="nav-label">Mesa de Partes </span></a>        
+      </li>
+      <li [ngClass]="{active: activeRoute('bandeja-entrada')}" *ngIf="checkPermission('/bandeja-entrada')">
+        <a href="#"><i class="fa fa-inbox"></i> <span class="nav-label">Bandeja de Entrada</span> <span class="fa arrow"></span> </a>
+        <ul class="nav nav-second-level collapse" [ngClass]="{in: activeRoute('bandeja-entrada')}">
+     <!-- <li [ngClass]="{active: activeRoute('recibidos')}"><a [routerLink]="['/bandeja-entrada/recibidos']">Recibidos <span class="label label-info pull-right">{{contadores.count_recibidosPendientes}}</span></a></li>
+          <li [ngClass]="{active: activeRoute('con-plazo')}"><a [routerLink]="['/bandeja-entrada/con-plazo']">Con Plazo <span class="label label-warning pull-right">{{contadores.count_plazoPorVencer}}</span></a></li> -->
+          <li [ngClass]="{active: activeRoute('recibidos')}"><a (click)="OnDireccionar('/bandeja-entrada/recibidos')">Recibidos <!-- <span class="label label-info pull-right">{{contadores.count_recibidosPendientes}}</span> --></a></li>
+          <li [ngClass]="{active: activeRoute('con-plazo')}"><a (click)="OnDireccionar('/bandeja-entrada/con-plazo')">Con Plazo <!-- <span class="label label-warning pull-right">{{contadores.count_plazoPorVencer}}</span> --></a></li>
+        </ul>
+      </li>
+      <li [ngClass]="{active: activeRoute('bandeja-salida')}" *ngIf="checkPermission('/bandeja-salida')">
+        <a href="#"><i class="fa fa-share"></i> <span class="nav-label">Bandeja de Salida</span> <span class="fa arrow"></span> </a>
+        <ul class="nav nav-second-level collapse" [ngClass]="{in: activeRoute('bandeja-salida')}">
+     <!-- <li [ngClass]="{active: activeRoute('pendientes')}"><a [routerLink]="['/bandeja-salida/pendientes']">Pendientes <span class="label label-danger pull-right">{{contadores.count_pendientesObservados}}</span></a></li>
+          <li *ngIf="checkPermission('/bandeja-salida/visar')" [ngClass]="{active: activeRoute('visados')}"><a [routerLink]="['/bandeja-salida/visados']">Visados <span class="label label-lazur pull-right">{{contadores.count_visadosPorVisar}}</span></a></li>
+          <li *ngIf="checkPermission('/bandeja-salida/firmar') || checkPermission('/bandeja-salida/consultar-area')" [ngClass]="{active: activeRoute('firmados')}"><a [routerLink]="['/bandeja-salida/firmados']">Firmados <span class="label label-success pull-right">{{contadores.count_firmadosPorFirmar}}</span></a></li> -->
+          <li [ngClass]="{active: activeRoute('pendientes')}"><a  (click)="OnDireccionar('/bandeja-salida/pendientes')">Pendientes <!-- <span class="label label-danger pull-right">{{contadores.count_pendientesObservados}}</span> --></a></li>
+          <li *ngIf="checkPermission('/bandeja-salida/visar')" [ngClass]="{active: activeRoute('visados')}"><a  (click)="OnDireccionar('/bandeja-salida/visados')">Visados <!-- <span class="label label-lazur pull-right">{{contadores.count_visadosPorVisar}}</span> --></a></li>
+          <li *ngIf="checkPermission('/bandeja-salida/firmar') || checkPermission('/bandeja-salida/consultar-area')" [ngClass]="{active: activeRoute('firmados')}"><a  (click)="OnDireccionar('/bandeja-salida/firmados')">Firmados <!-- <span class="label label-success pull-right">{{contadores.count_firmadosPorFirmar}}</span> --></a></li>
+        </ul>
+      </li>
+      <li [ngClass]="{active: activeRoute('mantenimiento')}" *ngIf="checkPermission('/mantenimiento')">
+        <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Configuración de Sistema</span> <span class="fa arrow"></span> </a>
+        <ul class="nav nav-second-level collapse" [ngClass]="{in: activeRoute('mantenimiento')}">
+     <!-- <li *ngIf="checkPermission('/mantenimiento/tipos-documento')" [ngClass]="{active: activeRoute('tipos-documento')}"><a [routerLink]="['/mantenimiento/tipos-documento']">Tipos de Documento</a></li>
+          <li *ngIf="checkPermission('/mantenimiento/asuntos')" [ngClass]="{active: activeRoute('asuntos')}"><a [routerLink]="['/mantenimiento/asuntos']">Asuntos Estandarizados</a></li>
+          <li *ngIf="checkPermission('/mantenimiento/empresas')" [ngClass]="{active: activeRoute('empresas')}"><a [routerLink]="['/mantenimiento/empresas']">Empresas</a></li>
+          <li *ngIf="checkPermission('/mantenimiento/feriados')" [ngClass]="{active: activeRoute('feriados')}"><a [routerLink]="['/mantenimiento/feriados']">Feriados</a></li> -->
+          <li *ngIf="checkPermission('/mantenimiento/tipos-documento')" [ngClass]="{active: activeRoute('tipos-documento')}"><a [routerLink]="['/mantenimiento/tipos-documento']">Tipos de Documento</a></li>
+          <li *ngIf="checkPermission('/mantenimiento/asuntos')" [ngClass]="{active: activeRoute('asuntos')}"><a  (click)="OnDireccionar('/mantenimiento/asuntos')">Asuntos Estandarizados</a></li>
+          <li *ngIf="checkPermission('/mantenimiento/empresas')" [ngClass]="{active: activeRoute('empresas')}"><a  (click)="OnDireccionar('/mantenimiento/empresas')">Empresas</a></li>
+          <li *ngIf="checkPermission('/mantenimiento/feriados')" [ngClass]="{active: activeRoute('feriados')}"><a  (click)="OnDireccionar('/mantenimiento/feriados')">Feriados</a></li>
+        </ul>
+      </li>
+      <li [ngClass]="{active: activeRoute('despacho')}" *ngIf="checkPermission('/despacho')">
+        <a href="#"><i class="fa fa-th-list"></i> <span class="nav-label">Configuración de Despacho</span> <span class="fa arrow"></span> </a>
+        <ul class="nav nav-second-level collapse" [ngClass]="{in: activeRoute('despacho')}">
+          <li *ngIf="checkPermission('/despacho/grupos')" [ngClass]="{active: activeRoute('grupos')}"><a [routerLink]="['/despacho/grupos']">Grupos</a></li>
+          <li *ngIf="checkPermission('/despacho/jefe-equipo')" [ngClass]="{active: activeRoute('jefe-equipo')}"><a [routerLink]="['/despacho/jefe-equipo']">Jefe de Equipo</a></li>
+          <li *ngIf="checkPermission('/despacho/secuenciales')" [ngClass]="{active: activeRoute('secuenciales')}"><a [routerLink]="['/despacho/secuenciales']">Secuenciales</a></li>
+        </ul>
+      </li>
+      <li [ngClass]="{active: activeRoute('reportes-generales')}" *ngIf="checkPermission('/reportes-generales')">
+        <a href="#"><i class="fa fa-book"></i> <span class="nav-label">Reportes Generales</span> <span class="fa arrow"></span> </a>
+        <ul class="nav nav-second-level collapse" [ngClass]="{in: activeRoute('reportes-generales')}">
+          <li *ngIf="checkPermission('/reportes-generales/atencion-documentos')" [ngClass]="{active: activeRoute('atencion-documentos')}"><a [routerLink]="['/reportes-generales/atencion-documentos']">Atención de Documentos</a></li>
+          <li *ngIf="checkPermission('/reportes-generales/consulta-area-fecha-estado')" [ngClass]="{active: activeRoute('consulta-area-fecha-estado')}"><a [routerLink]="['/reportes-generales/consulta-area-fecha-estado']">Consulta Área, Fecha y Estado</a></li>
+          <li *ngIf="checkPermission('/reportes-generales/consulta-documentos-asignados')" [ngClass]="{active: activeRoute('consulta-documento-asignado')}"><a [routerLink]="['/reportes-generales/consulta-documento-asignado']">Cargo de Documentos Asignados</a></li>
+          <li *ngIf="checkPermission('/reportes-generales/documento-entrada')" [ngClass]="{active: activeRoute('documento-entrada')}"><a [routerLink]="['/reportes-generales/documento-entrada']">Documentos de Entrada</a></li>
+          <li *ngIf="checkPermission('/reportes-generales/consulta-seguimiento')" [ngClass]="{active: activeRoute('consulta-seguimiento')}"><a [routerLink]="['/reportes-generales/consulta-seguimiento']">Búsqueda por Seguimiento</a></li>
+          <li *ngIf="checkPermission('/reportes-generales/consulta-registro-entrada')" [ngClass]="{active: activeRoute('consulta-registro-entrada')}"><a [routerLink]="['/reportes-generales/consulta-registro-entrada']">Búsqueda por Registro de Entrada</a></li>
+        </ul>
+      </li>
+    </ul>
+
+  </div>
+</nav>

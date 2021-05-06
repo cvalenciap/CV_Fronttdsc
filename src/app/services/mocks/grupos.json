@@ -1,0 +1,67 @@
+{
+  "listaGrupos": [
+    {
+      "codigo": 1,
+      "fecha": "2018-01-01",
+      "descripcion": "GRUPO COMERCIAL",
+      "abreviatura":  "GC",
+      "estado": "ACTIVO",
+      "fechaRegistro": "2017-12-31T12:00:00",
+      "responsable": "EDIAZH"
+    },
+    {
+      "codigo": 2,
+      "fecha": "2018-01-02",
+      "descripcion": "GRUPO DE GERENCIA DE DESARROLLO E INVESTIGACION",
+      "abreviatura":  "GDI",
+      "estado": "ACTIVO",
+      "fechaRegistro": "2017-12-31T12:10:00",
+      "responsable": "EDIAZH"
+    },
+    {
+      "codigo": 3,
+      "fecha": "2018-04-21",
+      "descripcion": "GRUPO GLS",
+      "abreviatura":  "GLS",
+      "estado": "INACTIVO",
+      "fechaRegistro": "2017-12-31T12:00:00",
+      "responsable": "EDIAZH"
+    },
+    {
+      "codigo": 4,
+      "fecha": "2018-07-28",
+      "descripcion": "GRUPO GS-N",
+      "abreviatura":  "GS-N",
+      "estado": "ACTIVO",
+      "fechaRegistro": "2017-12-31T12:00:00",
+      "responsable": "MBERNILLA"
+    },
+    {
+      "codigo": 5,
+      "fecha": "2018-12-25",
+      "descripcion": "GRUPO DE GERENCIAS DE SEDAPAL",
+      "abreviatura":  "GGS",
+      "estado": "ACTIVO",
+      "fechaRegistro": "2017-12-31T12:00:00",
+      "responsable": "MBERNILLA"
+    }
+  ],
+  "grupo": 
+    {
+      "codigo": 1,
+      "fecha": "2018-01-01",
+      "descripcion": "GRUPO COMERCIAL",
+      "abreviatura":  "GC",
+      "estado": "ACTIVO",
+      "miembros": [
+        {"codigo": 214, 
+          "nombre": "EQUIPO DE CAPACITACION", 
+          "descripcion": "EC - EQUIPO DE CAPACITACION"} ,
+          {"codigo": 215,
+           "nombre": "EQUIPO DE REGISTRO Y CONTROL", 
+           "descripcion": "ERC - EQUIPO DE REGISTRO Y CONTROL"}
+      ],
+      "fechaRegistro": "2017-12-31T12:00:00",
+      "responsable": "EDIAZH"
+    }
+}

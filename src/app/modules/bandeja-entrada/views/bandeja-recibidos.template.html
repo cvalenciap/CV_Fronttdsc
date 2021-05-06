@@ -1,0 +1,243 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-12">
+    <h2>Recibidos</h2>
+    <ol class="breadcrumb">
+      <li>
+        <a routerLink="starterview">Inicio</a>
+      </li>
+      <li>
+        <a>Bandeja de Entrada</a>
+      </li>
+      <li class="active">
+        <strong>Recibidos</strong>
+      </li>
+    </ol>
+  </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row m-b-xs">
+      <div class="col-lg-1 col-xs-1">
+          <a [routerLink]="['../registrar']" class="btn btn-primary"><i class="fa fa-plus"></i> Nuevo</a>
+      </div>
+  </div>
+  <div class="row margin-bottom-5">
+      <div class="col-lg-5">
+          <div class="form-group">         
+            <div class="row">
+              <div class="col-sm-5">
+                 <div class="input-group date">
+                  <span class="input-group-addon"><i class="fa fa-calendar"></i>Desde:</span><input bsDatepicker #dp="bsDatepicker" autocomplete="off" type="text"  name="fechai"   [(bsValue)]="fechaInicial"  (bsValueChange)="DetectChangeIni()" class="form-control" [bsConfig]="{dateInputFormat: 'DD/MM/YYYY'}" value="{{ fechaInicial | date:'dd/MM/yyyy' }}">
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="input-group date">
+                  <span class="input-group-addon"><i class="fa fa-calendar"></i>Hasta:</span><input bsDatepicker #dp="bsDatepicker" autocomplete="off" type="text"   name="fechaf"  [(bsValue)]="fechaFinal"  (bsValueChange)="DetectChangeFin()" class="form-control" [bsConfig]="{dateInputFormat: 'DD/MM/YYYY'}"  value="{{ fechaFinal | date:'dd/MM/yyyy' }}">
+                </div>
+              </div>
+            </div>
+            <br>
+          </div>
+      </div>
+
+    <div class="col-lg-3 col-xs-6">
+      <div class="input-group">
+        <input  #buscar type="text"
+                class="form-control"
+                [placeholder]="opcionesBusqueda.placeholder || opcionesBusqueda.descripcion"
+                [validate-keys]="opcionesBusqueda.validar"
+                [maxlength]="opcionesBusqueda.longitud || 0"
+                [disabled]="opcionesBusqueda.deshabilitar === true"
+                (keyup.enter)="OnBuscar()"
+                [(ngModel)]="textoBusqueda">
+        <span class="input-group-btn" dropdown>
+          <button type="button" class="btn btn-info" (click)="OnBuscar()"><i class="fa fa-search"></i></button>
+          <button dropdownToggle type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split"><i class="fa fa-caret-down"></i></button>
+          <ul *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-split">
+            <li role="menuitem" *ngFor="let item of configuracionesBusqueda" [class.active]="this.opcionesBusqueda.parametro == item.parametro"><a (click)="OnConfigurarBusqueda(item)" [innerHtml]="item.descripcion"></a></li>
+              <!-- li role="menuitem" [class.active]="parametroBusqueda == 'correlativo'"><a (click)="parametroBusqueda = 'correlativo'; OnConfigurarBusqueda()">Número de Registro</a></li>
+              <li role="menuitem" [class.active]="parametroBusqueda == 'tipoDocumento'"><a (click)="parametroBusqueda = 'tipoDocumento'; OnConfigurarBusqueda()">Tipo de Documento</a></li>
+              <li role="menuitem" [class.active]="parametroBusqueda == 'numeroDocumento'"><a (click)="parametroBusqueda = 'numeroDocumento'; OnConfigurarBusqueda()">Número de Documento</a></li>
+              <li role="menuitem" [class.active]="parametroBusqueda == 'asunto'"><a (click)="parametroBusqueda = 'asunto'; OnConfigurarBusqueda()">Asunto</a></li>
+              <li role="menuitem" [class.active]="parametroBusqueda == 'remitente'"><a (click)="parametroBusqueda = 'remitente'; OnConfigurarBusqueda()">Remitente</a></li>
+              <li role="menuitem" [class.active]="parametroBusqueda == 'prioridadUrgente'"><a (click)="parametroBusqueda = 'prioridadUrgente'; OnConfigurarBusqueda()">Prioridad <strong>URGENTE</strong></a></li>
+              <li role="menuitem" [class.active]="parametroBusqueda == 'prioridadAlta'"><a (click)="parametroBusqueda = 'prioridadAlta';OnConfigurarBusqueda()">Prioridad ALTA</a></li -->
+            <li class="divider dropdown-divider"></li>
+            <li role="menuitem"><a [swal]="busquedaAvanzadaSwal">Búsqueda avanzada...</a></li>
+          </ul>
+        </span>
+      </div>
+    </div>
+    <div class="col-lg-4 hidden-md">
+      <button class="btn btn-default m-l-sm" (click)="OnRefrescar()"><i class="fa fa-refresh"></i> Refrescar</button>
+      <span class="m-r-xs"></span>
+      <div *ngIf="switchBotones==1; else deshabilitado" class="btn-group m-l-xs">
+        <button class="btn btn-info" (click)="OnPDF(); $event.stopPropagation();"><i class="fa fa-print"></i> Imprimir</button>
+        <button class="btn btn-info" (click)="OnExcel()"><i class="fa fa-file-excel-o"></i> Excel</button>
+      </div>
+      <ng-template #deshabilitado>
+        <div class="btn-group m-l-xs">
+          <button class="btn btn-info" disabled (click)="OnPDF(); $event.stopPropagation()"><i class="fa fa-print"></i> Imprimir</button>
+          <button class="btn btn-info" disabled (click)="OnExcel()"><i class="fa fa-file-excel-o"></i> Excel</button>
+        </div>  
+      </ng-template>
+    </div>
+    <div class="col-lg-2 hidden-md">
+      <div class="pull-right">
+        <div class="btn-group tooltip-demo">
+          <ul class="dropdown-menu pull-right">
+            <li><a href=""><i class="fa fa-sort-alpha-asc"></i> <strong> Registro</strong></a></li>
+            <li><a href="">Num. Documento</a></li>
+            <li><a href="">Dirigido</a></li>
+            <li><a href="">Asunto</a></li>
+            <li><a href="">Tipo de documento</a></li>
+            <li><a href="">Prioridad</a></li>
+            <li><a href="">Fecha de documento</a></li>
+            <li><a href="">Días</a></li>
+            <li><a href="">Fecha Plazo</a></li>
+            <li><a href="">Registro de entrada</a></li>
+            <li><a href="">Usuario</a></li>
+            <li><a href="">Estado</a></li>
+          </ul>
+        </div>
+        <div class="btn-group">
+          <ul class="dropdown-menu pull-right">
+            <li><a href=""><i class="fa fa-check"></i> Prioridad</a></li>
+            <li><a href=""><i class="fa fa-check"></i> Estado</a></li>
+            <li><a href=""><i class="fa fa-check"></i> Recibido</a></li>
+            <li><a href=""><i class="fa fa-check"></i> Registro</a></li>
+            <li><a href=""><i class="fa fa-check"></i> Documento</a></li>
+            <li><a href=""><i class="fa fa-check"></i> Asunto</a></li>
+            <li><a href=""><i class="fa fa-check"></i> Remitente</a></li>
+            <li><a href=""><i class="fa fa-check"></i> Fecha de documento</a></li>
+            <li><a href=""><i class="fa fa-check"></i> Plazo</a></li>
+            <li><a href=""><i class="fa fa-check"></i> Registro de entrada</a></li>
+            <li><a href=""><i class="fa fa-check"></i> Usuario</a></li>
+            <li><a href=""><i class="fa fa-check"></i> Adjunto</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <advanced-search-info *ngIf="filtro.avanzado"
+                            (reset)="busquedaAvanzadaSwal.show()"
+                            (remove)="OnRestablecer()"
+                            [filtro]="filtro">
+      </advanced-search-info>
+    </div>
+    <div class="col-lg-12">
+      <search-info *ngIf="!loading"
+                   [mostrar]="textoInfoBusqueda"
+                   texto-inicio="Se están mostrando todos los documentos registrados en los últimos 30 días."
+                   texto-busqueda="Esta consulta se realiza sobre <strong>todos</strong> los documentos recibidos."
+                   texto-busqueda-avanzada="Esta consulta se realiza sobre <strong>todos</strong> los documentos recibidos.">
+      </search-info>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox-content" [ngClass]="{'sk-loading': loading}">
+        <sk-three-bounce></sk-three-bounce>
+        <div class="table-responsive">
+          <table class="table table-stripped table-hover issue-tracker">
+            <thead>
+            <tr>
+              <th class="text-center">Reg.</th>
+              <th class="text-center">Estado</th>
+              <th class="text-center">Recibido</th>
+              <th class="text-center">Documento</th>
+              <th class="text-center">Núm. Documento</th>
+              <th class="text-center">Remitente</th>
+              <th class="text-center"></th>
+              <th class="text-center">Plazo</th>
+              <th class="text-center">Doc.</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of items; let i = index" (click)="selectRow(i, item)" [class.info]="i == selectedRow">
+              <td class="text-center" data-col="codigo"><code>{{item.correlativo}}</code></td>
+              <td data-col="estado" class="center" [ngSwitch]="item.estado">
+                <span *ngSwitchCase="'INGRESADO'" class="label label-default">INGRESADO</span>
+                <span *ngSwitchCase="'PENDIENTE'" class="label label-danger">PENDIENTE</span>
+                <span *ngSwitchCase="'DERIVADO'" class="label label-warning">DERIVADO</span>
+                <span *ngSwitchCase="'ATENDIDO'" class="label label-success">ATENDIDO</span>
+                <span *ngSwitchCase="'ELIMINADO'" class="label label-inverse">ELIMINADO</span>
+              </td>
+              <td class="text-center" data-col="fecha-recibido"><small class="text-muted">{{item.fechaRecepcion | date:'dd/MM/yyyy' }}</small></td>
+              <td data-col="documento">
+                  <strong>{{item.tipoDocumento.descripcion}}</strong><br>
+                  <div class="asunto">{{item.asunto}}</div>
+              </td>
+              <td data-col="numerodocumento">
+                  <strong> {{item.numero}}</strong>
+              </td>
+              <td data-col="remitente">{{item.remitente.descripcion}}</td>
+              <td data-col="prioridad" [ngSwitch]="item.prioridad">
+                <span *ngSwitchCase="'BAJA'" class="label label-default" tooltip="Prioridad {{item.prioridad}}"><i class="fa fa-arrow-down text-success"></i></span>
+                <span *ngSwitchCase="'MEDIA'" class="label label-default" tooltip="Prioridad {{item.prioridad}}"><i class="fa fa-minus"></i></span>
+                <span *ngSwitchCase="'ALTA'" class="label label-warning" tooltip="Prioridad {{item.prioridad}}"><i class="fa fa-arrow-up"></i></span>
+                <span *ngSwitchCase="'URGENTE'" class="label label-danger" tooltip="Prioridad {{item.prioridad}}">&nbsp;<i class="fa fa-exclamation"></i>&nbsp;</span>
+              </td>
+              <td data-col="plazo" class="text-center">{{item.fechaPlazo | date:'dd/MM/yyyy' }}<br><small>{{item.plazo}} días</small></td>
+              <td data-col="pdf">
+                <a *ngIf="item.urlDocumento!=null && item.urlDocumento!='VACIO'" class="btn btn-xs btn-info" (click)="urlPDF=item.urlDocumento; OnLeido(item); visorPdfSwal.show(); $event.stopPropagation()"><i class="fa fa-paperclip"></i></a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row">
+          <div class="col-md-4 col-sm-12 col-xs-12">
+            <pagination [(ngModel)]="paginacion.pagina" (pageChanged)="OnPageChanged($event)" [totalItems]="paginacion.totalRegistros" [itemsPerPage]="paginacion.registros" [boundaryLinks]="true" [maxSize]="5" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="text-center m-a-sm">
+              <pagination-info [totalItems]="paginacion.totalRegistros" [itemsPerPage]="paginacion.registros" [page]="paginacion.pagina"></pagination-info>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="text-right m-a-sm">
+              <pagination-set (optionChanged)="OnPageOptionChanged($event)"></pagination-set>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<swal #busquedaAvanzadaSwal title = "Búsqueda Avanzada"
+      customClass="busqueda-swal"
+      [showCancelButton]="true"
+      [focusCancel]="true"
+      [allowOutsideClick]="true"
+      confirmButtonText="Buscar"
+      cancelButtontext="Cancelar"
+      (cancel)="OnBusquedaAvanzada(null)"
+      (confirm)="OnBusquedaAvanzada(filtroAvanzado)">
+  <div *swalPartial>
+    <buscar-documento bandeja="recibidos" [(filtro)]="filtroAvanzado"></buscar-documento>
+  </div>
+</swal>
+
+<swal
+  #visorPdfSwal
+  [showCloseButton]="true"
+  [allowOutsideClick]="false"
+  [showConfirmButton]="false"
+  customClass="pdf-swal">
+  <form *swalPartial>    
+    <visor-pdf [url]="urlPDF"></visor-pdf>
+  </form>
+</swal>
+<swal
+#reportePdfSwal
+[showCloseButton]="true"
+[allowOutsideClick]="false"
+[showConfirmButton]="false"
+customClass="pdf-swal">
+  <form *swalPartial>
+    <visor-pdf url="{{urlReportePdf}}" download="true"></visor-pdf>
+  </form>
+</swal>

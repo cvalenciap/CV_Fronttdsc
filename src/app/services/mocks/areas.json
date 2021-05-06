@@ -1,0 +1,29 @@
+{
+  "listaAreas": [
+    {"codigo": 214, "abreviatura": "EC",   "nombre": "EQUIPO DE CAPACITACION", "descripcion": "EC - EQUIPO DE CAPACITACION"},
+    {"codigo": 215, "abreviatura": "ERC",  "nombre": "EQUIPO DE REGISTRO Y CONTROL", "descripcion": "ERC - EQUIPO DE REGISTRO Y CONTROL"},
+    {"codigo": 222, "abreviatura": "EOF",  "nombre": "EQUIPO DE OPERACIONES FINANCIERAS", "descripcion": "EOF - EQUIPO DE OPERACIONES FINANCIERAS"},
+    {"codigo": 223, "abreviatura": "ECGE", "nombre": "EQUIPO CONTABILIDAD GENERAL", "descripcion": "ECGE - EQUIPO CONTABILIDAD GENERAL"},
+    {"codigo": 302, "abreviatura": "ETIC", "nombre": "EQUIPO TECNOLOGÍAS DE LA INFORMACIÓN Y COMUNICACIONES", "descripcion": "ETIC - EQUIPO TECNOLOGÍAS DE LA INFORMACIÓN Y COMUNICACIONES"},
+    {"codigo": 233, "abreviatura": "EGA",  "nombre": "EQUIPO DE GESTIÓN DE ALMACENES", "descripcion": "EGA - EQUIPO DE GESTIÓN DE ALMACENES"},
+    {"codigo": 301, "abreviatura": "EGAM", "nombre": "EQUIPO DE GESTIÓN AMBIENTAL", "descripcion": "EGAM - EQUIPO DE GESTIÓN AMBIENTAL"},
+    {"codigo": 331, "abreviatura": "EGC",  "nombre": "EQUIPO GESTIÓN COMERCIAL", "descripcion": "EGC - EQUIPO GESTIÓN COMERCIAL"},
+    {"codigo": 341, "abreviatura": "EC-C", "nombre": "EQUIPO COMERCIAL COMAS", "descripcion": "EC-C - EQUIPO COMERCIAL COMAS"},
+    {"codigo": 345, "abreviatura": "EC-B", "nombre": "EQUIPO COMERCIAL BREÑA", "descripcion": "EC-B - EQUIPO COMERCIAL BREÑA"},
+    {"codigo": 346, "abreviatura": "EC-S", "nombre": "EQUIPO COMERCIAL SURQUILLO", "descripcion": "EC-S - EQUIPO COMERCIAL SURQUILLO"},
+    {"codigo": 347, "abreviatura": "EC-VES", "nombre": "EQUIPO COMERCIAL VILLA EL SALVADOR", "descripcion": "EC-VES - EQUIPO COMERCIAL VILLA EL SALVADOR"},
+    {"codigo": 366, "abreviatura": "EO",  "nombre": "EQUIPO OBRAS", "descripcion": "EO - EQUIPO OBRAS"},
+    {"codigo": 371, "abreviatura": "ER",  "nombre": "EQUIPO REGULACION", "descripcion": "ER - EQUIPO REGULACION"},
+    {"codigo": 372, "abreviatura": "EAL", "nombre": "EQUIPO ASUNTOS LEGALES", "descripcion": "EAL - EQUIPO ASUNTOS LEGALES"},
+    {"codigo": 375, "abreviatura": "ECO", "nombre": "EQUIPO DE CONTRATACIONES", "descripcion": "ECO - EQUIPO DE CONTRATACIONES"},
+    {"codigo": 538, "abreviatura": "MPA", "nombre": "MESA DE PARTES ATARJEA", "descripcion": "MPA - MESA DE PARTES ATARJEA"},
+    {"codigo": 539, "abreviatura": "MPC", "nombre": "MESA DE PARTES CALLAO", "descripcion": "MPC - MESA DE PARTES CALLAO"},
+    {"codigo": 541, "abreviatura": "MPS", "nombre": "MESA DE PARTES SURQUILLO", "descripcion": "MPS - MESA DE PARTES SURQUILLO"},
+    {"codigo": 601, "abreviatura": "GG",  "nombre": "GERENCIA GENERAL", "descripcion": "GG - GERENCIA GENERAL"},
+    {"codigo": 602, "abreviatura": "GF",  "nombre": "GERENCIA FINANZAS", "descripcion": "GF - GERENCIA FINANZAS"},
+    {"codigo": 603, "abreviatura": "GLS", "nombre": "GERENCIA DE LOGÍSTICA Y SERVICIOS", "descripcion": "GLS - GERENCIA DE LOGÍSTICA Y SERVICIOS"},
+    {"codigo": 604, "abreviatura": "GC",  "nombre": "GERENCIA COMERCIAL", "descripcion": "GC - GERENCIA COMERCIAL"},
+    {"codigo": 605, "abreviatura": "GID", "nombre": "GERENCIA DE INVESTIGACION Y DESARROLLO", "descripcion": "GID - GERENCIA DE INVESTIGACION Y DESARROLLO"}
+  ],
+  "jefe": {"codigo": 302, "descripcion": "EQUIPO TECNOLOGÍAS DE LA INFORMACIÓN Y COMUNICACIONES", "ficha": "2005", "nombre": "PABLO JOSEPH" , "apellidoPaterno":"AGREDA", "apellidoMaterno":"DIAZ", "estado": "ACTIVO"}
+}

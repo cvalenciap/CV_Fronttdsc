@@ -1,0 +1,9 @@
+{
+  "listaTiposDocumento": [
+    {"codigo": "TD001", "descripcion": "CARTA",     "abreviatura": "CA",  "estado": "ACTIVO", "fechaRegistro": "2018-01-01T12:00:23", "responsable": "EDIAZH"},
+    {"codigo": "TD002", "descripcion": "INFORME",   "abreviatura": "INF", "estado": "ACTIVO", "fechaRegistro": "2018-01-03T12:00:23", "responsable": "EDIAZH"},
+    {"codigo": "TD003", "descripcion": "MEMORANDO", "abreviatura": "MEM", "estado": "ACTIVO", "fechaRegistro": "2018-01-04T09:11:23", "responsable": "EDIAZH"},
+    {"codigo": "TD004", "descripcion": "OFICIO",    "abreviatura": "OF",  "estado": "ACTIVO", "fechaRegistro": "2018-01-09T10:11:23", "responsable": "EDIAZH"},
+    {"codigo": "TD005", "descripcion": "RESOLUCIÓN","abreviatura": "RES", "estado": "ACTIVO", "fechaRegistro": "2018-01-21T13:00:23", "responsable": "EDIAZH"}
+  ]
+}

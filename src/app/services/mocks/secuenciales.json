@@ -1,0 +1,83 @@
+{
+  "listaSecuenciales": [
+    {
+      "anno": "2018",
+      "codigo": "ATD0002",
+      "fecha": "2018-01-01",
+      "descripcion": "MEMORANDO",
+      "abreviatura":  "MM",
+      "codarea":  "236",
+      "desarea":  "EQUIPO ADMINISTRACION Y CONSERVACION",
+      "valsecuencial":  898,
+      "estado": "ACTIVO",
+      "fechaRegistro": "2017-12-31T12:00:00",
+      "responsable": "EDIAZH"
+    },
+    {
+      "anno": "2018",
+      "codigo": "ATD0003",
+      "fecha": "2018-01-02",
+      "descripcion": "CARTA",
+      "abreviatura":  "CA",
+      "codarea":  "236",
+      "desarea":  "EQUIPO ADMINISTRACION Y CONSERVACION",
+      "valsecuencial":  898,
+      "estado": "ACTIVO",
+      "fechaRegistro": "2017-12-31T12:10:00",
+      "responsable": "EDIAZH"
+    },
+    {
+      "anno": "2018",
+      "codigo": "ATD0004",
+      "fecha": "2018-01-02",
+      "descripcion": "HOJA DE COORDINACION",
+      "abreviatura":  "HCO",
+      "codarea":  "312",
+      "desarea":  "EQUIPO PLANEAMIENTO OPERATIVO FINANCIERO",
+      "valsecuencial":  12,
+      "estado": "ACTIVO",
+      "fechaRegistro": "2017-12-31T12:00:00",
+      "responsable": "EDIAZH"
+    },
+    {
+      "anno": "2018",
+      "codigo": "ATD0005",
+      "fecha": "2018-01-02",
+      "descripcion": "INFORME",
+      "abreviatura":  "INF",
+      "codarea":  "312",
+      "desarea":  "EQUIPO PLANEAMIENTO OPERATIVO FINANCIERO",
+      "valsecuencial":  12,
+      "estado": "ACTIVO",
+      "fechaRegistro": "2017-12-31T12:00:00",
+      "responsable": "MBERNILLA"
+    },
+    {
+      "anno": "2018",
+      "codigo": "ATD0011",
+      "fecha": "2018-01-02",
+      "descripcion": "MEMORANDO CIRCULAR",
+      "abreviatura":  "MC",
+      "codarea":  "312",
+      "desarea":  "EQUIPO PLANEAMIENTO OPERATIVO FINANCIERO",
+      "valsecuencial":  7,
+      "estado": "ACTIVO",
+      "fechaRegistro": "2017-12-31T12:00:00",
+      "responsable": "MBERNILLA"
+    }
+  ],
+  "secuencial": 
+    {
+      "anno": "2018",
+      "codigo": "ATD0003",
+      "fecha": "2018-01-02",
+      "descripcion": "CARTA",
+      "abreviatura":  "CA",
+      "codarea":  "236",
+      "desarea":  "EQUIPO ADMINISTRACION Y CONSERVACION",
+      "valsecuencial":  898,
+      "estado": "ACTIVO",
+      "fechaRegistro": "2017-12-31T12:10:00",
+      "responsable": "EDIAZH"
+    }
+}

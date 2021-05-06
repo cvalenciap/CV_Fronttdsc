@@ -1,0 +1,153 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-12">
+    <h2>Consulta Atención de Documentos</h2>
+    <ol class="breadcrumb">
+      <li>
+        <a routerLink="starterview">Inicio</a>
+      </li>
+      <li>
+        <a>Reportes Generales</a>
+      </li>
+      <li class="active">
+        <strong>Consulta Atención de Documentos</strong>
+      </li>
+    </ol>
+  </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-lg-12 m-b-xs">
+      <button class="btn btn-info m-r" [disabled]="buttonDisabled" (click)="OnImprimir()"><i class="fa fa-print"></i> Imprimir</button>
+      <button class="btn btn-info" [disabled]="buttonDisabled" (click)="OnExportar()"><i class="fa fa-file-excel-o"></i> Exportar</button>
+    </div>
+  </div>
+  <div class="row">
+      <!--
+      <label>Area:</label>
+      <select class="form-control">
+        <option *ngFor="let item of parametros.listaAreas" value="{{item.codigo}}">{{item.descripcion}}</option>
+      </select>-->
+      <div class="col-sm-6" >
+          <label>Area:</label>
+          <ng-select [items]="parametros.listaAreas"
+                     bindLabel="descripcion"
+                     [clearable]="false"
+                     name="Areas"
+                     [searchFn]="OnBuscarAreas"
+                     (change) ="ChangeParameters()"
+                     [(ngModel)]="area">
+                     <ng-template ng-label-tmp let-clear="clear" let-item="item">
+                      <span class="m-xs"><span class="label label-primary">{{item.abreviatura}}</span> {{item.descripcion}}</span>
+                      <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+                    </ng-template>
+                    <ng-template ng-option-tmp let-item="item" let-index="index">
+                      <span class="label label-primary">{{item.abreviatura}}</span> {{item.descripcion}}
+                    </ng-template>
+          </ng-select>
+        </div>
+  </div>
+  <div class="row m-b-sm"></div>
+  <div class="row">
+  <div class="col-sm-12">
+  <div class="row m-b-sm">
+    <div class="col-sm-2">
+      <!--
+          <div class="input-group">
+            <input type="text" class="form-control" bsDatepicker #dp="bsDatepicker" name="fechaf" [ngModel]="documento.fechaf | date : 'dd/MM/yyyy'">
+            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+          </div>
+    --> <label>Fecha Inicial:</label>
+          <div class="input-group date">
+            <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input bsDatepicker #dp="bsDatepicker" autocomplete="off" type="text" name="fechai"  (change) ="ChangeParameters()" [(bsValue)]="fechaInicial"  (bsValueChange)="DetectChangeIni()" class="form-control" [bsConfig]="{dateInputFormat: 'DD/MM/YYYY'}">
+          </div>
+        </div>
+
+
+
+    <div class="col-sm-2">
+      <label>Fecha Final:</label>
+      <div class="input-group date">
+        <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input bsDatepicker #dp="bsDatepicker" autocomplete="off" type="text" name="fechaf" (change) ="ChangeParameters()" [(bsValue)]="fechaFinal"  (bsValueChange)="DetectChangeFin()" class="form-control" [bsConfig]="{dateInputFormat: 'DD/MM/YYYY'}">
+      </div>
+    </div>
+    
+    <div class="col-sm-2">
+    <label>Estado:</label>
+    <ng-select [items]="itemsEstado"
+                bindLabel="descripcion"
+                placeholder="Seleccionar"
+                name ="Estado"
+                [clearable]="true"
+                (change) ="ChangeParameters()"
+                [(ngModel)]="estado">
+    </ng-select>
+    </div>
+    
+    <div class="col-sm-2">
+      <label>Ficha:</label>
+      <input type="text" (change) ="ChangeParameters()" autocomplete="off" [(ngModel)]="ficha" class="form-control">
+    </div>
+    <div class="col-sm-1">
+      <a class="btn btn-primary m-t-sm" (click)="OnBuscar()"><i class="fa fa-search"></i> Buscar</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+
+      <div class="ibox-content" [ngClass]="{'sk-loading': loading}">
+        <sk-three-bounce></sk-three-bounce>
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped table-hover issue-tracker">
+            <thead>
+            <tr>
+              <th class="text-center">Correlativo</th>
+              <th class="text-center">Número Doc.</th>
+              <th class="text-center">Area Derivado</th>
+              <th class="text-center">Fecha Doc.</th>
+              <th class="text-center">Asunto</th>
+              <th class="text-center">Fecha Derivación</th>
+              <th class="text-center">Estado</th>
+              <th class="text-center">Nombre</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of items; let i = index">
+              <td data-col="correlativo" class="text-center">{{item.correlativo}} </td>
+              <td data-col="numero-documento">{{item.numeroDocumento}}</td>
+              <td data-col="descripcion">{{item.areaDestino.descripcion}}</td>
+              <td data-col="fecha-documento" style="text-align: center">{{item.fechaDocumento | date:'dd/MM/yyyy'}}</td>
+              <td data-col="asunto">{{item.asunto}}</td>
+              <td data-col="fecha-derivacion"style="text-align: center">{{item.fechaDerivacion | date:'dd/MM/yyyy'}}</td>
+              <td data-col="estado" class="text-center" [ngSwitch]="item.estado">
+                <span *ngSwitchCase="'INGRESADO'" class="label label-default">INGRESADO</span>
+                <span *ngSwitchCase="'PENDIENTE'" class="label label-danger">PENDIENTE</span>
+                <span *ngSwitchCase="'DERIVADO'" class="label label-warning">DERIVADO</span>
+                <span *ngSwitchCase="'ATENDIDO'" class="label label-success">ATENDIDO</span>
+                <span *ngSwitchCase="'OTROS'" class="label label-default">OTROS</span>
+              </td>
+              <td data-col="nombres">{{item.nombres}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-12 col-xs-12">
+              <pagination [(ngModel)]="paginacion.pagina" (pageChanged)="OnPageChanged($event)" [totalItems]="paginacion.totalRegistros" [itemsPerPage]="paginacion.registros" [boundaryLinks]="true" [maxSize]="5" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <div class="text-center m-a-sm">
+                <pagination-info [totalItems]="paginacion.totalRegistros" [itemsPerPage]="paginacion.registros" [page]="paginacion.pagina"></pagination-info>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <div class="text-right m-a-sm">
+                <pagination-set (optionChanged)="OnPageOptionChanged($event)"></pagination-set>
+              </div>
+            </div>
+          </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

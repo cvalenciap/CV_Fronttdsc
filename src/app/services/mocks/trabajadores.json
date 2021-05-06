@@ -1,0 +1,11 @@
+{
+  "listaTrabajadores": [
+    {"codigo": 1, "nombre": "PABLO JOSEPH", "apellidoPaterno": "AGREDA", "apellidoMaterno" :"DIAZ", "estado": "ACTIVO", "nombreCompleto": "PABLO JOSEPH AGREDA DIAZ"},
+    {"codigo": 2, "nombre": "LUIS ALONSO", "apellidoPaterno": "AGUILAR", "apellidoMaterno" :"ROJAS", "estado": "ACTIVO", "nombreCompleto": "LUIS ALONSO AGUILAR ROJAS"},
+    {"codigo": 3, "nombre": "AMADOR", "apellidoPaterno": "FERNANDEZ", "apellidoMaterno" :"CHAVEZ", "estado": "ACTIVO", "nombreCompleto": "AMADOR FERNANDEZ CHAVEZ"},
+    {"codigo": 4, "nombre": "MARTIN" , "apellidoPaterno": "QUEVEDO", "apellidoMaterno": "GONZALES", "estado": "ACTIVO", "nombreCompleto": "MARTIN QUEVEDO GONZALES"},
+    {"codigo": 5, "nombre": "JOSE" , "apellidoPaterno": "RAMIREZ", "apellidoMaterno": "CARDENAS", "estado": "ACTIVO", "nombreCompleto": "JOSE RAMIREZ CARDENAS"},
+    {"codigo": 6, "nombre": "LUIS SANTO" , "apellidoPaterno": "RAMOS", "apellidoMaterno": "RAMIREZ", "estado": "ACTIVO", "nombreCompleto": "LUIS SANTO RAMOS RAMIREZ"},
+    {"codigo": 7, "nombre": "KARIN MILAGROS" , "apellidoPaterno": "SALAS", "apellidoMaterno": "ESPINOZA", "estado": "ACTIVO", "nombreCompleto": "KARIN MILAGROS SALAS ESPINOZA"}
+  ]
+}

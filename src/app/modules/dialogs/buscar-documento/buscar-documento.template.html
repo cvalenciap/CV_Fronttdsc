@@ -1,0 +1,98 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="ibox-content" style="padding: 0; border: 0">
+      <p>Ingrese los filtros deseados y luego presione Buscar.</p>
+      <form role="form">
+        <div class="row">
+          <div class="col-md-3">
+            <label>Año :</label>
+            <select class="form-control" (change)="OnNano()" [(ngModel)]="filtrosBusqueda.nano" type="text" name="inano">
+              <option value="">TODOS</option>
+              <option *ngFor="let inano of listaNano" [ngValue]="inano">{{inano}}</option>
+            </select>
+          </div>
+          <div class="col-md-3 ">
+            <label>Origen :</label>
+            <select class="form-control" [(ngModel)]="filtrosBusqueda.origen" type="text" name="OrigenDocumento" [disabled]="listaOrigen.length === 1">
+              <option *ngIf="listaOrigen.length > 1" value="0">TODOS</option>
+              <option *ngFor="let origen of listaOrigen;" [ngValue]="origen.codigo">{{origen.valor}}</option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group"><label>Nro. Registro : Del</label>
+              <input autocomplete="off" type="text" class="form-control" name="correlativo" (blur)="OnCambiarCorrelativo()" [(ngModel)]="filtrosBusqueda.correlativo" validate-keys="digit">
+            </div>
+          </div>
+          <div class="col-md-3">
+              <div class="form-group"><label>al</label>
+                <input autocomplete="off" type="text" class="form-control" name="correlativoFin" (blur)="OnCambiarCorrelativo()" [(ngModel)]="filtrosBusqueda.correlativoFin" validate-keys="digit">
+              </div>
+            </div>
+        </div>
+
+        <div class="form-group"><label>Fecha de Documento :</label>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="input-group date">
+                <span class="input-group-addon"><i class="fa fa-calendar"></i> Desde:</span>
+                <input autocomplete="off" bsDatepicker #dpInicio="bsDatepicker" name="fechainicio" [(bsValue)]="filtrosBusqueda.fechaInicio" (bsValueChange)="OnCambiarFechaInicio()" value="{{ filtrosBusqueda.fechaInicio | date:'dd/MM/yyyy' }}" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="input-group date">
+                <span class="input-group-addon"><i class="fa fa-calendar"></i> Hasta:</span>
+                <input autocomplete="off" bsDatepicker #dpFin="bsDatepicker" name="fechafin" [(bsValue)]="filtrosBusqueda.fechaFin" (bsValueChange)="OnCambiarFechaFin()" value="{{ filtrosBusqueda.fechaFin | date:'dd/MM/yyyy' }}" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <br>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6">
+              <div class="form-group"><label>Remitente :</label>
+                <input autocomplete="off" type="text" class="form-control" [(ngModel)]="filtrosBusqueda.remitente" name="remitente">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group"><label>Número de Documento:</label>
+                <input autocomplete="off" type="text" class="form-control" [(ngModel)]="filtrosBusqueda.numeroDocumento" name="numero">
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- *ngIf="bandeja=='mesa-partes'" -->
+          <div class="col-md-6" >
+            <div class="form-group" *ngIf="bandeja=='mesa-partes'">
+                <label>Derivado :</label><input autocomplete="off" type="text" class="form-control" name="dirigido" [(ngModel)]="filtrosBusqueda.dirigido">
+            </div>
+          </div>
+          <div [class]="bandeja=='mesa-partes' ? 'col-md-6' : 'col-md-12'">
+            <div class="form-group">
+              <label>Asunto :</label><input autocomplete="off" type="text" class="form-control" name="asunto" [(ngModel)]="filtrosBusqueda.asunto">
+            </div>
+          </div> 
+        </div>
+       
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group"><label>Prioridad :</label>
+              <select class="form-control m-b" [(ngModel)]="filtrosBusqueda.prioridad" type="text" name="prioridadDocumento">
+                <option value="0">TODAS</option>
+                <option *ngFor="let prioridad of listaPrioridad" [ngValue]="prioridad">{{prioridad}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group"><label>Estado :</label>
+              <select class="form-control m-b" [(ngModel)]="filtrosBusqueda.estado" type="text" name="estadoDocumento">
+                <option value="0">TODOS</option>
+                <option *ngFor="let estado of listaEstado" [ngValue]="estado">{{estado}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

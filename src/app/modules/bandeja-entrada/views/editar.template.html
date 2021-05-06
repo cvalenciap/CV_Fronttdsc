@@ -1,0 +1,232 @@
+<article class="wrapper wrapper-content animated fadeInRight">
+  <header class="row m-b-md">
+    <div class="col-lg-6">
+      <h1>{{documento.tipoDocumento.descripcion}} N° {{documento.numero}}</h1>
+    </div>
+    <div class="col-lg-6">
+      <div class="pull-right">
+        <h2 class="m-r-sm" style="display: inline-block">Núm. Registro: <code>{{documento.correlativo}}</code></h2>
+        <!--<a class="btn btn-info m-r-xs" (click)="urlPDF=documento.urlDocumento; ; OnLeido(); visorPdfSwal.show(); $event.stopPropagation()"><i class="fa fa-print"></i> Ver Documento</a>-->
+        <button *ngIf="documento.urlDocumento!='VACIO'; else sinBoton" type="button" class="btn btn-primary m-r-xs"  (click)="urlPDF=documento.urlDocumento; ; OnLeido(); visorPdfSwal.show(); $event.stopPropagation()"><i class="fa fa-print"></i> Ver Documento</button>        
+        <ng-template #sinBoton>
+          <button type="button" disabled="disabled" class="btn btn-primary m-r-xs" [swal]="visorPdfSwal"><i class="fa fa-print"></i> Ver Documento</button>        
+        </ng-template>
+
+        
+        <div class="btn-group" dropdown>
+          <button type="button" dropdownToggle class="btn btn-info dropdown-toggle "><i class="fa fa-download"></i> Exportar &nbsp;<i class="fa fa-caret-down"></i></button>
+          <ul id="dropdown-print" *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="print">
+            <li role="menuitem"><a class="dropdown-item" (click)="OnHojaEnvio(); $event.stopPropagation();">Hoja de Envío</a></li>
+            <li role="menuitem"><a class="dropdown-item" (click)="OnReporteSeguimiento(); $event.stopPropagation();">Reporte Seguimiento</a></li>
+          </ul>
+        </div>  
+        <a class="btn btn-default m-l-xs" (click)="OnRegresar()"><i class="fa fa-arrow-left"></i> Regresar</a>
+      </div>
+    </div>
+  </header>
+  <div class="row">
+    <div class="col-lg-12">
+      <tabset #tabsDetalle>
+        <tab heading="Detalle">
+          <div class="mail-box-header" style="border-top: 0;">
+            <div class="row m-b-sm">
+              <div class="col-md-8">
+                <a class="btn btn-warning m-r-xs" (click)="OnActualizar()"><i class="fa fa-pencil"></i> Actualizar</a>
+                <a class="btn btn-danger" [swal]="eliminarSwal"><i class="fa fa-trash"></i> Eliminar</a>
+              </div>
+              <div class="col-md-2">
+                  <span [ngSwitch]="documento.prioridad" class="pull-right">
+                    <span *ngSwitchCase="'BAJA'" class="small font-bold text-success">Prioridad Baja</span>
+                    <span *ngSwitchCase="'MEDIA'" class="small font-bold text-info">Prioridad Media</span>
+                    <span *ngSwitchCase="'ALTA'" class="small font-bold text-warning"><i class="fa fa-arrow-up"></i> Prioridad Alta</span>
+                    <span *ngSwitchCase="'URGENTE'" class="small font-bold text-danger"><i class="fa fa-exclamation"></i> Prioridad Urgente</span>                  
+                  </span>
+              </div>              
+              <div class="col-md-2 text-right">
+              <strong class="small">  Estado: </strong>                    
+                <span [ngSwitch]="documento.estado">
+                  <span *ngSwitchCase="'PENDIENTE'" class="label label-danger">PENDIENTE</span>
+                  <span *ngSwitchCase="'ATENDIDO'" class="label label-success">ATENDIDO</span>
+                  <span *ngSwitchCase="'DERIVADO'" class="label label-warning">DERIVADO</span>
+                  <span *ngSwitchCase="'INGRESADO'" class="label label-default">INGRESADO</span>
+                  <span *ngSwitchCase="'ELIMINADO'" class="label label-inverse">ELIMINADO</span>
+                  <span *ngSwitchElse class="label label-default">OTROS</span>                
+                </span>
+              </div>            
+            </div>
+            <div class="mail-tools">
+              <div class="row">
+                <div class="col-md-4">
+                  <dl class="dl-horizontal">
+                    <dt>Registro:</dt> <dd><code>{{documento.correlativo}}</code></dd>
+                    <dt>Año:</dt> <dd><strong>{{documento.nano}}</strong></dd>
+                    <dt>Origen:</dt> <dd>{{documento.origen}}</dd>
+                  </dl>
+                </div>
+                <div class="col-md-4">
+                  <dl class="dl-horizontal">
+                    <dt>Tipo Documento:</dt> <dd>{{documento.tipoDocumento.descripcion}}</dd>
+                    <dt>Número Documento:</dt> <dd>{{documento.numero}}</dd>
+                    <dt>Fecha Documento:</dt> <dd>{{documento.fechaDocumento | date:'dd/MM/yyyy'}}</dd>
+                  </dl>
+                </div>
+                <div class="col-md-4">
+                  <dl class="dl-horizontal" >
+                    <dt>Enviado Por:</dt> <dd>{{documento.areaOrigen.abreviatura}}</dd>
+                    <dt>Fecha Envío:</dt> <dd>{{documento.fechaRecepcion | date:'dd/MM/yyyy hh:mm' }}</dd>
+                    <dt>Fecha Plazo:</dt> <dd>{{documento.fechaPlazo | date:'dd/MM/yyyy'}}</dd>
+                  </dl>
+                </div>
+              </div>
+              <div class="row" *ngIf="documento.urlReferencia!=null">
+                  <div class="col-md-4">
+                    <dl class="dl-horizontal">
+                      <dt>Doc. de Referencia:</dt> <dd><a (click)="urlPDF=documento.urlReferencia; visorPdfSwal.show(); $event.stopPropagation()"><code class="text-info">{{documento.correlativoEntrada}}-{{documento.nanoEntrada}}</code></a></dd>
+                    </dl>
+                  </div>
+                </div>
+            </div>
+          </div>
+          <div class="mail-box">
+            <div class="mail-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <dl>
+                    <dt>Remitente:</dt>
+                    <dd class="project-people">
+                      <ul class="list-group">
+                        <li class="list-group-item">
+                          {{documento.remitente.descripcion}}
+                          <i class="fa fa-chevron-right text-muted m-l-sm m-r-sm"></i>
+                          {{documento.representante.nombre}}
+                        </li>
+                      </ul>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="col-md-6">
+                  <dl>
+                    <dt>Dirigido A:</dt>
+                    <dd class="project-people">
+                      <ul class="list-group">
+                        <li class="list-group-item" *ngFor="let dirigido of documento.dirigidos; let i = index" >
+                          <strong>{{dirigido.area.abreviatura}}</strong>
+                          <i class="fa fa-chevron-right text-muted m-l-sm m-r-sm"></i>
+                          {{dirigido.trabajador.nombreCompleto}}
+                        </li>
+                      </ul>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12">
+                  <h3>Asunto:</h3>
+                  <p class="lead">
+                    {{documento.asunto}}
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <h5>Referencia:</h5>
+                  <p>
+                    {{documento.referencia}}
+                  </p>
+                </div>
+                <div class="col-lg-6 border-left">
+                  <h5>Observaciones:</h5>
+                  <p>
+                    {{documento.observaciones}}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="mail-body" *ngIf="documento.contenido" [innerHtml]="documento.contenido">
+            </div>
+            <div class="mail-attachment">
+              <div class="row">
+                <div class="col-lg-9">
+                </div>
+                <div *ngIf="totalDocumentos>0" class="col-lg-3 border-left">
+                  <p>
+                    <span><i class="fa fa-paperclip"></i> Anexos:  {{totalDocumentos}} archivos</span>
+                  </p>
+                  <ul class="list-unstyled project-files">
+                    <li *ngFor="let adjunto of adjuntos; let i = index"><a href="{{adjunto.ubicacion}}"><i class="fa fa-file"></i> {{adjunto.nombreReal}}</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </tab>
+
+        <tab heading="Seguimiento">
+          <bandeja-entrada-seguimiento #tabSeguimiento
+            [listaSeguimiento]="listaSeguimiento"
+            (buscar)="OnBuscarSeguimiento($event)"
+            (eliminar)="OnEliminarSeguimiento($event)"
+            (enviar)="OnEnviarSeguimiento($event)"
+            (atender)="OnAtenderSeguimiento($event)"
+            (responder)="OnResponderSeguimiento($event)"
+            [paginacion_seg]="paginacion_seg">
+          </bandeja-entrada-seguimiento>
+        </tab>
+
+        <tab heading="Árbol de Seguimiento" (select)="OnArbol()">
+          <div class="ibox-content" style="border-top: 0;" [ngClass]="{'sk-loading': loadingArbol}">
+            <sk-three-bounce></sk-three-bounce>
+            <canvas gitgraph id="seguimiento" #seguimiento="gitgraph" [data]="itemsArbol"></canvas>
+          </div>
+        </tab>
+
+        <tab heading="Enviar Documento" *ngIf="enviarDocumento">
+          <bandeja-entrada-enviar-documento
+            [listaAreas]="listaAreas"
+            [listaTrabajadores]="listaTrabajadores"
+            [seguimiento]="nuevoSeguimiento"
+            (ready)="OnNuevoSeguimientoReady()"
+            (guardar)="OnGuardarSeguimiento()"
+            (cancelar)="OnCancelarSeguimiento()"
+            (enviar)="recibiendoDoc($event)">
+          </bandeja-entrada-enviar-documento>
+        </tab>
+      </tabset>
+
+    </div>
+  </div>
+</article>
+
+<swal
+  #eliminarSwal
+  type="question"
+  title="¿Está seguro que desea eliminar el documento?"
+  confirmButtonText="Sí, eliminar"
+  cancelButtonText="No gracias"
+  [showCancelButton]="true"
+  [focusCancel]="true"
+  (confirm)="OnEliminar()"
+></swal>
+
+<swal
+  #visorPdfSwal
+  [showCloseButton]="true"
+  [allowOutsideClick]="false"
+  [showConfirmButton]="false"
+  customClass="pdf-swal">
+  <form *swalPartial>
+    <visor-pdf [url]="urlPDF"></visor-pdf>
+  </form>
+</swal>
+
+<swal
+  #reportePdfSwal
+  [showCloseButton]="true"
+  [allowOutsideClick]="false"
+  [showConfirmButton]="false"
+  customClass="pdf-swal">
+  <form *swalPartial>
+    <visor-pdf url="{{urlReportePdf}}" download="true"></visor-pdf>
+  </form>
+</swal>

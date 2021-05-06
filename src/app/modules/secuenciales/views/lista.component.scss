@@ -1,0 +1,11 @@
+.table {
+  tr {
+    td[data-col='codTipDoc'] {width: 80px;}
+    td[data-col='desTipDoc'] {width: 150px}
+    td[data-col='desarea'] {width: 200px;}
+    td[data-col='correlativo'] {width: 80px;}
+    td[data-col='estado'] {width: 100px;}
+    td[data-col='fecRegTipoDoc'] {width: 100px;}
+    td[data-col='responsable'] {width: 150px;}
+  }
+}

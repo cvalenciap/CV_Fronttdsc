@@ -1,0 +1,1641 @@
+{
+  "listaDerivados":[
+    {"area" : "", "trabajador" : ""}
+  ],
+  "listaAcciones":[
+    {"codigo": "PorDisposicion", "descripcion" : "01. Por Disposición"},
+    {"codigo": "Coordinar", "descripcion" : "02. Coordinar"},
+    {"codigo": "AccionNecesaria", "descripcion" : "03. Acción Necesaria"},
+    {"codigo": "AdjuntarAntecedentes", "descripcion" : "04. Adjuntar Antecedentes"},
+    {"codigo": "RevisarInformar", "descripcion" : "05. Revisar / Informar"},
+    {"codigo": "PrepararRespuesta", "descripcion" : "06. Preparar Respuesta"},
+    {"codigo": "ConocimientoYFines", "descripcion" : "07. Conocimiento y Fines"},
+    {"codigo": "SuAprobacion", "descripcion" : "08. Su Aprobación"},
+    {"codigo": "TenerPendiente", "descripcion" : "09. Tener Pendiente"},
+    {"codigo": "Resolver", "descripcion" : "10. Resolver"},
+    {"codigo": "Archivar", "descripcion" : "11. Archivar"},
+    {"codigo": "ParaDirectorio", "descripcion" : "12. Para Directorio"},
+    {"codigo": "ParaTramite", "descripcion" : "13. Para Trámite"},
+    {"codigo": "ContestarDirectamente", "descripcion" : "14. Contestar Directamente"},
+    {"codigo": "Otros", "descripcion" : "15. Otros"}
+    ],
+  "listaBandejaSalidaFirmados": [
+    {
+      "correlativo": "7000",
+      "estado": "FIRMADO",
+      "fechaRecepcion": "2018-04-14",
+      "tipoDocumento":
+      {
+        "codigo": "ATD0415",
+        "descripcion": "ACTA",
+        "abreviatura": "APS",
+        "estado": "ACTIVO",
+        "fechaRegistro": "2016-06-13T00:00:00",
+        "responsable": "EDIAZH"
+      },
+      "numero": "071-GA/SRH-2018",
+      "asunto": "EVALUACIÓN DE RIESGOS",
+      "areaDestino":
+      {
+        "codigo": "136",
+        "nombre": "EQUIPO PRODUCTIVIDAD CON CALIDAD Y CONTROL DE GESTION",
+        "abreviatura": "EPCCG",
+        "descripcion": "EQUIPO PRODUCTIVIDAD CON CALIDAD Y CONTROL DE GESTION"
+      },
+      "trabajadorDestino":
+      {
+        "codigo": "152",
+        "nombre": "JULY PALOMINO MAZUELOS",
+        "estado": "ACTIVO"
+      },
+      "prioridad": "ALTA",
+      "plazo": "3",
+      "fechaPlazo": "2018-04-17",
+      "documentoEntrada": "2015"
+    },
+    {
+      "correlativo": "7001",
+      "estado": "PENDIENTE",
+      "fechaRecepcion": "2018-05-01",
+      "tipoDocumento":
+      {
+        "codigo": "ATD0410",
+        "descripcion": "ACTA DE ENTREGA",
+        "abreviatura": "AE",
+        "estado": "ACTIVO",
+        "fechaRegistro": "2016-06-13T00:00:00",
+        "responsable": "EDIAZH"
+      },
+      "numero": "079-GA/SRH-2018",
+      "asunto": "ENTREGA DE DOCUMENTOS MASIVA",
+      "areaDestino":
+      {
+        "codigo": "234",
+        "nombre": "EQUIPO SERVICIOS GENERALES",
+        "abreviatura": "ESG",
+        "descripcion": "EQUIPO SERVICIOS GENERALES"
+      },
+      "trabajadorDestino":
+      {
+        "codigo": "153",
+        "nombre": "DIEGO CASTILLO ORDOÑEZ",
+        "estado": "ACTIVO"
+      },
+      "prioridad": "MEDIA",
+      "plazo": "7",
+      "fechaPlazo": "2018-05-08"
+    },
+    {
+      "correlativo": "7002",
+      "estado": "PENDIENTE",
+      "fechaRecepcion": "2018-05-10",
+      "tipoDocumento":
+      {
+        "codigo": "ATD002",
+        "descripcion": "CARTA",
+        "abreviatura": "CA",
+        "estado": "ACTIVO",
+        "fechaRegistro": "2016-06-13T00:00:00",
+        "responsable": "EDIAZH"
+      },
+      "numero": "087-GA/SRH-2018",
+      "asunto": "ENTREGA DE DOCUMENTOS SBS",
+      "areaDestino":
+      {
+        "codigo": "422",
+        "nombre": "Equipo Comercial Comas",
+        "abreviatura": "ECC",
+        "descripcion": "Equipo Comercial Comas"
+      },
+      "trabajadorDestino":
+      {
+        "codigo": "154",
+        "nombre": "JORGE DE VINATEA CASTILLO",
+        "estado": "ACTIVO"
+      },
+      "prioridad": "ALTA",
+      "plazo": "2",
+      "fechaPlazo": "2018-05-12",
+      "documentoEntrada": ""
+    },
+    {
+      "correlativo": "7003",
+      "estado": "FIRMADO",
+      "fechaRecepcion": "2018-05-12",
+      "tipoDocumento":
+      {
+        "codigo": "ATD003",
+        "descripcion": "OFICIO",
+        "abreviatura": "OF",
+        "estado": "ACTIVO",
+        "fechaRegistro": "2016-06-13T00:00:00",
+        "responsable": "EDIAZH"
+      },
+      "numero": "297-GA/SRH-2018",
+      "asunto": "SOLICITUD DE REVISIÓN DE MEDIDORES",
+      "areaDestino":
+      {
+        "codigo": "132",
+        "nombre": "EQUIPO RELACIONES PUBLICAS",
+        "abreviatura": "ERP",
+        "descripcion": "EQUIPO RELACIONES PUBLICAS"
+      },
+      "trabajadorDestino":
+      {
+        "codigo": "155",
+        "nombre": "LIZ SILVA DONAYRE",
+        "estado": "ACTIVO"
+      },
+      "prioridad": "URGENTE",
+      "plazo": "2",
+      "fechaPlazo": "2018-05-14",
+      "documentoEntrada": "3011"
+    },
+    {
+      "correlativo": "7004",
+      "estado": "PENDIENTE",
+      "fechaRecepcion": "2018-06-01",
+      "tipoDocumento":
+      {
+        "codigo": "ATD002",
+        "descripcion": "CARTA",
+        "abreviatura": "CA",
+        "estado": "ACTIVO",
+        "fechaRegistro": "2016-06-13T00:00:00",
+        "responsable": "EDIAZH"
+      },
+      "numero": "0001-2018",
+      "asunto": "PRESENTA QUEJA POR TRABAJOS INCONCLUSOS",
+      "areaDestino":
+      {
+        "codigo": "323",
+        "nombre": "EQUIPO DE OBRAS",
+        "abreviatura": "EO",
+        "descripcion": "EQUIPO DE OBRAS"
+      },
+      "trabajadorDestino":
+      {
+        "codigo": "155",
+        "nombre": "SANDRO PAEZ CHAVEZ",
+        "estado": "ACTIVO"
+      },
+      "prioridad": "BAJA",
+      "plazo": "5",
+      "fechaPlazo": "2018-06-06",
+      "documentoEntrada": "3001"
+    }
+  ],
+  "listaBandejaSalidaVisados": [
+    {
+      "correlativo": "5000",
+      "estado": "VISADO",
+      "fechaRecepcion": "2018-04-14",
+      "tipoDocumento":
+      {
+        "codigo": "ATD0416",
+        "descripcion": "ACTA PRESTACION DE SERVICIOS",
+        "abreviatura": "APS",
+        "estado": "ACTIVO",
+        "fechaRegistro": "2016-06-13T00:00:00",
+        "responsable": "EDIAZH"
+      },
+      "numero": "110-GA/SRH-2018",
+      "asunto": "EVALUACIÓN DE PROYECTO DE INFRAESTRUCTURA 2DO PISO",
+      "areaDestino":
+      {
+        "codigo": "136",
+        "nombre": "EQUIPO PRODUCTIVIDAD CON CALIDAD Y CONTROL DE GESTION",
+        "abreviatura": "EPCCG",
+        "descripcion": "EQUIPO PRODUCTIVIDAD CON CALIDAD Y CONTROL DE GESTION"
+      },
+      "trabajadorDestino":
+      {
+        "codigo": "118",
+        "nombre": "DUNIO ODIAGA VALENZUELA",
+        "estado": "ACTIVO"
+      },
+      "prioridad": "ALTA",
+      "documentoEntrada": "2001",
+      "plazo": "5",
+      "fechaPlazo": "2018-04-19"
+    },
+    {
+      "correlativo": "5001",
+      "estado": "PENDIENTE",
+      "fechaRecepcion": "2018-04-19",
+      "tipoDocumento":
+      {
+        "codigo": "ATD0002",
+        "descripcion": "CARTA",
+        "abreviatura": "CA",
+        "estado": "ACTIVO",
+        "fechaRegistro": "2016-06-13T00:00:00",
+        "responsable": "EDIAZH"
+      },
+      "numero": "118-GA/SRH-2018",
+      "asunto": "EVALUACIÓN DE DESEMPEÑO DE EQUIPO SOPORTE",
+      "areaDestino":
+      {
+        "codigo": "45800",
+        "nombre": "Equipo EOMASBA",
+        "abreviatura": "EE",
+        "descripcion": "Equipo EOMASBA"
+      },
+      "trabajadorDestino":
+      {
+        "codigo": "122",
+        "nombre": "MILAGROS BETONECHE ADRIANZEN",
+        "estado": "ACTIVO"
+      },
+      "prioridad": "MEDIA",
+      "documentoEntrada": "",
+
+      "plazo": "3",
+      "fechaPlazo": "2018-04-22"
+    },
+    {
+      "correlativo": "5002",
+      "estado": "VISADO",
+      "fechaRecepcion": "2018-04-21",
+      "tipoDocumento":
+      {
+        "codigo": "ATD0002",
+        "descripcion": "CARTA",
+        "abreviatura": "CA",
+        "estado": "ACTIVO",
+        "fechaRegistro": "2016-06-13T00:00:00",
+        "responsable": "EDIAZH"
+      },
+      "numero": "222-GA/SRH-2018",
+      "asunto": "VERIFICACIÓN DE PROPUESTAS",
+      "areaDestino":
+      {
+        "codigo": "111",
+        "nombre": "EQUIPO DE AUDITORIA INTERNA",
+        "abreviatura": "EAI",
+        "descripcion": "EQUIPO DE AUDITORIA INTERNA"
+      },
+      "trabajadorDestino":
+      {
+        "codigo": "127",
+        "nombre": "AIDA KANASHIRO ARAKAKI",
+        "estado": "ACTIVO"
+      },
+      "prioridad": "URGENTE",
+      "documentoEntrada": "2003",
+      "plazo": "7",
+      "fechaPlazo": "2018-04-28"
+    },
+    {
+      "correlativo": "5003",
+      "estado": "VISADO",
+      "fechaRecepcion": "2018-04-21",
+      "tipoDocumento":
+      {
+        "codigo": "ATD0002",
+        "descripcion": "CARTA",
+        "abreviatura": "CA",
+        "estado": "ACTIVO",
+        "fechaRegistro": "2016-06-13T00:00:00",
+        "responsable": "EDIAZH"
+      },
+      "numero": "153-GM/GA/SGL-2018",
+      "asunto": "PROCESO DE SELECCIÓN",
+      "areaDestino":
+      {
+        "codigo": "111",
+        "nombre": "EQUIPO DE AUDITORIA INTERNA",
+        "abreviatura": "EAI",
+        "descripcion": "EQUIPO DE AUDITORIA INTERNA"
+      },
+      "trabajadorDestino":
+      {
+        "codigo": "128",
+        "nombre": "LUIS CHAMORRO LOPEZ",
+        "estado": "ACTIVO"
+      },
+      "prioridad": "BAJA",
+      "documentoEntrada": "2023",
+      "plazo": "2",
+      "fechaPlazo": "2018-04-23"
+    },
+    {
+      "correlativo": "5004",
+      "estado": "PENDIENTE",
+      "fechaRecepcion": "2018-04-18",
+      "tipoDocumento":
+      {
+        "codigo": "ATD0416",
+        "descripcion": "ACTA PRESTACION DE SERVICIOS",
+        "abreviatura": "APS",
+        "estado": "ACTIVO",
+        "fechaRegistro": "2016-06-13T00:00:00",
+        "responsable": "EDIAZH"
+      },
+      "numero": "098-GA/SRH-2018",
+      "asunto": "ANÁLISIS DE PROCESOS DE VERIFICACIÓN DE OBRAS",
+      "areaDestino":
+      {
+        "codigo": "124",
+        "nombre": "EQUIPO PRODUCTIVIDAD CON CALIDAD",
+        "abreviatura": "EPC",
+        "descripcion": "EQUIPO PRODUCTIVIDAD CON CALIDAD"
+      },
+      "trabajadorDestino":
+      {
+        "codigo": "132",
+        "nombre": "RAFAEL MANJARREZ GRANADOS",
+        "estado": "ACTIVO"
+      },
+      "prioridad": "MEDIA",
+      "documentoEntrada": "",
+      "plazo": "5",
+      "fechaPlazo": "2018-04-23"
+    }
+  ],
+  "listaBandejaSalidaPendientes": [
+  {
+    "correlativo": "4000",
+    "fechaRecepcion": "2018-03-11",
+    "tipoDocumento":
+    {
+      "codigo": "ATD0416",
+      "descripcion": "ACTA PRESTACION DE SERVICIOS",
+      "abreviatura": "APS",
+      "estado": "ACTIVO",
+      "fechaRegistro": "2016-06-13T00:00:00",
+      "responsable": "EDIAZH"
+    },
+    "numero": "176-GA/SRH-2018",
+    "asunto": "EVALUACIÓN DE PROTOTIPOS",
+    "areaDestino":
+    {
+      "codigo": "136",
+      "nombre": "EQUIPO PRODUCTIVIDAD CON CALIDAD Y CONTROL DE GESTION",
+      "abreviatura": "EPCCG",
+      "descripcion": "EQUIPO PRODUCTIVIDAD CON CALIDAD Y CONTROL DE GESTION"
+    },
+    "trabajadorDestino":
+    {
+      "codigo": "117",
+      "nombre": "SHIRLY CASTRO BERMUDEZ",
+      "estado": "ACTIVO"
+    },
+    "prioridad": "ALTA",
+    "estado": "BORRADOR",
+    "plazo": "5",
+    "fechaPlazo": "2018-03-14",
+    "documentoEntrada": "1006"
+  },
+  {
+    "correlativo": "4001",
+    "fechaRecepcion": "2018-03-13",
+    "tipoDocumento":
+    {
+      "codigo": "ATD0003",
+      "descripcion": "CARTA",
+      "abreviatura": "CA",
+      "estado": "ACTIVO",
+      "fechaRegistro": "2016-06-13T00:00:00",
+      "responsable": "EDIAZH"
+    },
+    "numero": "0016-GM/GA-2018",
+    "asunto": "PRESENTACIÓN DE PROYECTOS",
+    "areaDestino":
+    {
+      "codigo": "355",
+      "nombre": "EQUIPO ATENCION GERENCIAL",
+      "abreviatura": "EAG",
+      "descripcion": "EQUIPO ATENCION GERENCIAL"
+    },
+    "trabajadorDestino":
+    {
+      "codigo": "118",
+      "nombre": "MARIANO REVILLA PALOMINO",
+      "estado": "ACTIVO"
+    },
+    "prioridad": "ALTA",
+    "estado": "OBSERVADO",
+    "plazo": "2",
+    "fechaPlazo": "2018-03-15",
+    "documentoEntrada": ""
+  },
+  {
+    "correlativo": "4002",
+    "fechaRecepcion": "2018-03-18",
+    "tipoDocumento":
+    {
+      "codigo": "ATD0004",
+      "descripcion": "OFICIO",
+      "abreviatura": "OF",
+      "estado": "ACTIVO",
+      "fechaRegistro": "2016-06-13T00:00:00",
+      "responsable": "EDIAZH"
+    },
+    "numero": "0211-GM/GA-2018",
+    "asunto": "REUNIÓN PROTOCOLAR POR VISITA",
+    "areaDestino":
+    {
+      "codigo": "355",
+      "nombre": "EQUIPO ATENCION GERENCIAL",
+      "abreviatura": "EAG",
+      "descripcion": "EQUIPO ATENCION GERENCIAL"
+    },
+    "trabajadorDestino":
+    {
+      "codigo": "119",
+      "nombre": "GONZALO ANDUJAR LOPEZ",
+      "estado": "ACTIVO"
+    },
+    "prioridad": "MEDIA",
+    "estado": "BORRADOR",
+    "plazo": "3",
+    "fechaPlazo": "2018-03-21",
+    "documentoEntrada": "1016"
+  },
+  {
+    "correlativo": "4003",
+    "fechaRecepcion": "2018-03-21",
+    "tipoDocumento":
+    {
+      "codigo": "ATD0003",
+      "descripcion": "CARTA",
+      "abreviatura": "CA",
+      "estado": "ACTIVO",
+      "fechaRegistro": "2016-06-13T00:00:00",
+      "responsable": "EDIAZH"
+    },
+    "numero": "0019-SGL/CC-2018",
+    "asunto": "EVALUACIÓN DE PROYECTOS",
+    "areaDestino":
+    {
+      "codigo": "134",
+      "nombre": "EQUIPO CONTROL DE GESTION Y PROCESO DE SELECCION",
+      "abreviatura": "ECGPS",
+      "descripcion": "EQUIPO CONTROL DE GESTION Y PROCESO DE SELECCION"
+    },
+    "trabajadorDestino":
+    {
+      "codigo": "120",
+      "nombre": "MANUEL VIDAURRE DEL SOLAR",
+      "estado": "ACTIVO"
+    },
+    "prioridad": "BAJA",
+    "estado": "OBSERVADO",
+    "plazo": "2",
+    "fechaPlazo": "2018-03-23",
+    "documentoEntrada": "1020"
+  },
+  {
+    "correlativo": "4004",
+    "fechaRecepcion": "2018-03-25",
+    "tipoDocumento":
+    {
+      "codigo": "ATD0003",
+      "descripcion": "CARTA",
+      "abreviatura": "CA",
+      "estado": "ACTIVO",
+      "fechaRegistro": "2016-06-13T00:00:00",
+      "responsable": "EDIAZH"
+    },
+    "numero": "0211-ALC/SG-2018",
+    "asunto": "DISPOSICIONES COMPLEMENTARIAS PARA EVENTO",
+    "areaDestino":
+    {
+      "codigo": "319",
+      "nombre": "EQUIPO PRE INVERSION",
+      "abreviatura": "EPI",
+      "descripcion": "EQUIPO PRE INVERSION"
+    },
+    "trabajadorDestino":
+    {
+      "codigo": "121",
+      "nombre": "KARINA SANCHEZ CRUZ",
+      "estado": "ACTIVO"
+    },
+    "prioridad": "ALTA",
+    "estado": "OBSERVADO",
+    "plazo": "3",
+    "fechaPlazo": "2018-03-28",
+    "documentoEntrada": ""
+  }
+  ] ,
+
+  "listaBandejaEntradaRecibidos": [
+  {
+    "anno":"2018",
+    "origenDocumento":"EXTERNO",
+    "correlativo":"2000",
+    "tipoDocumento":
+    {
+      "codigo": "ATD0416",
+      "descripcion": "ACTA PRESTACION DE SERVICIOS",
+      "abreviatura": "APS",
+      "estado": "ACTIVO",
+      "fechaRegistro": "2016-06-13T00:00:00",
+      "responsable": "EDIAZH"
+    },
+    "numero": "111-GG/SGC-2018",
+    "estado": "PENDIENTE",
+    "fechaDocumento": "2018-01-22",
+    "asunto": "SERVICIOS PRESTADOS EN AUDITORÍA",
+    "prioridad": "BAJA",
+    "urlDocumento": "",
+    "referencia": "CARTA N°122-2018",
+    "anexos": "",
+    "remitente": "MUNICIPALIDAD DE JESÚS MARÍA",
+    "areaOrigen":
+    {
+      "codigo": "595",
+      "nombre": "PROGRAMA PRO SERVICIOS DE AGUA, ALCANTARILLADO Y REHABILITACION",
+      "abreviatura": "PROSEAR",
+      "descripcion": "PROGRAMA PRO SERVICIOS DE AGUA, ALCANTARILLADO Y REHABILITACION"
+    },
+    "trabajadorOrigen":
+    {
+      "codigo": "5181",
+      "nombre": "YILMA QUISPE BARRUNTA",
+      "estado": "ACTIVO"
+    },
+    "areaDestino":
+    {
+      "codigo": "136",
+      "nombre": "EQUIPO PRODUCTIVIDAD CON CALIDAD Y CONTROL DE GESTION",
+      "abreviatura": "EPCCG",
+      "descripcion": "EQUIPO PRODUCTIVIDAD CON CALIDAD Y CONTROL DE GESTION"
+    },
+    "trabajadorDestino":
+    {
+      "codigo": "111",
+      "nombre": "ANGEL BERMUDEZ DEL CARPIO",
+      "estado": "ACTIVO"
+    },
+    "destinatarios": "",
+    "firmantes": "",
+    "fechaRecepcion": "2018-02-12",
+    "plazo": "3",
+    "fechaPlazo": "2018-02-15",
+    "acciones": [
+      "PorDisposicion",
+      "Coordinar",
+      "Resolver"
+    ],
+    "observaciones": "",
+    "fechaRegistro": "2018-02-12T14:20:18",
+    "fechaModificacion": "2018-02-12T14:20:18",
+    "responsableCreacion": "EDIAZH",
+    "responsableModificacion": "EDIAZH",
+    "codigo": "1",
+    "contenido": "ACTA DE ENTREGA",
+    "selected": true
+  },
+  {
+    "anno":"2018",
+    "origenDocumento":"EXTERNO",
+    "correlativo":"2001",
+    "tipoDocumento":
+    {
+      "codigo": "ATD0407",
+      "descripcion": "ACTA DE AUDIENCIA DE CONCILIACION",
+      "abreviatura": "AAC",
+      "estado": "ACTIVO",
+      "fechaRegistro": "2016-04-14T00:00:00",
+      "responsable": "EDIAZH"
+    },
+    "numero": "722-GG/SGL-2018",
+    "estado": "ATENDIDO",
+    "fechaDocumento": "2018-02-22",
+    "asunto": "CONCILIACIÓN CON EMPRESA DE TECNOLOGÍAS",
+    "prioridad": "ALTA",
+    "urlDocumento": "",
+    "referencia": "CARTA N°226-2018",
+    "anexos": "",
+    "remitente": "PODER JUDICIAL",
+    "areaOrigen":
+    {
+      "codigo": "34404",
+      "nombre": "Atencion al Cliente Ate Vitarte",
+      "abreviatura": "ACAV",
+      "descripcion": "Atencion al Cliente Ate Vitarte"
+    },
+    "trabajadorOrigen":
+    {
+      "codigo": "3386",
+      "nombre": "VICTOR GERARDO LOPEZ SOLANO",
+      "estado": "ACTIVO"
+    },
+    "areaDestino":
+    {
+      "codigo": "34406",
+      "nombre": "Gestión Operativa Comercial Ate",
+      "abreviatura": "GOCA",
+      "descripcion": "Gestión Operativa Comercial Ate"
+    },
+    "trabajadorDestino":
+    {
+      "codigo": "2875",
+      "nombre": "ARMANDO REYMUNDIZ CUYA",
+      "estado": "ACTIVO"
+    },
+    "destinatarios": "",
+    "firmantes": "",
+    "fechaRecepcion": "2018-02-24",
+    "plazo": "3",
+    "fechaPlazo": "2018-02-27",
+    "acciones": [
+      "PorDisposicion",
+      "SuAprobacion", "Resolver"
+    ],
+    "observaciones": "NINGUNA OBSERVACIÓN",
+    "fechaRegistro": "2018-02-23T14:20:18",
+    "fechaModificacion": "2018-02-23T14:20:18",
+    "responsableCreacion": "EDIAZH",
+    "responsableModificacion": "EDIAZH",
+    "codigo": "3",
+    "contenido": "ACTA DE CONCILIACION",
+    "selected": true
+  },
+  {
+    "anno":"2018",
+    "origenDocumento":"EXTERNO",
+    "correlativo":"2002",
+    "tipoDocumento":
+    {
+      "codigo": "ATD0003",
+      "descripcion": "CARTA",
+      "abreviatura": "CA",
+      "estado": "ACTIVO",
+      "fechaRegistro": "2016-04-14T00:00:00",
+      "responsable": "EDIAZH"
+    },
+    "numero": "721-GG/SGL-2018",
+    "estado": "PENDIENTE",
+    "fechaDocumento": "2018-02-18",
+    "asunto": "CONCILIACIÓN DE MEDIDORES",
+    "prioridad": "MEDIA",
+    "urlDocumento": "",
+    "referencia": "CARTA N°278-2018/PJ",
+    "anexos": "",
+    "remitente": "BANCO DE CRÉDITO",
+    "areaOrigen":
+    {
+      "codigo": "34404",
+      "nombre": "Atencion al Cliente Ate Vitarte",
+      "abreviatura": "ACAV",
+      "descripcion": "Atencion al Cliente Ate Vitarte"
+    },
+    "trabajadorOrigen":
+    {
+      "codigo": "3386",
+      "nombre": "VICTOR GERARDO LOPEZ SOLANO",
+      "estado": "ACTIVO"
+    },
+    "areaDestino":
+    {
+      "codigo": "34406",
+      "nombre": "Gestión Operativa Comercial Ate",
+      "abreviatura": "GOCA",
+      "descripcion": "Gestión Operativa Comercial Ate"
+    },
+    "trabajadorDestino":
+    {
+      "codigo": "2875",
+      "nombre": "ARMANDO REYMUNDIZ CUYA",
+      "estado": "ACTIVO"
+    },
+    "destinatarios": "",
+    "firmantes": "",
+    "fechaRecepcion": "2018-02-24",
+    "plazo": "7",
+    "fechaPlazo": "2018-02-29",
+    "acciones": [
+      "TenerPendiente",
+      "Otros", "Resolver"
+    ],
+    "observaciones": "NINGUNA OBSERVACIÓN",
+    "fechaRegistro": "2018-02-23T14:20:18",
+    "fechaModificacion": "2018-02-23T14:20:18",
+    "responsableCreacion": "EDIAZH",
+    "responsableModificacion": "EDIAZH",
+    "codigo": "3",
+    "contenido": "ACTA DE VERIFICACIÓN",
+    "selected": true
+  },
+  {
+    "anno":"2018",
+    "origenDocumento":"EXTERNO",
+    "correlativo":"2003",
+    "tipoDocumento":
+    {
+      "codigo": "ATD0004",
+      "descripcion": "INFORME",
+      "abreviatura": "INF",
+      "estado": "ACTIVO",
+      "fechaRegistro": "2016-04-14T00:00:00",
+      "responsable": "EDIAZH"
+    },
+    "numero": "132-GG/SGL-2018",
+    "estado": "ATENDIDO",
+    "fechaDocumento": "2018-02-18",
+    "asunto": "VALORACIÓN DE OBRAS",
+    "prioridad": "MEDIA",
+    "urlDocumento": "",
+    "referencia": "INFORME N°315-2018/SED",
+    "anexos": "",
+    "remitente": "BANCO CONTINENTAL",
+    "areaOrigen":
+    {
+      "codigo": "34404",
+      "nombre": "Atencion al Cliente Ate Vitarte",
+      "abreviatura": "ACAV",
+      "descripcion": "Atencion al Cliente Ate Vitarte"
+    },
+    "trabajadorOrigen":
+    {
+      "codigo": "3386",
+      "nombre": "VICTOR GERARDO LOPEZ SOLANO",
+      "estado": "ACTIVO"
+    },
+    "areaDestino":
+    {
+      "codigo": "34406",
+      "nombre": "Gestión Operativa Comercial Ate",
+      "abreviatura": "GOCA",
+      "descripcion": "Gestión Operativa Comercial Ate"
+    },
+    "trabajadorDestino":
+    {
+      "codigo": "2875",
+      "nombre": "ARMANDO REYMUNDIZ CUYA",
+      "estado": "ACTIVO"
+    },
+    "destinatarios": "",
+    "firmantes": "",
+    "fechaRecepcion": "2018-03-12",
+    "plazo": "5",
+    "fechaPlazo": "2018-03-17",
+    "acciones": [
+      "Preparar Respuesta",
+      "ParaTramite",
+      "ParaDirectorio"
+    ],
+    "observaciones": "NINGUNA OBSERVACIÓN",
+    "fechaRegistro": "2018-02-23T14:20:18",
+    "fechaModificacion": "2018-02-23T14:20:18",
+    "responsableCreacion": "EDIAZH",
+    "responsableModificacion": "EDIAZH",
+    "codigo": "3",
+    "contenido": "EL QUE SE INFORMA",
+    "selected": true
+  },
+  {
+    "anno":"2018",
+    "origenDocumento":"INTERNO",
+    "correlativo":"2004",
+    "tipoDocumento":
+    {
+      "codigo": "ATD0005",
+      "descripcion": "OFICIO",
+      "abreviatura": "OF",
+      "estado": "ACTIVO",
+      "fechaRegistro": "2016-04-14T00:00:00",
+      "responsable": "EDIAZH"
+    },
+    "numero": "11-GG/SGL-2018",
+    "estado": "ATENDIDO",
+    "fechaDocumento": "2018-02-18",
+    "asunto": "DESIGNACIÓN DE RESPONSABLES DE PROYECTO",
+    "prioridad": "MEDIA",
+    "urlDocumento": "",
+    "referencia": "OFICIO N°315-2018/SED",
+    "anexos": "",
+    "remitente": "SEDAPAL",
+    "areaOrigen":
+    {
+      "codigo": "34404",
+      "nombre": "Atencion al Cliente Ate Vitarte",
+      "abreviatura": "ACAV",
+      "descripcion": "Atencion al Cliente Ate Vitarte"
+    },
+    "trabajadorOrigen":
+    {
+      "codigo": "3386",
+      "nombre": "VICTOR GERARDO LOPEZ SOLANO",
+      "estado": "ACTIVO"
+    },
+    "areaDestino":
+    {
+      "codigo": "34406",
+      "nombre": "Gestión Operativa Comercial Ate",
+      "abreviatura": "GOCA",
+      "descripcion": "Gestión Operativa Comercial Ate"
+    },
+    "trabajadorDestino":
+    {
+      "codigo": "2875",
+      "nombre": "ARMANDO REYMUNDIZ CUYA",
+      "estado": "ACTIVO"
+    },
+    "destinatarios": "",
+    "firmantes": "",
+    "fechaRecepcion": "2018-04-15",
+    "plazo": "2",
+    "fechaPlazo": "2018-04-17",
+    "acciones": [
+      "Coordinar",
+      "TenerPendiente",
+      "SuAprobacion"
+      ],
+    "observaciones": "VERIFICAR ANTECEDENTES",
+    "fechaRegistro": "2018-02-23T14:20:18",
+    "fechaModificacion": "2018-02-23T14:20:18",
+    "responsableCreacion": "EDIAZH",
+    "responsableModificacion": "EDIAZH",
+    "codigo": "3",
+    "contenido": "EL QUE INDICA",
+    "selected": true
+  }
+],
+  "listaBandejaEntradaPlazo": [
+    {
+      "anno":"2018",
+      "origenDocumento":"EXTERNO",
+      "correlativo":"3000",
+      "tipoDocumento":
+      {
+        "codigo": "ATD0416",
+        "descripcion": "ACTA PRESTACION DE SERVICIOS",
+        "abreviatura": "APS",
+        "estado": "ACTIVO",
+        "fechaRegistro": "2016-06-13T00:00:00",
+        "responsable": "EDIAZH"
+      },
+      "numero": "111-GG/SGC-2018",
+      "estado": "ATENDIDO",
+      "fechaDocumento": "2018-01-22",
+      "asunto": "SERVICIOS PRESTADOS EN AUDITORÍA",
+      "prioridad": "BAJA",
+      "urlDocumento": "",
+      "referencia": "CARTA N°122-2018",
+      "anexos": "",
+      "remitente": "MUNICIPALIDAD DE JESÚS MARÍA",
+      "areaOrigen":
+      {
+        "codigo": "595",
+        "nombre": "PROGRAMA PRO SERVICIOS DE AGUA, ALCANTARILLADO Y REHABILITACION",
+        "abreviatura": "PROSEAR",
+        "descripcion": "PROGRAMA PRO SERVICIOS DE AGUA, ALCANTARILLADO Y REHABILITACION"
+      },
+      "trabajadorOrigen":
+      {
+        "codigo": "5181",
+        "nombre": "YILMA QUISPE BARRUNTA",
+        "estado": "ACTIVO"
+      },
+      "areaDestino":
+      {
+        "codigo": "136",
+        "nombre": "EQUIPO PRODUCTIVIDAD CON CALIDAD Y CONTROL DE GESTION",
+        "abreviatura": "EPCCG",
+        "descripcion": "EQUIPO PRODUCTIVIDAD CON CALIDAD Y CONTROL DE GESTION"
+      },
+      "trabajadorDestino":
+      {
+        "codigo": "111",
+        "nombre": "ANGEL BERMUDEZ DEL CARPIO",
+        "estado": "ACTIVO"
+      },
+      "destinatarios": "",
+      "firmantes": "",
+      "fechaRecepcion": "2018-02-12",
+      "plazo": "3",
+      "fechaPlazo": "2018-02-15",
+      "acciones": [
+        "Resolver",
+        "Coordinar","Resolver"
+      ],
+      "observaciones": "",
+      "fechaRegistro": "2018-02-12T14:20:18",
+      "fechaModificacion": "2018-02-12T14:20:18",
+      "responsableCreacion": "EDIAZH",
+      "responsableModificacion": "EDIAZH",
+      "codigo": "1",
+      "contenido": "ACTA DE ENTREGA",
+      "selected": true
+    },
+    {
+      "anno":"2018",
+      "origenDocumento":"EXTERNO",
+      "correlativo":"3001",
+      "tipoDocumento":
+      {
+        "codigo": "ATD0407",
+        "descripcion": "ACTA DE AUDIENCIA DE CONCILIACION",
+        "abreviatura": "AAC",
+        "estado": "ACTIVO",
+        "fechaRegistro": "2016-04-14T00:00:00",
+        "responsable": "EDIAZH"
+      },
+      "numero": "722-GG/SGL-2018",
+      "estado": "ATENDIDO",
+      "fechaDocumento": "2018-02-22",
+      "asunto": "CONCILIACIÓN CON EMPRESA DE TECNOLOGÍAS",
+      "prioridad": "ALTA",
+      "urlDocumento": "",
+      "referencia": "CARTA N°226-2018",
+      "anexos": "",
+      "remitente": "PODER JUDICIAL",
+      "areaOrigen":
+      {
+        "codigo": "34404",
+        "nombre": "Atencion al Cliente Ate Vitarte",
+        "abreviatura": "ACAV",
+        "descripcion": "Atencion al Cliente Ate Vitarte"
+      },
+      "trabajadorOrigen":
+      {
+        "codigo": "3386",
+        "nombre": "VICTOR GERARDO LOPEZ SOLANO",
+        "estado": "ACTIVO"
+      },
+      "areaDestino":
+      {
+        "codigo": "34406",
+        "nombre": "Gestión Operativa Comercial Ate",
+        "abreviatura": "GOCA",
+        "descripcion": "Gestión Operativa Comercial Ate"
+      },
+      "trabajadorDestino":
+      {
+        "codigo": "2875",
+        "nombre": "ARMANDO REYMUNDIZ CUYA",
+        "estado": "ACTIVO"
+      },
+      "destinatarios": "",
+      "firmantes": "",
+      "fechaRecepcion": "2018-02-24",
+      "plazo": "3",
+      "fechaPlazo": "2018-02-27",
+      "acciones": [
+        "Archivar",
+        "ContestarDirectamente", "Resolver"
+      ],
+      "observaciones": "NINGUNA OBSERVACIÓN",
+      "fechaRegistro": "2018-02-23T14:20:18",
+      "fechaModificacion": "2018-02-23T14:20:18",
+      "responsableCreacion": "EDIAZH",
+      "responsableModificacion": "EDIAZH",
+      "codigo": "3",
+      "contenido": "ACTA DE CONCILIACION",
+      "selected": true
+    },
+    {
+      "anno":"2018",
+      "origenDocumento":"EXTERNO",
+      "correlativo":"3002",
+      "tipoDocumento":
+      {
+        "codigo": "ATD0003",
+        "descripcion": "CARTA",
+        "abreviatura": "CA",
+        "estado": "ACTIVO",
+        "fechaRegistro": "2016-04-14T00:00:00",
+        "responsable": "EDIAZH"
+      },
+      "numero": "721-GG/SGL-2018",
+      "estado": "PENDIENTE",
+      "fechaDocumento": "2018-02-18",
+      "asunto": "CONCILIACIÓN DE MEDIDORES",
+      "prioridad": "MEDIA",
+      "urlDocumento": "",
+      "referencia": "CARTA N°278-2018/PJ",
+      "anexos": "",
+      "remitente": "BANCO DE CRÉDITO",
+      "areaOrigen":
+      {
+        "codigo": "34404",
+        "nombre": "Atencion al Cliente Ate Vitarte",
+        "abreviatura": "ACAV",
+        "descripcion": "Atencion al Cliente Ate Vitarte"
+      },
+      "trabajadorOrigen":
+      {
+        "codigo": "3386",
+        "nombre": "VICTOR GERARDO LOPEZ SOLANO",
+        "estado": "ACTIVO"
+      },
+      "areaDestino":
+      {
+        "codigo": "354",
+        "nombre": "EQUIPO ACOMPAÑAMIENTO SOCIAL",
+        "abreviatura": "EAS",
+        "descripcion": "EQUIPO ACOMPAÑAMIENTO SOCIAL"
+      },
+      "trabajadorDestino":
+      {
+        "codigo": "3876",
+        "nombre": "ALAN MACEDONIO ALCORTA",
+        "estado": "ACTIVO"
+      },
+      "destinatarios": "",
+      "firmantes": "",
+      "fechaRecepcion": "2018-02-24",
+      "plazo": "7",
+      "fechaPlazo": "2018-02-29",
+      "acciones": [
+        "PorDisposicion",
+        "ConocimientoFines", "Resolver"
+      ],
+      "observaciones": "NINGUNA OBSERVACIÓN",
+      "fechaRegistro": "2018-02-23T14:20:18",
+      "fechaModificacion": "2018-02-23T14:20:18",
+      "responsableCreacion": "EDIAZH",
+      "responsableModificacion": "EDIAZH",
+      "codigo": "3",
+      "contenido": "ACTA DE VERIFICACIÓN",
+      "selected": true
+    },
+    {
+      "anno":"2018",
+      "origenDocumento":"EXTERNO",
+      "correlativo":"3003",
+      "tipoDocumento":
+      {
+        "codigo": "ATD0004",
+        "descripcion": "INFORME",
+        "abreviatura": "INF",
+        "estado": "ACTIVO",
+        "fechaRegistro": "2016-04-14T00:00:00",
+        "responsable": "EDIAZH"
+      },
+      "numero": "132-GG/SGL-2018",
+      "estado": "PENDIENTE",
+      "fechaDocumento": "2018-02-18",
+      "asunto": "VALORACIÓN DE OBRAS",
+      "prioridad": "MEDIA",
+      "urlDocumento": "",
+      "referencia": "INFORME N°315-2018/SED",
+      "anexos": "",
+      "remitente": "BANCO CONTINENTAL",
+      "areaOrigen":
+      {
+        "codigo": "34404",
+        "nombre": "Atencion al Cliente Ate Vitarte",
+        "abreviatura": "ACAV",
+        "descripcion": "Atencion al Cliente Ate Vitarte"
+      },
+      "trabajadorOrigen":
+      {
+        "codigo": "3386",
+        "nombre": "VICTOR GERARDO LOPEZ SOLANO",
+        "estado": "ACTIVO"
+      },
+      "areaDestino":
+      {
+        "codigo": "42105",
+        "nombre": "Mantenimiento Conexiones de Agua Comas",
+        "abreviatura": "MCAC",
+        "descripcion": "Mantenimiento Conexiones de Agua Comas"
+      },
+      "trabajadorDestino":
+      {
+        "codigo": "2870",
+        "nombre": "JORGE PEREZ PINTO",
+        "estado": "ACTIVO"
+      },
+      "destinatarios": "",
+      "firmantes": "",
+      "fechaRecepcion": "2018-03-12",
+      "plazo": "5",
+      "fechaPlazo": "2018-03-17",
+      "acciones": [
+        "PorDisposicion",
+        "SuAprobacion", "TenerPendiente"
+      ],
+      "observaciones": "NINGUNA OBSERVACIÓN",
+      "fechaRegistro": "2018-02-23T14:20:18",
+      "fechaModificacion": "2018-02-23T14:20:18",
+      "responsableCreacion": "EDIAZH",
+      "responsableModificacion": "EDIAZH",
+      "codigo": "3",
+      "contenido": "EL QUE SE INFORMA",
+      "selected": true
+    },
+    {
+      "anno":"2018",
+      "origenDocumento":"INTERNO",
+      "correlativo":"3004",
+      "tipoDocumento":
+      {
+        "codigo": "ATD0005",
+        "descripcion": "OFICIO",
+        "abreviatura": "OF",
+        "estado": "ACTIVO",
+        "fechaRegistro": "2016-04-14T00:00:00",
+        "responsable": "EDIAZH"
+      },
+      "numero": "11-GG/SGL-2018",
+      "estado": "PENDIENTE",
+      "fechaDocumento": "2018-02-18",
+      "asunto": "DESIGNACIÓN DE RESPONSABLES DE PROYECTO",
+      "prioridad": "MEDIA",
+      "urlDocumento": "",
+      "referencia": "OFICIO N°315-2018/SED",
+      "anexos": "",
+      "remitente": "SEDAPAL",
+      "areaOrigen":
+      {
+        "codigo": "34404",
+        "nombre": "Atencion al Cliente Ate Vitarte",
+        "abreviatura": "ACAV",
+        "descripcion": "Atencion al Cliente Ate Vitarte"
+      },
+      "trabajadorOrigen":
+      {
+        "codigo": "3386",
+        "nombre": "VICTOR GERARDO LOPEZ SOLANO",
+        "estado": "ACTIVO"
+      },
+      "areaDestino":
+      {
+        "codigo": "352",
+        "nombre": "EQUIPO PROYECTOS",
+        "abreviatura": "EPY",
+        "descripcion": "EQUIPO PROYECTOS"
+      },
+      "trabajadorDestino":
+      {
+        "codigo": "2875",
+        "nombre": "ARMANDO REYMUNDIZ CUYA",
+        "estado": "ACTIVO"
+      },
+      "destinatarios": "",
+      "firmantes": "",
+      "fechaRecepcion": "2018-04-15",
+      "plazo": "2",
+      "fechaPlazo": "2018-04-17",
+      "acciones": [
+        "PorDisposicion",
+        "Archivar", "Otros"
+      ],
+      "observaciones": "VERIFICAR ANTECEDENTES",
+      "fechaRegistro": "2018-02-23T14:20:18",
+      "fechaModificacion": "2018-02-23T14:20:18",
+      "responsableCreacion": "EDIAZH",
+      "responsableModificacion": "EDIAZH",
+      "codigo": "3",
+      "contenido": "EL QUE INDICA",
+      "selected": true
+    }
+  ],
+
+
+  "listaDocumentos": [
+   {
+    "anno":"2018",
+    "origenDocumento":"INTERNO",
+    "correlativo":"1",
+    "tipoDocumento":
+    {
+      "codigo": "ATD0416",
+      "descripcion": "ACTA PRESTACION DE SERVICIOS",
+      "abreviatura": "APS",
+      "estado": "ACTIVO",
+      "fechaRegistro": "2016-06-13T00:00:00",
+      "responsable": "EDIAZH"
+    },
+    "numero": "123-GG/SGC-2018",
+    "estado": "INGRESADO",
+    "fechaDocumento": "2018-01-22",
+    "asunto": "SERVICIOS PRESTADOS EN TECNOLOGÍA",
+    "prioridad": "MEDIA",
+    "urlDocumento": "",
+    "referencia": "CARTA N°127-2018",
+    "anexos": "",
+    "remitente": "",
+    "areaOrigen":
+    {
+      "codigo": "41601",
+      "nombre": "Operación de Redes Primarias ",
+      "abreviatura": "ORP",
+      "descripcion": "Operación de Redes Primarias "
+    },
+    "trabajadorOrigen":
+    {
+      "codigo": "5081",
+      "nombre": "SHERY JACLYN CASTILLO QUISPE",
+      "estado": "ACTIVO"
+    },
+    "areaDestino":
+    {
+      "codigo": "41702",
+      "nombre": "Plantas Tratamiento Aguas Residuales Carapongo",
+      "abreviatura": "PTARC",
+      "descripcion": "Plantas Tratamiento Aguas Residuales Carapongo"
+    },
+    "trabajadorDestino":
+    {
+      "codigo": "114",
+      "nombre": "ANGEL ANTONIO CAYCHO HENRIQUEZ",
+      "estado": "ACTIVO"
+    },
+    "destinatarios": "",
+    "firmantes": "",
+    "fechaRecepcion": "2018-01-23",
+    "plazo": "5",
+    "fechaPlazo": "2018-01-28",
+     "acciones": [
+       "PorDisposicion",
+       "TenerPendiente", "AccionNecesaria"
+     ],
+    "observaciones": "",
+    "fechaRegistro": "2018-01-23T14:20:18",
+    "fechaModificacion": "2018-01-23T14:20:18",
+    "responsableCreacion": "EDIAZH",
+    "responsableModificacion": "EDIAZH",
+    "codigo": "1",
+    "contenido": "ACTA DE LOGISTICA",
+    "selected": true
+  },
+  {
+    "anno":"2018",
+    "origenDocumento":"EXTERNO",
+    "correlativo":"3",
+    "tipoDocumento":
+    {
+      "codigo": "ATD0407",
+      "descripcion": "ACTA DE AUDIENCIA DE CONCILIACION",
+      "abreviatura": "AAC",
+      "estado": "ACTIVO",
+      "fechaRegistro": "2016-04-14T00:00:00",
+      "responsable": "EDIAZH"
+    },
+    "numero": "722-GG/SGL-2018",
+    "estado": "ESTA003",
+    "fechaDocumento": "2018-02-22",
+    "asunto": "CONCILIACIÓN CON EMPRESA DE TECNOLOGÍAS",
+    "prioridad": "ALTA",
+    "urlDocumento": "",
+    "referencia": "CARTA N°226-2018",
+    "anexos": "",
+    "remitente": "",
+    "areaOrigen":
+    {
+      "codigo": "34404",
+      "nombre": "Atencion al Cliente Ate Vitarte",
+      "abreviatura": "ACAV",
+      "descripcion": "Atencion al Cliente Ate Vitarte"
+    },
+    "trabajadorOrigen":
+    {
+      "codigo": "3386",
+      "nombre": "VICTOR GERARDO LOPEZ SOLANO",
+      "estado": "ACTIVO"
+    },
+    "areaDestino":
+    {
+      "codigo": "34406",
+      "nombre": "Gestión Operativa Comercial Ate",
+      "abreviatura": "GOCA",
+      "descripcion": "Gestión Operativa Comercial Ate"
+    },
+    "trabajadorDestino":
+    {
+      "codigo": "2875",
+      "nombre": "ARMANDO REYMUNDIZ CUYA",
+      "estado": "ACTIVO"
+    },
+    "destinatarios": "",
+    "firmantes": "",
+    "fechaRecepcion": "2018-02-24",
+    "plazo": "3",
+    "fechaPlazo": "2018-02-27",
+    "acciones": [
+      "PorDisposicion",
+      "AccionNecesaria",
+      "PrepararRespuesta"
+    ],
+    "observaciones": "NINGUNA OBSERVACIÓN",
+    "fechaRegistro": "2018-02-23T14:20:18",
+    "fechaModificacion": "2018-02-23T14:20:18",
+    "responsableCreacion": "EDIAZH",
+    "responsableModificacion": "EDIAZH",
+    "codigo": "3",
+    "contenido": "ACTA DE CONCILIACION",
+    "selected": true
+  }
+],
+  "listaMesaPartes":[
+  {
+    "estado": "INGRESADO",
+    "fechaRecepcion": "2018-01-23",
+    "correlativo":"1000",
+    "tipoDocumento":{
+      "codigo": "ATD0407",
+      "descripcion": "ACTA DE AUDIENCIA DE CONCILIACION"
+    },
+    "numero": "123-GG/SGC-2018",
+    "asunto": "SERVICIOS PRESTADOS EN TECNOLOGÍA",
+    "remitente": "IMPORTACIONES HIRAOKA SRL",
+    "areaDestino":
+    {
+      "codigo": "34406",
+      "nombre": "Gestión Operativa Comercial Ate",
+      "abreviatura": "GOCA",
+      "descripcion": "Gestión Operativa Comercial Ate"
+    },
+    "trabajadorDestino": {
+      "codigo": "2875",
+      "nombre": "ARMANDO REYMUNDIZ CUYA",
+      "estado": "ACTIVO"
+    },
+    "prioridad": "BAJA",
+    "plazo": "3",
+    "fechaPlazo": "2018-02-27",
+    "urlDocumento": ""
+  },
+  {
+    "estado": "PENDIENTE",
+    "fechaRecepcion": "2018-02-15",
+    "correlativo":"1001",
+    "tipoDocumento":{
+      "codigo": "ATD0417",
+      "descripcion": "ACTA DE AUDIENCIA"
+    },
+    "numero": "345-GG/SGC-2018",
+    "asunto": "AUDIENCIA",
+    "remitente": "SOLUCIONES LEGALES.SAC",
+    "areaDestino":
+    {
+      "codigo": "34406",
+      "nombre": "Gestión Operativa Comercial Ate",
+      "abreviatura": "GOCA",
+      "descripcion": "Gestión Operativa Comercial Ate"
+    },
+    "trabajadorDestino": {
+      "codigo": "2876",
+      "nombre": "JOSÉ PEREZ QUISPE",
+      "estado": "ACTIVO"
+    },
+    "prioridad": "URGENTE",
+    "plazo": "5",
+    "fechaPlazo": "2018-02-20",
+    "urlDocumento": ""
+  },
+  {
+    "estado": "ATENDIDO",
+    "fechaRecepcion": "2018-01-23",
+    "correlativo":"1002",
+    "tipoDocumento":{
+      "codigo": "ATD0407",
+      "descripcion": "ACTA DE REUNION"
+    },
+    "numero": "113-GG/SGC-2018",
+    "asunto": "REUNIÓN INFRAESTRUTURA DE COLECTORES PUEBLO LIBRE",
+    "remitente": "HOSPITAL SANTA ROSA",
+    "areaDestino":
+    {
+      "codigo": "35304",
+      "nombre": "Proyecto Mejoramiento Sistema de Alcantarillado del Sur De Lima (MESIAS)",
+      "abreviatura": "",
+      "descripcion": "Proyecto Mejoramiento Sistema de Alcantarillado del Sur De Lima (MESIAS)"
+    },
+    "trabajadorDestino": {
+      "codigo": "2876",
+      "nombre": "ARMANDO MASIAS LOPEZ",
+      "estado": "ACTIVO"
+    },
+    "prioridad": "ALTA",
+    "plazo": "4",
+    "fechaPlazo": "2018-01-27",
+    "urlDocumento": ""
+  },
+  {
+    "estado": "PENDIENTE",
+    "fechaRecepcion": "2018-02-11",
+    "correlativo":"1003",
+    "tipoDocumento":{
+      "codigo": "ATD0002",
+      "descripcion": "CARTA"
+    },
+    "numero": "0002-2018",
+    "asunto": "SOLICITA REVISIÓN DE ALCANTARILLADO",
+    "remitente": "JUNTA VECINAL BOCANEGRA",
+    "areaDestino":
+    {
+      "codigo": "42305",
+      "nombre": "Mantenimiento Conexiones de Agua Callao",
+      "abreviatura": "",
+      "descripcion": "Mantenimiento Conexiones de Agua Callao"
+    },
+    "trabajadorDestino": {
+      "codigo": "2876",
+      "nombre": "ARMANDO MASIAS LOPEZ",
+      "estado": "ACTIVO"
+    },
+    "prioridad": "MEDIA",
+    "plazo": "2",
+    "fechaPlazo": "2018-02-13",
+    "urlDocumento": ""
+  },
+  {
+    "estado": "ATENDIDO",
+    "fechaRecepcion": "2018-02-13",
+    "correlativo":"1004",
+    "tipoDocumento":{
+      "codigo": "ATD0003",
+      "descripcion": "CARTA"
+    },
+    "numero": "0018-2018",
+    "asunto": "INFORMAR SOBRE RESULTADOS DE RECLAMO",
+    "remitente": "POLLERÍA TIMBO SRL",
+    "areaDestino":
+    {
+      "codigo": "35901",
+      "nombre": "Poryecto Mejoramiento Sistema de Alcantarillado del Sur de Lima(MESIAS)",
+      "abreviatura": "",
+      "descripcion": "Poryecto Mejoramiento Sistema de Alcantarillado del Sur de Lima(MESIAS)"
+    },
+    "trabajadorDestino": {
+      "codigo": "2877",
+      "nombre": "JORGE GUERRA CUBA",
+      "estado": "ACTIVO"
+    },
+    "prioridad": "ALTA",
+    "plazo": "4",
+    "fechaPlazo": "2018-02-17",
+    "urlDocumento": ""
+  }
+],
+  "documentoEntrante": {
+    "correlativo": "9000",
+    "nano": "2017",
+    "prioridad": "ALTA",
+    "estado": "PENDIENTE",
+    "origenDocumento": "EXTERNO",
+    "tipoDocumento":{
+      "codigo": "ATD0005",
+      "descripcion": "SOLICITUD"
+    },
+    "numeroDocumento": "0000191-2018-302-CA",
+    "fechaDocumento": "2017-08-16",
+    "areaOrigen":
+    {
+      "codigo": "595",
+      "nombre": "PROGRAMA PRO SERVICIOS DE AGUA, ALCANTARILLADO Y REHABILITACION",
+      "abreviatura": "PROSEAR",
+      "descripcion": "PROGRAMA PRO SERVICIOS DE AGUA, ALCANTARILLADO Y REHABILITACION"
+    },
+    "trabajadorOrigen":
+    {
+      "codigo": "5181",
+      "nombre": "YILMA QUISPE BARRUNTA",
+      "estado": "ACTIVO"
+    },
+    "fechaRecepcion": "2017-08-16T14:36:00",
+    "fechaPlazo": "2017-08-24",
+    "plazo": "8",
+    "remitente":
+    {
+      "empresa": "MINISTERIO DE VIVIENDA",
+      "representante": "ENCARGADO MINISTERO DE VIVIENDA"
+    },
+    "areaDestino":
+    {
+      "codigo": "35901",
+      "nombre": "EQUIPO DE TECNOLOGÍAS DE INFORMACIÓN Y COMUNICACIONES",
+      "abreviatura": "ETIC",
+      "descripcion": "EQUIPO DE TECNOLOGÍAS DE INFORMACIÓN Y COMUNICACIONES"
+    },
+    "trabajadorDestino": {
+      "codigo": "2880",
+      "nombre": "ELÍ DIAZ HUERTA",
+      "estado": "ACTIVO"
+    },
+    "asunto": "Solicito instalación de medidor.",
+    "referencia": "Formulario de solicitud #45655",
+    "observaciones": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+    "contenido": "<p>Hello Jonathan! <br/><br/>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type <strong>specimen book.</strong>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. It has survived not only five centuries, but also the leap into electronic typesetting, remainin essentially unchanged.</p><p>It was popularised in the 1960s with the release <em>Letraset sheets</em>  containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p><p>There are many variations of passages of <strong>Lorem Ipsum</strong>Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of.</p>",
+    "acciones": [
+      "PorDisposicion",
+      "PrepararRespuesta", "SuAprobacion"
+    ]
+  },
+  "seguimiento": [
+    {
+      "codigo": "5",
+      "estado": "PENDIENTE",
+      "fechaDerivado": "2018-12-05T12:05:11",
+      "remitente": {
+        "area": {
+          "abreviatura": "EC",
+          "nombre": "EQUIPO DE CAPACITACIÓN"
+        },
+        "trabajador": "JUAN PEÑA"
+      },
+      "derivado": {
+        "area": {
+          "abreviatura": "ETIC",
+          "nombre": "EQUIPO TECNOLOGIAS DE LA INFORMACION Y COMUNICACIONES"
+        },
+        "trabajador": "PABLO JOSEPH,AGREDA DIAZ"
+      },
+      "acciones": ["03","11"],
+      "plazo": true,
+      "fechaPlazo": "2018-12-11",
+      "observaciones": "Remite informe externo"
+    },
+    {
+      "codigo": "4",
+      "estado": "ATENDIDO",
+      "fechaDerivado": "2018-12-04T11:07:23",
+      "remitente": {
+        "area": {
+          "abreviatura": "ETIC",
+          "nombre": "EQUIPO TECNOLOGIAS DE LA INFORMACION Y COMUNICACIONES"
+        },
+        "trabajador": "MIGUEL BERNILLA"
+      },
+      "derivado": {
+        "area": {
+          "abreviatura": "EC",
+          "nombre": "EQUIPO DE CAPACITACIÓN"
+        },
+        "trabajador": "JUAN PEÑA"
+      },
+      "acciones": ["02", "07", "08"],
+      "plazo": false,
+      "fechaPlazo": null,
+      "observaciones": "Con plazo para completar"
+    },
+    {
+      "codigo": "3",
+      "estado": "PENDIENTE",
+      "fechaDerivado": "2018-11-28T09:45:19",
+      "remitente": {
+        "area": {
+          "abreviatura": "ETIC",
+          "nombre": "EQUIPO TECNOLOGIAS DE LA INFORMACION Y COMUNICACIONES"
+        },
+        "trabajador": "ELI DIAZ"
+      },
+      "derivado": {
+        "area": {
+          "abreviatura": "ETIC",
+          "nombre": "EQUIPO TECNOLOGIAS DE LA INFORMACION Y COMUNICACIONES"
+        },
+        "trabajador": "MIGUEL BERNILLA"
+      },
+      "acciones": ["01", "06", "08"],
+      "plazo": false,
+      "fechaPlazo": null,
+      "observaciones": "Revisar docuemnto"
+    },
+    {
+      "codigo": "2",
+      "estado": "ATENDIDO",
+      "fechaDerivado": "2018-11-11T11:11:58",
+      "remitente": {
+        "area": {
+          "abreviatura": "ETIC",
+          "nombre": "EQUIPO TECNOLOGIAS DE LA INFORMACION Y COMUNICACIONES"
+        },
+        "trabajador": "PABLO JOSEPH,AGREDA DIAZ"
+      },
+      "derivado": {
+        "area": {
+          "abreviatura": "ETIC",
+          "nombre": "EQUIPO TECNOLOGIAS DE LA INFORMACION Y COMUNICACIONES"
+        },
+        "trabajador": "ELI DIAZ"
+      },
+      "acciones": ["01", "06", "14"],
+      "plazo": true,
+      "fechaPlazo": "2018-11-23",
+      "observaciones": "Revisar urgente"
+    },
+    {
+      "codigo": "1",
+      "estado": "ATENDIDO",
+      "fechaDerivado": "2018-11-01T11:07:23",
+      "remitente": {
+        "area": {
+          "abreviatura": "MPA",
+          "nombre": "MESA DE PARTES"
+        },
+        "trabajador": "ANA LOPEZ"
+      },
+      "derivado": {
+        "area": {
+          "abreviatura": "ETIC",
+          "nombre": "EQUIPO TECNOLOGIAS DE LA INFORMACION Y COMUNICACIONES"
+        },
+        "trabajador": "PABLO JOSEPH,AGREDA DIAZ"
+      },
+      "acciones": ["02", "09", "13"],
+      "plazo": true,
+      "fechaPlazo": "2018-11-15",
+      "observaciones": "Con plazo para completar"
+    }
+  ]
+}

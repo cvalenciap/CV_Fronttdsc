@@ -1,0 +1,142 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-sm-12">
+      <h2>Bienvenido(a), <b>{{nombreUsuario}}</b></h2>
+      <hr>
+      <div class="ibox-content" [ngClass]="{'sk-loading': loading}">
+        <sk-three-bounce></sk-three-bounce>
+
+        <ng-template [ngIf]="checkPermission('/mesa-partes')">
+          <h2>Mesa de Partes</h2>
+          <div class="row">
+            <div class="col-sm-4">
+              <a class="animated-widget" (click)="OnPendientes('/mesa-partes')">
+                <div class="widget style1 blue-bg">
+                  <div class="row">
+                    <div class="col-xs-3">
+                      <i class="fa fa-file-text-o fa-5x infinite bounce"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                      <h2><strong>{{item.count_mesaPorDigitalizar}}</strong> <small>Por Digitalizar</small></h2>
+                      <span> Total de documentos ingresados que aún no fueron escaneados. </span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </ng-template>
+
+        <ng-template [ngIf]="checkPermission('/bandeja-entrada')">
+          <h2>Bandeja de Entrada</h2>
+          <div class="row">
+            <div class="col-sm-4">
+              <a class="animated-widget" (click)="OnPendientes('/bandeja-entrada/recibidos')">
+                <div class="widget style1 blue-bg">
+                  <div class="row">
+                    <div class="col-xs-4">
+                      <i class="fa fa-inbox fa-5x infinite bounce"></i>
+                    </div>
+                    <div class="col-xs-8 text-right">
+                      <h2><strong>{{item.count_recibidosPendientes}}</strong> <small>Pendientes</small></h2>
+                      <span> Todos los documentos recibidos con estado <i>PENDIENTE</i></span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-sm-4">
+              <a class="animated-widget" (click)="OnPendientes('/bandeja-entrada/con-plazo/porvencer')" >
+                <div class="widget style1 yellow-bg">
+                  <div class="row">
+                    <div class="col-xs-3">
+                      <i class="fa fa-warning fa-5x infinite tada"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                      <h2><strong>{{item.count_plazoPorVencer}}</strong> <small>Por Vencer</small></h2>
+                      <span> Documentos pendientes que están a dos días de la fecha de plazo</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-sm-4">
+              <a class="animated-widget" (click)="OnPendientes('/bandeja-entrada/con-plazo/vencidos')" >
+                <div class="widget style1 red-bg">
+                  <div class="row">
+                    <div class="col-xs-3">
+                      <i class="fa fa-warning fa-5x infinite tada"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                      <h2><strong>{{item.count_plazoVencidos}}</strong> <small>Vencido(s)</small></h2>
+                      <span> Documentos pendientes que pasaron la fecha de plazo</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </ng-template>
+
+        <ng-template [ngIf]="checkPermission('/bandeja-salida')">
+          <h2>Bandeja de Salida</h2>
+          <div class="row">
+            
+            <ng-template [ngIf]="checkPermission('/bandeja-salida/registrar')">
+              <div class="col-sm-4">
+                <a class="animated-widget" (click)="OnPendientes('/bandeja-salida/pendientes')">
+                  <div class="widget style1 red-bg">
+                    <div class="row">
+                      <div class="col-xs-3">
+                        <i class="fa fa-edit fa-5x infinite wobble"></i>
+                      </div>
+                      <div class="col-xs-9 text-right">
+                        <h2><strong>{{item.count_pendientesObservados}}</strong> <small>Observados</small></h2>
+                        <span> Todos los documentos que fueron observados por supervisores o jefes</span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </ng-template>
+            <ng-template [ngIf]="checkPermission('/bandeja-salida/visar')">
+              <div class="col-sm-4">
+                <a class="animated-widget" (click)="OnPendientes('/bandeja-salida/visados')">
+                  <div class="widget style1 lazur-bg">
+                    <div class="row">
+                      <div class="col-xs-3">
+                        <i class="fa fa-check-square-o fa-5x infinite bounceIn"></i>
+                      </div>
+                      <div class="col-xs-9 text-right">
+                        <h2><strong>{{item.count_visadosPorVisar}}</strong> <small>Por Visar</small></h2>
+                        <span> Todos los documentos pendientes de aprobación mediante firma digital </span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </ng-template>
+            <ng-template [ngIf]="checkPermission('/bandeja-salida/firmar')">
+                <div class="col-sm-4">
+                  <a class="animated-widget" (click)="OnPendientes('/bandeja-salida/firmados')">
+                    <div class="widget style1 navy-bg">
+                      <div class="row">
+                        <div class="col-xs-3">
+                          <i class="fa fa-check fa-5x infinite bounce"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                          <h2><strong>{{item.count_firmadosPorFirmar}}</strong> <small>Por Firmar</small></h2>
+                          <span> Todos los documentos pendientes de firma </span>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+              </div>
+            </ng-template>
+
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

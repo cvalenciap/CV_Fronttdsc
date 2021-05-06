@@ -1,0 +1,69 @@
+{
+  "listaTipos": [
+	{"codigo": "TF00001", "descripcion": "FIN DE SEMANA"},
+	{"codigo": "TF00002", "descripcion": "FERIADO GENERAL"},
+	{"codigo": "TF00003", "descripcion": "FERIADO ESTATAL"}
+  ],
+  "listaFeriados": [
+    {
+      "codigo": 1,
+      "fecha": "2018-01-01",
+      "descripcion": "SABADO",
+      "tipo": {
+        "codigo": "TF00001",
+        "descripcion": "FIN DE SEMANA"
+      },
+      "estado": "ACTIVO",
+      "fechaRegistro": "2017-12-31T12:00:00",
+      "responsable": "EDIAZH"
+    },
+    {
+      "codigo": 2,
+      "fecha": "2018-01-02",
+      "descripcion": "DOMINGO",
+      "tipo": {
+        "codigo": "TF00001",
+        "descripcion": "FIN DE SEMANA"
+      },
+      "estado": "ACTIVO",
+      "fechaRegistro": "2017-12-31T12:10:00",
+      "responsable": "EDIAZH"
+    },
+    {
+      "codigo": 3,
+      "fecha": "2018-04-21",
+      "descripcion": "FERIADO",
+      "tipo": {
+        "codigo": "TF00002",
+        "descripcion": "FERIADO GENERAL"
+      },
+      "estado": "INACTIVO",
+      "fechaRegistro": "2017-12-31T12:00:00",
+      "responsable": "EDIAZH"
+    },
+    {
+      "codigo": 4,
+      "fecha": "2018-07-28",
+      "descripcion": "FIESTAS PATRIAS",
+      "tipo": {
+        "codigo": "TF00003",
+        "descripcion": "FERIADO ESTATAL"
+      },
+      "estado": "ACTIVO",
+      "fechaRegistro": "2017-12-31T12:00:00",
+      "responsable": "MBERNILLA"
+    },
+    {
+      "codigo": 5,
+      "fecha": "2018-12-25",
+      "descripcion": "NAVIDAD",
+      "tipo": {
+        "codigo": "TF00002",
+        "descripcion": "FERIADO GENERAL"
+      },
+      "estado": "ACTIVO",
+      "fechaRegistro": "2017-12-31T12:00:00",
+      "responsable": "MBERNILLA"
+    }
+  ]
+}

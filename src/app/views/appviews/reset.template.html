@@ -1,0 +1,49 @@
+<div class="loginColumns loginscreen animated fadeInDown">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="text-center m-t-xl">
+              <img src="assets/images/sedapal-logo-2.png">
+            </div>
+            <h2 class="font-bold text-center titulo">{{name}}</h2>
+          </div>
+          <div class="col-md-6">
+            <div class="ibox-content" [class.sk-loading]="waiting">
+              <sk-wandering-cubes></sk-wandering-cubes>
+              <div class="alert alert-danger" *ngIf="error">{{error}}.</div>
+              <div class="alert alert-info" *ngIf="info">{{info}}.</div>
+              <form class="m-t" #request="ngForm" role="form" (submit)="doRequest(request)" *ngIf="!requested">
+                <div class="form-group">
+                  <input name="username" type="text" class="form-control" autocomplete="off" placeholder="Usuario" required [(ngModel)]="username">
+                </div>
+                <button type="submit" class="btn btn-primary dim block full-width m-b">Recuperar Contraseña</button>
+                <button type="button" (click)="doLogin()" class="btn btn-success dim block full-width m-b">Regresar</button>
+              </form>
+              <form class="m-t" #reset="ngForm" role="form" (submit)="doReset(reset)" *ngIf="requested">
+                <div class="form-group">
+                  <input name="username" type="text" class="form-control" autocomplete="off" placeholder="Usuario" required [(ngModel)]="username" disabled>
+                </div>
+                <div class="form-group">
+                  <input name="old_password" type="password" class="form-control" placeholder="Contraseña Recibida por Correo" required [(ngModel)]="oldPassword">
+                </div>
+                <div class="form-group">
+                  <input name="new_password" type="password" class="form-control" placeholder="Nueva Contraseña" required [(ngModel)]="newPassword">
+                </div>
+                <div class="form-group">
+                  <input name="new_password_check" type="password" class="form-control" placeholder="Repetir Nueva Contraseña" required [(ngModel)]="newPasswordCheck">
+                </div>
+                <button type="submit" class="btn btn-primary dim block full-width m-b">Recuperar Contraseña</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <hr/>
+        <div class="row">
+          <div class="col-md-6">
+            <span [innerHtml]="copyright"></span>
+          </div>
+          <div class="col-md-6 text-right">
+            <small>{{id}} ver. {{version}}</small>
+          </div>
+        </div>
+      </div>
+      

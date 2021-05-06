@@ -1,0 +1,22 @@
+<sk-three-bounce></sk-three-bounce>
+<div class="table-responsive">
+    <table class="table table-bordered table-stripped table-hover issue-tracker">
+      <thead>
+      <tr>
+        <th colspan="2">
+            Representantes
+        </th>
+      </tr>
+      <tr>
+        <th class="text-center">Código</th>
+        <th>Nombre</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of items; let i = index" (click)="OnRowClick(i,item)" [class.selected]="i == selectedRow">
+        <td class="text-center" data-col="codigo"><code>{{item.codigo}}</code></td>
+        <td data-col="descripcion">{{item.nombre}}</td>
+      </tr>
+      </tbody>
+    </table>
+</div>

@@ -1,0 +1,19 @@
+.table {
+  tr {
+    cursor: pointer;
+    td[data-col='prioridad'] {width: 20px;} /* prioridad */
+    td[data-col='estado'] {} /* estado */
+    td[data-col='fecha-recibido'] {width: 80px;} /* fecha */
+    td[data-col='codigo'] {} /* codigo */
+    td[data-col='documento'] {width: 40%} /* documento */
+    td[data-col='numero'] {width: 10%} /* documento */
+    td[data-col='remitente'] {width: 30%} /* remitente */
+    td[data-col='derivado'] {width: 30%} /* derivado */
+    td[data-col='plazo'] {width: 80px;white-space: nowrap;} /* plazo */
+    td[data-col='pdf'] {width: 20px;} /* botón pdf */
+  }
+}
+
+.asunto {font-size: 11px;}
+
+

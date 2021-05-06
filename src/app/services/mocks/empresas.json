@@ -1,0 +1,59 @@
+{
+  "listaEmpresas": [
+    {"codigo": 1, "descripcion": "MINISTERIO DE VIVIENDA",            "fechaRegistro": "2018-01-01T12:00:23", "estado": "ACTIVO",  "responsable": "EDIAZH"},
+    {"codigo": 2, "descripcion": "SEDAPAL",                           "fechaRegistro": "2018-01-03T12:00:23", "estado": "ACTIVO",  "responsable": "EDIAZH"},
+    {"codigo": 3, "descripcion": "PALO ALTO INVERSIONES II SAC - GMD","fechaRegistro": "2018-01-04T09:11:23", "estado": "INACTIVO","responsable": "EDIAZH"},
+    {"codigo": 4, "descripcion": "MUNICIPALIDAD DE LIMA",             "fechaRegistro": "2018-01-09T10:11:23", "estado": "ACTIVO",  "responsable": "EDIAZH"},
+    {"codigo": 5, "descripcion": "PRESIDENCIA DE LA REPÚBLICA",       "fechaRegistro": "2018-01-21T13:00:23", "estado": "INACTIVO","responsable": "EDIAZH"}
+  ],
+  "empresa": {"codigo": 1000,
+    "descripcion": "RAMIREZ ENRIQUEZ Y ASOCIADOS",
+    "fechaRegistro": "2011-04-16T09:44:13",
+    "estado": "ACTIVO",
+    "responsable": "EDIAZH",
+    "representantes": [
+      {
+        "codigo": 1,
+        "nombre": "RAMIREZ ENRIQUEZ Y ASOCIADOS",
+        "tipoRepresentante": {
+          "codigo": "ATR0001",
+          "descripcion": "NATURAL"
+        },
+        "tipoDocumento": {
+          "codigo": "DOC0001",
+          "descripcion": "DNI"
+        },
+        "numeroDocumento": "293859128",
+        "direccion": "AV.BAYOVAR 925 SAN MIGUEL",
+        "telefono": "1254789",
+        "correo": "rr@gmail.com",
+        "fax": "1254789",
+        "celular": "99103412",
+        "estado": "ACTIVO",
+        "fechaRegistro": "2011-04-16T09:44:13",
+        "responsable": "TD13660"
+      },
+      {
+        "codigo": 2,
+        "nombre": "CHRISTIAN GUERRA",
+        "tipoRepresentante": {
+          "codigo": "ATR0001",
+          "descripcion": "NATURAL"
+        },
+        "tipoDocumento": {
+          "codigo": "DOC0001",
+          "descripcion": "DNI"
+        },
+        "numeroDocumento": "19237625",
+        "direccion": "AV.BOLIVER 125 PUEBLO LIBRE",
+        "telefono": "991034126",
+        "correo": "rr@gmail.com",
+        "fax": "7229008",
+        "celular": "991034126",
+        "estado": "ACTIVO",
+        "fechaRegistro": "2011-04-18T09:44:13",
+        "responsable": "TD13660"
+      }
+    ]
+  }
+}

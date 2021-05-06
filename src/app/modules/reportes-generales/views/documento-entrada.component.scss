@@ -1,0 +1,13 @@
+.table {
+    tr {
+      td[data-col='seguimiento'] {width: 30px;}
+      td[data-col='correlativo'] {width: 30px;}
+      td[data-col='fechaDerivado'] {width: 100px;}
+      td[data-col='areaRemitente'] {width:70px;text-align: center;}
+      td[data-col='trabajadorRemitente'] {width: 20%;}
+      td[data-col='areaDerivado'] {width: 70px;text-align: center;}
+      td[data-col='trabajadorDerivado'] {width: 20%;}
+      td[data-col='estado'] {width: 100px;}
+      td[data-col='comentario'] {width: 20%;}
+    }
+  }

@@ -1,0 +1,215 @@
+<div class="ibox-content" style="border-top: 0;">
+  <div class="row m-b-sm">
+    <div class="col-lg-6">
+      <div class="input-group">
+        <input #buscar type="text" oninput="this.value = this.value.toUpperCase()" placeholder="Número de Seguimiento" class="form-control" [(ngModel)]="textoBusqueda">
+        <span class="input-group-btn" dropdown>
+            <button type="button" class="btn btn-info" (click)="OnBuscarSeguimientos()"><i class="fa fa-search"></i></button>
+            <button dropdownToggle type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split"><i class="fa fa-caret-down"></i></button>
+                <ul *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-split">
+                    <li role="menuitem" [class.active]="parametroBusqueda == 'ncodseg'"><a (click)="buscar.placeholder = 'Número de Seguimiento'; parametroBusqueda = 'ncodseg'; textoBusqueda=null">Número de Seguimiento</a></li>
+                    <li role="menuitem" [class.active]="parametroBusqueda == 'remitente'"><a (click)="buscar.placeholder = 'Área Remitente'; parametroBusqueda = 'remitente'; textoBusqueda=null">Área Remitente</a></li>
+                    <li role="menuitem" [class.active]="parametroBusqueda == 'comentario'"><a (click)="buscar.placeholder = 'Comentario'; parametroBusqueda = 'comentario'; textoBusqueda=null" >Comentario</a></li>
+                </ul>
+        </span>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div *ngIf="seguimiento!=null" class="btn-group m-r-xs" dropdown>
+        <button dropdownToggle type="button" class="btn btn-success dropdown-toggle"
+                aria-controls="dropdown-basic"><i class="fa fa-check"></i> Atender <span class="caret"></span>
+        </button>
+        <ul *dropdownMenu class="dropdown-menu"
+            role="menu" aria-labelledby="button-basic">
+          <li *ngIf="session.validatePermission('/bandeja-salida/registrar')" role="menuitem"><a class="dropdown-item" (click)="OnResponder()"><i class="fa fa-share"></i> Responder con documento de Salida</a></li>
+          <li *ngIf="session.validatePermission('/bandeja-entrada/seguimiento/enviar')" role="menuitem"><a class="dropdown-item" (click)="OnEnviar()"><i class="fa fa-send"></i> Reenviar documento</a></li>
+          <li *ngIf="habilitarAtendido && session.validatePermission('/bandeja-entrada/seguimiento/atender')" class="divider dropdown-divider"></li>
+          <li *ngIf="habilitarAtendido && session.validatePermission('/bandeja-entrada/seguimiento/atender')" role="menuitem"><a class="dropdown-item" [swal]="atenderSwal"><i class="fa fa-check"></i> Marcar como Atendido</a>
+          </li>
+        </ul>
+      </div>
+      <div *ngIf="seguimiento!=null" class="btn-group m-r-xs">
+        <a *ngIf="seguimiento.indRecFis==0" class="btn btn-success m-r-xs" [swal]="recepcionFisicaSwal"><i class="fa fa-check"></i> Rec. Fisica</a>
+        <a *ngIf="session.validatePermission('/bandeja-entrada/seguimiento/eliminar')" class="btn btn-danger" [swal]="eliminarSwal"><i class="fa fa-trash"></i> Eliminar</a>
+      </div>  
+    </div>
+  </div>
+  <div class="row m-b-sm">
+    <div class="col-lg-6">
+      <div class="ibox-content" [ngClass]="{'sk-loading': loading}">
+        <table class="table table-striped table-hover issue-tracker">
+          <thead>
+          <tr>
+            <th class="text-center">Seg.</th>
+            <th class="text-center">Estado</th>
+            <th class="text-center">Enviado</th>
+            <th class="text-center">Remitente</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of listaSeguimiento; let i = index" (click)="selectRow(i, item)" [class.info]="i == selectedRow" class="linked-row">
+              <td class="text-center">{{item.codseg}}</td>
+              <td class="text-center" [ngSwitch]="item.estado">
+                <span *ngSwitchCase="'PENDIENTE'" class="label label-danger">PENDIENTE</span>
+                <span *ngSwitchCase="'ATENDIDO'" class="label label-success">ATENDIDO</span>
+                <span *ngSwitchCase="'DERIVADO'" class="label label-warning">DERIVADO</span>
+                <span *ngSwitchCase="'INGRESADO'" class="label label-default">INGRESADO</span>
+                <span *ngSwitchCase="'ELIMINADO'" class="label label-inverse">ELIMINADO</span>
+                <span *ngSwitchElse class="label label-default">OTROS</span>
+              </td>
+              <td class="text-center"><small class="text-muted">{{item.fechaDerivacion | date:'dd/MM/yyyy' }}</small></td>
+              <td class="text-center">
+                  {{item.areaRemitente.abreviatura}}
+              </td>
+              <td><i class="fa fa-chevron-right"></i></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="row">
+          <div class="col-md-6 col-sm-12 col-xs-12">
+            <pagination [(ngModel)]="paginacion_seg.pagina" (pageChanged)="OnPageChanged($event)" [totalItems]="paginacion_seg.totalRegistros" [itemsPerPage]="paginacion_seg.registros" [boundaryLinks]="true" [maxSize]="5" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="text-right m-a-sm">
+              <pagination-info [totalItems]="paginacion_seg.totalRegistros" [itemsPerPage]="paginacion_seg.registros" [page]="paginacion_seg.pagina"></pagination-info>
+            </div>
+          </div>
+        </div>      
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="mail-box-header">
+        <div class="mail-tools">
+          <div class="row">
+            <div class="col-md-8">
+              <strong class="small">Seguimiento: </strong><strong *ngIf="seguimiento!=null">{{seguimiento.codseg}}</strong><br>
+              <strong class="small">Enviado: </strong><strong *ngIf="seguimiento!=null">{{seguimiento.fechaDerivacion | date:'dd/MM/yyyy hh:mm' }}</strong><br>
+              <strong class="small" *ngIf="seguimiento && seguimiento.plazo">Plazo: </strong>
+              <strong *ngIf="seguimiento && seguimiento.plazo">{{seguimiento.fechaPlazo | date:'dd/MM/yyyy' }}</strong><br>
+              <strong class="small" *ngIf="seguimiento!=null && seguimiento.indRecFis==1">Recepción Física: </strong>
+              <strong *ngIf="seguimiento!=null && seguimiento.indRecFis==1">{{seguimiento.fechaRecFis | date:'dd/MM/yyyy hh:mm:ss' }}</strong>
+            </div>
+            <div class="col-md-4">
+              <div class="pull-right">
+                <div class="m-t-sm">
+                    <strong class="small">Estado: </strong>
+                    <span *ngIf="seguimiento && seguimiento.estado=='PENDIENTE'" class="label label-danger">PENDIENTE</span>
+                    <span *ngIf="seguimiento && seguimiento.estado=='ATENDIDO'" class="label label-success">ATENDIDO</span>
+                    <span *ngIf="seguimiento && seguimiento.estado=='DERIVADO'" class="label label-warning">DERIVADO</span>
+                    <span *ngIf="seguimiento && seguimiento.estado=='ELIMINADO'" class="label label-inverse">ELIMINADO</span>
+                    <span *ngIf="seguimiento && seguimiento.estado=='INGRESADO'" class="label label-default">INGRESADO</span>
+                    <span *ngIf="seguimiento && seguimiento.estado=='OTROS'" class="label label-default">OTROS</span>
+                </div>
+                <div class="m-t-sm" *ngIf="seguimiento.urlDocumento!='VACIO'">
+                    <strong class="small">Archivo: </strong><br>
+                    <a  #file type="file" (click)="OnVerAdjunto()"><i class="fa fa-file"></i> Archivo adjunto</a>
+                    <!-- <input type="file" #file name="file" [disabled]="cargaAdjunto" (change)="OnAdjuntar(file)"/> --> 
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mail-box">
+        <div class="mail-body">
+          <div class="row">
+            <div class="col-md-12">
+              <dl>
+                <dt>Enviado Por:</dt>
+                <dd class="project-people">
+                  <ul class="list-group">
+                    <li class="list-group-item">
+                      <strong *ngIf="seguimiento!=null">{{seguimiento.areaRemitente.abreviatura}}</strong>
+                      <i class="fa fa-chevron-right text-muted m-l-sm m-r-sm"></i>
+                      <strong *ngIf="seguimiento!=null">{{seguimiento.trabajadorRemitente.nombreCompleto}}</strong>
+                    </li>
+                  </ul>
+                </dd>
+              </dl>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <dl>
+                <dt>Dirigido A:</dt>
+                <dd class="project-people">
+                  <ul class="list-group">
+                    <li class="list-group-item">
+                      <strong *ngIf="seguimiento!=null">{{seguimiento.areaDestino.abreviatura}}</strong>
+                      <i class="fa fa-chevron-right text-muted m-l-sm m-r-sm"></i>
+                      <strong *ngIf="seguimiento!=null">{{seguimiento.trabajadorDestino.nombreCompleto}}</strong>
+                    </li>
+                  </ul>
+                </dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="seguimiento!=null" class="mail-attachment">
+          <dl>
+            <dt>Acciones a Realizar: </dt>
+            <dd class="project-people">
+              <ul class="tag-list">
+                <li *ngFor="let accion of acciones | keyvalues; let i = index" [ngClass]="{active: seguimiento.acciones.includes(accion.key)}">
+                  {{accion.value}}
+                </li>
+              </ul>
+            </dd>
+          </dl>
+        </div>
+        <div class="mail-body">
+          <h5>Observaciones:</h5>
+          <p>
+            <code *ngIf="seguimiento!=null">{{seguimiento.observaciones}}</code>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<swal
+  #eliminarSwal
+  type="question"
+  title="¿Está seguro que desea eliminar el seguimiento?"
+  confirmButtonText="Sí, eliminar"
+  cancelButtonText="No gracias"
+  [showCancelButton]="true"
+  [focusCancel]="true"
+  (confirm)="OnEliminar()"
+></swal>
+
+<swal
+  #atenderSwal
+  type="question"
+  title="¿Está seguro que desea marcar este documento como Atendido?"
+  confirmButtonText="Sí, continuar"
+  cancelButtonText="Aún no"
+  [showCancelButton]="true"
+  [focusCancel]="true"
+  (confirm)="OnAtender()"
+></swal>
+
+<swal
+  #recepcionFisicaSwal
+  type="question"
+  title="¿Está seguro de actualizar la fecha de recepción física?"
+  confirmButtonText="Sí, continuar"
+  cancelButtonText="Aún no"
+  [showCancelButton]="true"
+  [focusCancel]="true"
+  (confirm)="OnRecepcionFisica()"
+></swal>
+
+<swal
+  #adjuntoPdfSwal
+  [showCloseButton]="true"
+  [allowOutsideClick]="false"
+  [showConfirmButton]="false"
+  customClass="pdf-swal">
+  <form *swalPartial>
+    <visor-pdf download="true" [url]="listaSeguimiento[selectedRow].urlDocumento"></visor-pdf>
+  </form>
+</swal>

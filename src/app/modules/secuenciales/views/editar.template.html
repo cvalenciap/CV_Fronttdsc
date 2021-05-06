@@ -1,0 +1,84 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>Secuenciales</h2>
+    <ol class="breadcrumb">
+      <li>
+        <a routerLink="starterview">Inicio</a>
+      </li>
+      <li>
+        <a>Configuración de Despacho</a>
+      </li>
+      <li class="active">
+        <strong>Secuenciales</strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2">
+
+  </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row m-b-md">
+    <div class="col-lg-12">
+      <a class="btn btn-primary m-r" [class.disabled]="flagDeshabilita && !flagValido" (click)="OnGuardar()"><i class="fa fa-check"></i> Guardar</a>
+      <a class="btn btn-default m-r" (click)="OnRegresar()"><i class="fa fa-arrow-left"></i> Regresar</a>
+     </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+
+      <div class="ibox-content">
+
+        <form class="form-horizontal" [class.invalid]="invalid">
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Año :</label>
+            <div class="col-sm-2"><input type="text" class="form-control" disabled="disabled" name="nano" [(ngModel)]="item.nano"></div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Área :</label>
+            <div class="col-sm-2"><input type="text" class="form-control" disabled="disabled" name="codarea" [ngModel]="item.area?.codigo"></div>
+            <div class="col-sm-4"><input type="text" class="form-control" disabled="disabled" name="desarea" [ngModel]="item.area?.descripcion"></div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Documento :</label>
+            <div class="col-sm-2"><input  type="text" class="form-control" disabled="disabled" name="codigo" [ngModel]="item.tipoDocumento?.codigo"></div>
+            <div class="col-sm-4"><input required type="text" class="form-control" disabled="disabled"  name="descripcion" [ngModel]="item.tipoDocumento?.descripcion"></div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Abreviatura :</label>
+            <div class="col-sm-4"><input type="text" class="form-control" disabled="disabled"  name="abreviatura" [ngModel]="item.tipoDocumento?.abreviatura"></div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Valor Secuencial :</label>
+            <div class="col-sm-4">
+              <div class="input-group">
+                <input #correlativo (keyup)="flagDeshabilita=true; flagValido=false" autocomplete="off" required type="text" class="form-control" #correlativo="ngModel" name="correlativo" [(ngModel)]="item.correlativo" [class.ng-invalid]="errors?.correlativo" >
+                <!-- (keyup.enter)="Validar(correlativo.value)" -->
+                <span class="input-group-btn">
+                    <button type="button" class="btn" [class.btn-info]="!flagValido" [class.btn-success]="flagValido" (click)="Validar()"><i class="fa" [class.fa-search]="!flagValido" [class.fa-check]="flagValido"></i> Validar</button>
+                  </span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Fecha :</label>
+            <div class="col-sm-4">
+              <div class="input-group date">
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" disabled="disabled" name="fecha" [ngModel]="item.tipoDocumento?.fechaRegistro | date:'dd/MM/yyyy hh:mm:ss a'">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Estado :</label>
+            <div class="col-sm-4">
+              <select class="form-control m-b" name="estado" [(ngModel)]="item.estado">
+                <option value="ACTIVO">ACTIVO</option>
+                <option value="INACTIVO">INACTIVO</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="row border-bottom">
+  <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <a class="minimalize-styl-2 btn btn-primary " (click)="toggleNavigation()"><i class="fa fa-bars"></i> </a>
+    </div>
+    <ul class="nav navbar-top-links navbar-left">
+      <li>
+        <!-- <span class="m-r-sm text-muted welcome-message">{{nombreSistema}}</span> -->
+        <span class="m-r-sm text-muted welcome-message" style="padding-bottom: 5px;color:#1c84c6;"><strong>{{nombreSistema}}</strong></span>
+        <!-- <span class="m-r-sm text-muted welcome-message" style="padding-top: 0px;padding-bottom: 2px;">Usuario: <strong >{{nombreUsuario}} |</strong> Login: <strong>{{login}}</strong></span> -->
+      </li>
+    </ul>
+    <ul class="nav navbar-top-links navbar-right">
+      <li>
+        <mensaje-sistema></mensaje-sistema>
+      </li>
+      <li class="dropdown" dropdown>
+        <a dropdownToggle class="btn btn-primary minimalize-styl-2">
+          <i class="fa fa-user"></i>
+        </a>
+        <ul class="dropdown-menu animated fadeInRight" *dropdownMenu>
+          <li>
+            <div class="col-md-12 m-t-md">
+              <div class="text-center">
+                <span class="text-circle text-circle-xl text-circle-primary">{{inicialesUsuario}}</span>
+              </div>
+              <h2 class="text-center" style="font-size: 20px;">{{nombreUsuario}}</h2>
+              <ul class="list-group clear-list m-t">
+                <li class="list-group-item fist-item">
+                  <span class="pull-right">
+                    <span class="label label-primary">{{abrevArea}}</span>
+                  </span>
+                  <span class="text-center text-muted">{{areaUsuario}}</span>
+                </li>
+                <li class="list-group-item">
+                    Ficha
+                    <span class="pull-right">
+                      <code>{{codigoUsuario}}</code>
+                    </span>
+                  </li>
+                <li class="list-group-item">
+                  Perfil
+                  <span class="pull-right">
+                    <span class="p-right label label-default">{{perfilUsuario}}</span>
+                  </span>
+                </li>
+                <li></li>
+              </ul>
+            </div>
+          </li>
+          <li *ngIf="!fullScreen"><a (click)="fullScreenMode()"><i class="fa fa-arrows-alt"></i> Pantalla completa</a></li>
+          <li *ngIf="fullScreen"><a (click)="restoreScreen()"><i class="fa fa-arrows-alt"></i> Restaurar pantalla</a></li>
+          <li><a (click)="OnLogout()"><i class="fa fa-sign-out"></i> Cerrar sesión</a></li>
+          <li></li>
+        </ul>
+      </li>
+    </ul>
+
+  </nav>
+</div>

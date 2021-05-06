@@ -1,0 +1,13 @@
+.table.issue-tracker {
+  tr {
+    td:nth-child(1) {width: 30px; text-align: center;}
+    td:nth-child(2) {width: 100px; padding-left: 0;}
+    td:nth-child(3) {width: 120px;}
+    td:nth-child(4) {width: 30%;}
+    td:nth-child(5) {width: 30%;}
+    td:nth-child(6) {width: 40%;}
+  }
+}
+tab {
+  margin-top: 0;
+}

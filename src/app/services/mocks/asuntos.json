@@ -1,0 +1,9 @@
+{
+  "listaAsuntos": [
+    {"codigo": 1, "descripcion": "SOLICITUD DE ACCESO A LA INFORMACIÓN PUBLICA", "fecha": "2018-01-01", "estado": "ACTIVO"},
+    {"codigo": 2, "descripcion": "SOLICITA CERTIFICADOS DE CALIDAD", "fecha": "2018-01-22", "estado": "ACTIVO"},
+    {"codigo": 3, "descripcion": "SOLICITUD DE CLAVE Y ACTUALIZACIÓN DE DATOS", "fecha": "2018-01-12", "estado": "INACTIVO"},
+    {"codigo": 4, "descripcion": "AVISO DE CORTE POR SERVICIO DE MANTENINIENTO", "fecha": "2018-01-09", "estado": "ACTIVO"},
+    {"codigo": 5, "descripcion": "REMITE INFORMES FINALES", "fecha": "2018-01-21", "estado": "INACTIVO"}
+  ]
+}

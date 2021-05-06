@@ -1,0 +1,232 @@
+<article class="wrapper wrapper-content animated fadeInRight">
+  <header class="row m-b-md">
+    <div class="col-lg-6">
+      <h1>{{item.tipoDocumento.descripcion}} N° {{item.numero}}</h1>
+    </div>
+    <div class="col-lg-6">
+      <div class="pull-right">
+        <button class="btn btn-info m-r-xs" (click)="urlPDF=item.urlDocumento;visorPdfSwal.show(); $event.stopPropagation()"><i class="fa fa-print"></i> Vista Preliminar</button>
+        <button (click)="OnRegresar()" class="btn btn-default m-l-xs"><i class="fa fa-arrow-left"></i> Volver</button>
+      </div>
+    </div>
+  </header>
+  <div class="row">
+    <div class="col-lg-12">
+
+      <tabset>
+        <tab heading="Detalle" style="margin-top: 0;">
+          <div class="mail-box-header" style="border-top: 0;">
+            <div class="row m-b-sm">
+              <div class="col-md-8">
+                <a *allowIf="acciones;has:'VISAR'" class="btn btn-primary m-r-xs" [swal]="visarSwal"><i class="fa fa-check"></i> Visar</a>
+                <a *allowIf="acciones;has:'FIRMAR'" class="btn btn-success m-r-xs" [swal]="firmarSwal"><i class="fa fa-check"></i> Firmar</a>
+                <a *allowIf="acciones;has:'OBSERVAR'" class="btn btn-danger m-r-xs" [swal]="observarSwal"><i class="fa fa-remove"></i> Observar</a>
+                <a *allowIf="acciones;has:'OBSERVAR'" class="btn btn-info m-r-xs" [swal]="comentarSwal"><i class="fa fa-comment"></i> Comentar</a>
+              </div>
+              <div class="col-md-4">
+                <div class="pull-right">
+                  <span [ngSwitch]="item.prioridad">
+                    <span *ngSwitchCase="'BAJA'" class="small font-bold text-success"><i class="fa fa-exclamation"></i> Prioridad {{item.prioridad}}</span>
+                    <span *ngSwitchCase="'MEDIA'" class="small font-bold text-default"><i class="fa fa-minus"></i> Prioridad {{item.prioridad}}</span>
+                    <span *ngSwitchCase="'ALTA'" class="small font-bold text-warning"><i class="fa fa-arrow-up"></i> Prioridad {{item.prioridad}}</span>
+                    <span *ngSwitchCase="'URGENTE'" class="small font-bold text-danger"><i class="fa fa-exclamation"></i> Prioridad {{item.prioridad}}</span>
+                  </span>
+                  <span class="m-r-xl"></span>
+                  <strong class="small">Estado: </strong>
+                    <span *ngIf="item.movimiento.estadoDocumento=='ATENDIDO' && item.movimiento.accionDocumento=='VB'" class="label label-green">Visado</span>
+                    <span *ngIf="item.movimiento.estadoDocumento=='PENDIENTE' && item.movimiento.accionDocumento=='VB'" class="label label-orange">Por Visar</span>
+                    <span *ngIf="item.movimiento.estadoDocumento=='ATENDIDO' && item.movimiento.accionDocumento=='FR'" class="label label-green">Firmado</span>
+                    <span *ngIf="item.movimiento.estadoDocumento=='PENDIENTE' && item.movimiento.accionDocumento=='FR'" class="label label-blue">Por Firmar</span>
+                  	<span *ngIf="item.movimiento.estadoDocumento=='OBSERVADO'" class="label label-default">Observado</span>
+                </div>
+              </div>
+            </div>
+            <div class="mail-tools">
+              <div class="row">
+                <div class="col-md-4">
+                  <dl class="dl-horizontal">
+                    <dt>Remitente:</dt> <dd>{{jefe.nombre}} {{jefe.apellidoPaterno}}</dd>
+                    <dt>Origen:</dt> <dd>{{item.origen}}</dd>
+                    <dt>Año:</dt> <dd><strong>{{item.nano}}</strong></dd>
+                  </dl>
+                </div>
+                <div class="col-md-4">
+                  <dl class="dl-horizontal">
+                    <dt>Tipo Documento:</dt> <dd>{{item.tipoDocumento.descripcion}}</dd>
+                    <dt>Número Documento:</dt> <dd>{{item.numero}}</dd>
+                    <dt>Fecha Documento:</dt> <dd>{{item.fechaDocumento | date:'dd/MM/yyyy'}}</dd>
+                  </dl>
+                </div>
+                <div class="col-md-4">
+                  <dl class="dl-horizontal" >
+                    <dt>Enviado Por:</dt> <dd>{{item.movimiento.trabajadorOrigen.nombre}}</dd>
+                    <dt>Fecha Envío:</dt> <dd>{{item.movimiento.fechaRegistro | date:'dd/MM/yyyy HH:mm'}}</dd>
+                    <dt>Fecha Plazo:</dt> <dd>{{item.movimiento.fechaPlazo | date:'dd/MM/yyyy'}}</dd>
+                  </dl>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <dl class="dl-horizontal">
+                    <span *ngIf="item.urlReferencia!=null">
+                       <dt>Documento Entrante:</dt> <dd><a (click)="visorPdfSwal.show(); $event.stopPropagation()"><code class="text-info">{{item.correlativoEntrada}}-{{item.nanoEntrada}}</code></a></dd>
+                    </span>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mail-box">
+            <div class="mail-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <dl>
+                    <dt>Dirigido A:</dt>
+                    <dd class="project-people">
+                      <ul class="list-group">
+
+                        <span *ngFor="let empresa of item.dirigidosEmpresa;">
+                             <li class="list-group-item" *ngFor="let representante of empresa.representantes;">
+                               {{empresa.descripcion}}
+                               <i class="fa fa-chevron-right text-muted m-l-sm m-r-sm"></i>
+                               {{representante.nombre}}
+                            </li>
+                        </span>
+
+                         <li class="list-group-item" *ngFor="let trabajador of item.dirigidosTrabajador;">
+                            {{trabajador.area.abreviatura}}
+                            <i class="fa fa-chevron-right text-muted m-l-sm m-r-sm"></i>
+                            {{trabajador.nombre}} {{trabajador.apellidoPaterno}} {{trabajador.apellidoMaterno}}
+                         </li>
+                      </ul>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="col-md-6">
+                  <dl>
+                    <dt>Control de Aprobación:</dt>
+                    <dd class="project-people">
+                      <ul class="list-group">
+                        <li class="list-group-item">
+                          <span class="badge badge-default">Autor</span>
+                          <strong>{{item.areaRemitente.abreviatura}}</strong>
+                          <i class="fa fa-chevron-right text-muted m-l-sm m-r-sm"></i>
+                          {{jefe.nombre}} {{jefe.apellidoPaterno}} {{jefe.apellidoMaterno}}
+                        </li>
+                        <li class="list-group-item" *ngFor="let control of item.visantes; let i = index">
+                          <strong>{{control.areaFirmante.abreviatura}}</strong>
+                          <i class="fa fa-chevron-right text-muted m-l-sm m-r-sm"></i>
+                          {{control.trabajador.nombre}} {{control.trabajador.apellidoPaterno}} {{control.trabajador.apellidoMaterno}}
+                          <span *ngIf="control.tipoFirma=='VISADO' && control.estadoFirma=='PENDIENTE'" class="badge badge-orange">POR VISAR</span>
+                          <span *ngIf="control.tipoFirma=='VISADO' && control.estadoFirma=='REALIZADO'" class="badge badge-green">VISADO</span>
+                          <span *ngIf="control.tipoFirma=='FIRMA' && control.estadoFirma=='PENDIENTE'" class="badge badge-primary">POR FIRMAR</span>
+                          <span *ngIf="control.tipoFirma=='FIRMA' && control.estadoFirma=='REALIZADO'" class="badge badge-green">FIRMADO</span>
+                        </li>
+                      </ul>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12">
+                  <h3>Asunto:</h3>
+                  <p class="lead">
+                    {{item.asunto}}
+                  </p>
+                </div>
+                <div class="col-lg-12" *ngIf="item.referencia?.trim().length>0">
+                  <h5>Referencia:</h5>
+                  <p>
+                    {{item.referencia}}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="mail-body" [innerHtml]="item.contenido">
+            </div>
+            <div class="mail-attachment">
+              <div class="row">
+                <div class="col-lg-9" *ngIf="item.observaciones?.trim().length>0">
+                  <h5>Observaciones:</h5>
+                  <p>
+                    {{item.observaciones}}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </tab>
+
+      </tabset>
+
+    </div>
+  </div>
+</article>
+
+<swal
+  #visarSwal
+  type="question"
+  title="¿Está seguro que desea visar el documento?"
+  confirmButtonText="Sí, continuar"
+  cancelButtonText="No gracias"
+  [showCancelButton]="true"
+  [focusCancel]="true"
+  (confirm)="OnFirmaDigitalIniciar()"
+  ></swal>
+
+<swal
+  #firmarSwal
+  type="question"
+  title="¿Está seguro que desea firmar el documento?"
+  confirmButtonText="Sí, continuar"
+  cancelButtonText="No gracias"
+  [showCancelButton]="true"
+  [focusCancel]="true"
+  (confirm)="OnFirmaDigitalIniciar()"
+></swal>
+
+<swal
+  #observarSwal
+  type="question"
+  title="¿Está seguro que desea observar el documento?"
+  confirmButtonText="Sí, continuar"
+  cancelButtonText="No gracias"
+  [showCancelButton]="true"
+  [focusCancel]="true"
+  (confirm)="OnObservar()"
+></swal>
+
+<swal
+  #comentarSwal
+  type="warning"
+  input="textarea"
+  title="Escriba su comentario"
+  confirmButtonText="Aceptar"
+  cancelButtonText="Cancelar"
+  [showCancelButton]="true"
+  (confirm)="OnComentar($event)"
+></swal>
+
+<swal
+  #firmaDigitalSwal
+  customClass="firma-swal"
+  [allowEnterKey]="false"
+  [allowEscapeKey]="false"
+  [allowOutsideClick]="false"
+  [showConfirmButton]="false">
+    <form *swalPartial>
+      <firma-digital #firmaDigital [tipo]="tipoFirma" [id]="codigoFirma" comentario="" imagen="" (finalizar)="OnFirmaDigitalFinalizar($event)" [archivos]="[rutaDocumento]"></firma-digital>
+    </form>
+</swal>
+
+
+<swal
+  #visorPdfSwal
+  [showCloseButton]="true"
+  [allowOutsideClick]="false"
+  [showConfirmButton]="false"
+  customClass="pdf-swal">
+  <form *swalPartial>
+    <visor-pdf [url]="urlPDF"></visor-pdf>
+  </form>
+</swal>

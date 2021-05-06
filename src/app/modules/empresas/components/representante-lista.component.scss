@@ -1,0 +1,9 @@
+.table {
+  tr {
+    td[data-col='estado'] {width: 100px}
+    td[data-col='codigo'] {width: 40px;}
+    td[data-col='descripcion'] {text-transform: uppercase;}
+    td[data-col='fecha-registro'] {width: 100px;}
+    td[data-col='responsable'] {width: 150px;}
+  }
+}

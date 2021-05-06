@@ -1,0 +1,349 @@
+{
+
+  "listaAtencionDocumentos": [
+    {
+      "correlativo": "1",
+      "numero": "432-GA/SGL-2018",
+      "areaDestino": {
+        "codigo": "42500",
+        "nombre": "Equipo Técnico - Norte",
+        "abreviatura": "ETN",
+        "descripcion": "Equipo Técnico - Norte"
+      },
+      "fechaDocumento": "2018-03-12",
+      "asunto": "INCIDENCIAS EN MANEJO DE SERVIDORES",
+      "fechaDerivacion": "2018-03-13",
+      "estado": "PENDIENTE",
+      "nombre": "JUAN PEREZ OCAÑA"
+    },
+    {
+      "correlativo": "2",
+      "numero": "432-GA/SGL-2018",
+      "areaDestino": {
+        "codigo": "42501",
+        "nombre": "Equipo Técnico - Norte",
+        "abreviatura": "ETN",
+        "descripcion": "Equipo Técnico - Norte"
+      },
+      "fechaDocumento": "2018-03-12",
+      "asunto": "SERVIDORES",
+      "fechaDerivacion": "2018-03-13",
+      "estado": "DERIVADO",
+      "nombre": "MAURICIO GARCIA PEREZ"
+    }
+  ],
+  "listaDocumentosEntrada": [
+    {
+      "seg" : "1",
+      "correlativo" : "2",
+      "fechaDerivacion" : "2018-04-14",
+      "areaRemitente": {
+        "codigo": "43700",
+        "nombre": "Equipo Técnico - Centro",
+        "abreviatura": "ETC",
+        "descripcion": "Equipo Técnico - Centro"
+      },
+      "trabajadorRemitente": {
+        "codigo": "5234",
+        "nombre": "ANTONIO MIGUEL ANGULO ZAMBRANO",
+        "estado": "ATENDIDO"
+      },
+      "areaDestino": {
+        "codigo": "41703",
+        "nombre": "Cámara de Rejas La Chira y Lagunas Norte y Sur",
+        "abreviatura": "CRCLNS",
+        "descripcion": "Cámara de Rejas La Chira y Lagunas Norte y Sur"
+      },
+      "trabajadorDestino": {
+        "codigo": "5063",
+        "nombre": "MIGUEL ANGEL REYES PEREZ",
+        "estado": "ACTIVO"
+      },
+      "estado": "ATENDIDO",
+      "observaciones": "Documento Entrante"
+    },
+    {
+      "seg" : "2",
+      "correlativo" : "4",
+      "fechaDerivacion" : "2017-04-14",
+      "areaRemitente": {
+        "codigo": "43700",
+        "nombre": "Equipo Técnico - Centro",
+        "abreviatura": "ETC",
+        "descripcion": "Equipo Técnico - Centro"
+      },
+      "trabajadorRemitente": {
+        "codigo": "5234",
+        "nombre": "CRISTIAN GUERRA ",
+        "estado": "ACTIVO"
+      },
+      "areaDestino": {
+        "codigo": "41703",
+        "nombre": "Cámara de Rejas La Chira",
+        "abreviatura": "CRCLNS",
+        "descripcion": "Cámara de Rejas La Chira"
+      },
+      "trabajadorDestino": {
+        "codigo": "5063",
+        "nombre": "MAURICIO ANGULO GARCIA",
+        "estado": "ACTIVO"
+      },
+      "estado": "ATENDIDO",
+      "observaciones": "Documento Entrante"
+    },
+    {
+      "seg" : "3",
+      "correlativo" : "8",
+      "fechaDerivacion" : "2015-05-11",
+      "areaRemitente": {
+        "codigo": "43700",
+        "nombre": "Equipo Técnico - Centro",
+        "abreviatura": "ETC",
+        "descripcion": "Equipo Técnico - Centro"
+      },
+      "trabajadorRemitente": {
+        "codigo": "5234",
+        "nombre": "MARIA ELIZABETH LOPEZ QUISPE ",
+        "estado": "ACTIVO"
+      },
+      "areaDestino": {
+        "codigo": "41703",
+        "nombre": "Cámara del Comercio",
+        "abreviatura": "CRCLNS",
+        "descripcion": "Cámara del Comercio"
+      },
+      "trabajadorDestino": {
+        "codigo": "5063",
+        "nombre": "MARIA ELIZABETH LOPEZ QUISPE",
+        "estado": "ACTIVO"
+      },
+      "estado": "ATENDIDO",
+      "observaciones": "Documento Entrante"
+    }
+  ],
+  "listaPorAreaFechaEstado": [
+    {
+      "correlativo" : "01",
+      "numeroDocumento" : "9090-GG/SGL-2018",
+      "areaDestino": {
+        "codigo": "41602",
+        "nombre": "Cámara de Rejas La Victoria",
+        "abreviatura": "CRV",
+        "descripcion": "Cámara de Rejas La Victoria"
+      },
+      "fechaDocumento": "2018-05-22",
+      "asunto": "VERIFICAR COMPUERTAS",
+      "fechaDerivacion" : "2018-05-29",
+      "estado": "INGRESADO"
+    },
+    {
+      "correlativo" : "02",
+      "numeroDocumento" : "9211-GG/SGL-2018",
+      "areaDestino": {
+        "codigo": "41603",
+        "nombre": "Compra de Agua Proyecto Chillón",
+        "abreviatura": "CAPC",
+        "descripcion": "Compra de Agua Proyecto Chillón"
+      },
+      "fechaDocumento": "2018-05-24",
+      "asunto": "VERIFICAR COMPUERTAS DE ACCESO",
+      "fechaDerivacion" : "2018-05-29",
+      "estado": "PENDIENTE"
+    }
+  ],
+  "listaDocumentosAsignados": [
+    {
+      "correlativo" : "01",
+      "numeroDocumento" : "110-GG/SGL-2018",
+      "areaDestino": {
+        "codigo": "41603",
+        "nombre": "Compra de Agua Proyecto Chillón",
+        "abreviatura": "CAPC",
+        "descripcion": "Compra de Agua Proyecto Chillón"
+      },
+      "fechaDocumento": "2018-04-15",
+      "asunto": "PARA CONOCIMIENTO DE CONTENIDO",
+      "fechaDerivacion" : "2018-05-29",
+      "estado": "ATENDIDO"
+    },
+    {
+      "correlativo" : "02",
+      "numeroDocumento" : "110-GG/SGL-2018",
+      "areaDestino": {
+        "codigo": "41603",
+        "nombre": "Compra de Agua Proyecto Quilca",
+        "abreviatura": "CAPC",
+        "descripcion": "Compra de Agua Proyecto Quilca"
+      },
+      "fechaDocumento": "2016-05-14",
+      "asunto": "PARA CONOCIMIENTO DE CONTENIDO",
+      "fechaDerivacion": "2016-05-14",
+      "estado": "PENDIENTE"
+    },
+    {
+      "correlativo" : "03",
+      "numeroDocumento" : "110-GG/SGL-2017",
+      "areaDestino": {
+        "codigo": "41603",
+        "nombre": "Compra de Agua Proyecto Conan",
+        "abreviatura": "CAPC",
+        "descripcion": "Compra de Agua Proyecto Conan"
+      },
+      "fechaDocumento": "2017-05-14",
+      "asunto": "PARA CONOCIMIENTO DE CONTENIDO",
+      "fechaDerivacion" : "2016-05-14",
+      "estado": "PENDIENTE"
+    }
+  ],
+  "listaPorSeguimiento": [
+    {
+      "reg": "01",
+      "correlativo": "31",
+      "nano": "2018",
+      "fechaDocumento": "2018-05-16",
+      "areaRemitente": {
+        "codigo": "41603",
+        "nombre": "Compra de Agua Proyecto Chillón",
+        "abreviatura": "CAPC",
+        "descripcion": "Compra de Agua Proyecto Chillón"
+      },
+      "asunto": "VERIFICACIÓN DE PROCEDIMIENTOS",
+      "descripcion": "Compra de Agua Proyecto Chillón",
+      "estado": "PENDIENTE",
+      "urlDocumento": "../"
+    },
+    {
+      "reg": "02",
+      "correlativo": "31",
+      "nano": "2018",
+      "fechaDocumento": "2015-05-16",
+      "areaRemitente": {
+        "codigo": "200563",
+        "nombre": "Compra de Agua Proyecto Rimac",
+        "abreviatura": "CAPC",
+        "descripcion": "Compra de Agua Proyecto Rimac"
+      },
+      "asunto": "VERIFICACIÓN DEL TRABAJO",
+      "descripcion": "Compra de Agua Proyecto Rimac",
+      "estado": "DERIVADO",
+      "urlDocumento": "../"
+      },
+    {
+      "reg": "03",
+      "correlativo": "31",
+      "nano": "2019",
+      "fechaDocumento": "2019-05-16",
+      "areaRemitente": {
+        "codigo": "41603",
+        "nombre": "Compra de Agua Proyecto Chillón",
+        "abreviatura": "CAPC",
+        "descripcion": "Compra de Agua Proyecto Chosica"
+      },
+      "asunto": "VERIFICACIÓN DEL AREA",
+      "descripcion": "Compra de Agua Proyecto Chosica",
+      "estado": "DERIVADO",
+      "urlDocumento": "../"
+    }
+  ],
+  "listaPorRegistroEntrada": [
+    {
+      "seg": "1",
+      "correlativo": "52",
+      "nano": "2018",
+      "fechaDocumento": "2018-09-11",
+      "areaRemitente": {
+        "codigo": "136",
+        "nombre": "EQUIPO PRODUCTIVIDAD CON CALIDAD Y CONTROL DE GESTION",
+        "abreviatura": "EPCCG",
+        "descripcion": "EQUIPO PRODUCTIVIDAD CON CALIDAD Y CONTROL DE GESTION"
+      },
+      "trabajadorRemitente": {
+        "codigo": "5222",
+        "nombre": "DANTE CAVERO AGUILAR",
+        "estado": "INGRESADO"
+      },
+      "areaDestino": {
+        "codigo": "336",
+        "nombre": "PROGRAMA AMA SUA",
+        "abreviatura": "PAS",
+        "descripcion": "PROGRAMA AMA SUAN"
+      },
+      "trabajadorDestino": {
+        "codigo": "5301",
+        "nombre": "EDUARDO DÁVILA ARMENTA",
+        "estado": "INGRESADO"
+      },
+      "estado": "INGRESADO",
+      "observacion": ""
+    },
+
+    {
+      "seg": "2",
+      "correlativo": "52",
+      "nano": "2018",
+      "fechaDocumento": "2018-09-11",
+      "areaRemitente": {
+        "codigo": "136",
+        "nombre": "EQUIPO DE PRODUCCION",
+        "abreviatura": "EPCCG",
+        "descripcion": "EQUIPO DE PRODUCCION"
+      },
+      "trabajadorRemitente": {
+        "codigo": "5222",
+        "nombre": "DANTE CAVERO AGUILAR",
+        "estado": "ACTIVO"
+      },
+      "areaDestino": {
+        "codigo": "336",
+        "nombre": "PROGRAMA AMA SUA",
+        "abreviatura": "PAS",
+        "descripcion": "PROGRAMA AMA SUAN"
+      },
+      "trabajadorDestino": {
+        "codigo": "5301",
+        "nombre": "DANTE CAVERO AGUILA",
+        "estado": "ACTIVO"
+      },
+      "estado": "PENDIENTE",
+      "observacion": ""
+    },
+    {
+      "seg": "3",
+      "correlativo": "100",
+      "nano": "2018",
+      "fechaDocumento": "2014-09-11",
+      "areaRemitente": {
+        "codigo": "136",
+        "nombre": "EQUIPO PRODUCTIVIDAD",
+        "abreviatura": "EPCCG",
+        "descripcion": "EQUIPO PRODUCTIVIDAD"
+      },
+      "trabajadorRemitente": {
+        "codigo": "5222",
+        "nombre": "DANTE CAVERO AGUILAR",
+        "estado": "ACTIVO"
+      },
+      "areaDestino": {
+        "codigo": "336",
+        "nombre": "PROGRAMA BELLA VSITA",
+        "abreviatura": "PAS",
+        "descripcion": "PROGRAMA AMA SUAN"
+      },
+      "trabajadorDestino": {
+        "codigo": "5301",
+        "nombre": "EDUARDO DÁVILA ARMENTA",
+        "estado": "ACTIVO"
+      },
+      "estado": "PENDIENTE",
+      "observacion": ""
+
+    }
+  ],
+  "listaAnno":[
+    {"anno":"2014"},
+    {"anno":"2015"},
+    {"anno":"2016"},
+    {"anno":"2017"},
+    {"anno":"2018"}
+  ]
+}

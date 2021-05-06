@@ -1,0 +1,85 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>Feriados</h2>
+    <ol class="breadcrumb">
+      <li>
+        <a routerLink="starterview">Inicio</a>
+      </li>
+      <li>
+        <a>Configuración de Sistema</a>
+      </li>
+      <li class="active">
+        <strong>Feriados</strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2">
+  </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row m-b-md">
+    <div class="col-lg-12">
+      <a class="btn btn-primary m-r" (click)="OnGuardar()"><i class="fa fa-check"></i> Guardar</a>
+      <a class="btn btn-default m-r" (click)="OnRegresar()"><i class="fa fa-arrow-left"></i> Regresar</a>
+     </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+
+      <div class="ibox-content">
+
+        <form class="form-horizontal" [class.invalid]="invalid">
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Registro :</label>
+            <div class="col-sm-4"><input type="text" class="form-control" disabled="disabled" name="codigo" [ngModel]="item.codigo"></div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Fecha :</label>
+            <div class="col-sm-4">
+              <div class="input-group date">
+              <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input bsDatepicker #dp="bsDatepicker" type="text" name="fecha" [(ngModel)]="item.fecha" class="form-control" autocomplete="off" [(bsValue)]="item.fecha" value="{{ item.fecha | date:'dd/MM/yyyy' }}" [class.ng-invalid]="errors?.fecha" (blur)="Validar(item.fecha)" [tooltip]="errors?.fecha" [tooltipIsOpen]="errors?.fecha"  placement="top">
+             </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Descripción :</label>
+            <div class="col-sm-10"><input required type="text" class="form-control" autocomplete="off" #descripcion="ngModel" name="descripcion" [(ngModel)]="item.descripcion"  [class.ng-invalid]="errors?.descripcion" (ngModelChange)="Validar(descripcion)" [tooltip]="errors?.descripcion" [tooltipIsOpen]="descripcion.dirty && (descripcion.invalid || errors?.descripcion)"  placement="top" ></div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Tipo :</label>
+            <div class="col-sm-4">
+              <ng-select [items]="listaTipos"
+                         bindLabel="descripcion"
+                         bindValue="codigo"
+                         [clearable]="false"
+                         name="tipo"
+                         [(ngModel)]="item.tipo.codigo">
+              </ng-select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Estado :</label>
+            <div class="col-sm-4">
+              <select class="form-control m-b" name="estado" [(ngModel)]="item.estado">
+                <option value="ACTIVO">ACTIVO</option>
+                <option value="INACTIVO">INACTIVO</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Registrado :</label>
+            <div class="col-sm-4">
+              <div class="input-group date">
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" disabled="disabled" name="fechaRegistro" [ngModel]="item.fechaRegistro | date:'dd/MM/yyyy hh:mm:ss a'">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Responsable :</label>
+            <div class="col-sm-4"><input type="text" class="form-control" disabled="disabled" name="responsable" [ngModel]="item.responsable"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,353 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-12">
+    <h2 *ngIf="documento.correlativo; else nuevo">Editar Documento</h2>
+    <ng-template #nuevo><h2>Nuevo Documento</h2></ng-template>
+    <ol class="breadcrumb">
+      <li>
+        <a routerLink="starterview">Inicio</a>
+      </li>
+      <li>
+        <a>Bandeja de Entrada / Recibidos</a>
+      </li>
+      <li class="active" *ngIf="documento.correlativo; else nuevo2">
+        <strong>Editar Documento</strong>
+      </li>
+      <ng-template #nuevo2>
+        <li class="active">
+          <strong>Nuevo Documento</strong>
+        </li>
+      </ng-template>
+    </ol>
+  </div>  
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row m-b-sm">
+    <div class="col-lg-12">
+      <button class="btn btn-primary m-r" [disabled]="loading" (click)="OnGuardar(documento.correlativo)"><i class="fa fa-check"></i> Guardar</button>      
+      <div *ngIf="documento.urlDocumento!=null; else sinDoc" class="fileinput fileinput-new m-r-xs" 
+           data-provides="fileinput"        
+           popover="Archivo Adjuntado"   
+           triggers="mouseenter:mouseleave">           
+        <span class="btn btn-info m-r btn-file" [class.disabled]="cargaAdjunto || loading">
+          <span class="fileinput-new">
+            <i [class]="(documentoAdjunto.nombreReal=='') ? 'fa fa-check' : 'fa fa-check'"></i> Adjuntar
+          </span>
+          <span class="fileinput-exists">
+            <i [class]="(documentoAdjunto.nombreReal=='') ? 'fa fa-check' : 'fa fa-check'"></i> Adjuntar
+          </span><input type="file" #file name="file" [disabled]="cargaAdjunto" (change)="OnAdjuntar(file)"/>
+        </span>
+      </div>
+      <ng-template #sinDoc>
+        <div class="fileinput fileinput-new m-r-xs" 
+              data-provides="fileinput"           
+              popover = "Debe Adjuntar un Documento"
+              triggers="mouseenter:mouseleave">
+          <span class="btn btn-info m-r btn-file" [class.disabled]="cargaAdjunto || loading">
+            <span class="fileinput-new">
+              <i [class]="(documentoAdjunto.nombreReal=='') ? 'fa fa-upload' : 'fa fa-upload'"></i> Adjuntar
+            </span>
+            <span class="fileinput-exists">
+              <i [class]="(documentoAdjunto.nombreReal=='') ? 'fa fa-upload' : 'fa fa-upload'"></i> Adjuntar
+            </span><input type="file" accept=".pdf" #file name="file" [disabled]="cargaAdjunto"  (change)="OnAdjuntar(file)"/>
+          </span>
+        </div>
+      </ng-template>
+      <a class="btn btn-default m-r" [swal]="descartarSwal"><i class="fa fa-arrow-left"></i> Descartar</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox-content" [class.sk-loading]="loading">
+          <sk-three-bounce></sk-three-bounce>
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label class="col-sm-1 control-label">Área Origen:</label>
+            <div class="col-sm-5">
+              <input type="text" class="form-control" disabled="disabled" name="area" [ngModel]="areaPrincipal.descripcion">
+            </div>
+            <label class="col-sm-1 control-label">N° Reg.:</label>
+            <div class="col-sm-2">
+              <input type="text" class="form-control" disabled="disabled" name="codigo" [ngModel]="documento.correlativo">
+            </div>
+            <label class="col-sm-1 control-label">Año :</label>
+            <div class="col-sm-2">
+              <input type="text" class="form-control" disabled="disabled" name="nano" [ngModel]="nanoPrincipal">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-1 control-label">Tipo Doc.:</label>
+            <div class="col-sm-5" *ngIf="documento.origen=='EXTERNO' || !documento.nano;else interno">
+              <ng-select [items]="tiposDocumento"
+                         bindLabel="descripcion"
+                         placeholder="SELECCIONAR"
+                         [clearable]="false"
+                         name="tiposDocumento"
+                         [(ngModel)]="documento.tipoDocumento">
+              </ng-select>
+            </div>
+            <ng-template #interno>
+              <div class="col-sm-5">
+                  <input type="text" class="form-control" disabled="disabled" name="tipoDocumentotexto" [ngModel]="documento.tipoDocumento.descripcion">
+              </div>
+            </ng-template>
+            <label class="col-sm-1 control-label">N° Doc.:</label>
+            <div class="col-sm-2" *ngIf="documento.origen=='EXTERNO' || !documento.nano;else interno2">
+              <input type="text" class="form-control"  autocomplete="off" name="numero" [(ngModel)]="documento.numero">
+            </div>
+            <ng-template #interno2>
+                <div class="col-sm-2">
+                  <input type="text" class="form-control" disabled="disabled" name="numero" [(ngModel)]="documento.numero">
+                </div>
+            </ng-template>
+            <label class="col-sm-1 control-label">Origen:</label>
+            <div class="col-sm-2" *ngIf="!documento.nano;else editar">
+              <ng-select [items]="itemsOrigen"
+                         bindLabel="descripcion"
+                         [disabled]="documento.codigo"
+                         placeholder="Seleccionar"
+                         name ="TipoOrigen"
+                         [clearable]="false"
+                         [(ngModel)]="documento.origen">
+              </ng-select>
+            </div>
+            <ng-template #editar>
+                <div class="col-sm-2">
+                  <input type="text" class="form-control" disabled="disabled" name="origenTexto" [ngModel]="documento.origen">
+                </div>
+            </ng-template>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-1 control-label">Fecha Doc.:</label>
+            <div class="col-sm-2">
+              <div class="input-group date">
+                <input bsDatepicker #dp1="bsDatepicker" name="fechaDocumento" [(bsValue)]="documento.fechaDocumento"  value="{{ documento.fechaDocumento | date:'dd/MM/yyyy' }}" (bsValueChange)="DetectChange()" type="text" class="form-control">
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+              </div>
+            </div>
+            <label class="col-sm-1 control-label">Fec. Recep.:</label>
+            <div class="col-sm-2">
+              <div class="input-group date">
+                <input bsDatepicker #dp2="bsDatepicker" name="fechaRecepcion" [(bsValue)]="documento.fechaRecepcion"  (bsValueChange)="OnFechaRecepcion()" value="{{ documento.fechaRecepcion | date:'dd/MM/yyyy' }}" type="text" class="form-control">
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+              </div>
+            </div>
+            <label class="col-sm-1 control-label">Plazo:</label>
+            <div class="col-sm-2">
+              <div class="input-group">
+                <input type="text" class="form-control" (blur)="OnCambiarPlazo()" name="plazo" [(ngModel)]="documento.plazo" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                <span class="input-group-addon">días</span>
+              </div>
+            </div>
+            <label class="col-sm-1 control-label">Vence:</label>
+            <div class="col-sm-2">
+              <div class="input-group">
+                <input bsDatepicker #dp3="bsDatepicker" disabled="disabled" name="fechaPlazo" [(bsValue)]="documento.fechaPlazo"  value="{{ documento.fechaPlazo | date:'dd/MM/yyyy' }}" type="text" class="form-control">
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-1 control-label">Prioridad:</label>
+            <div class="col-sm-2" name="prioridad">
+              <select class="form-control" name="prioridad" [(ngModel)]="documento.prioridad">
+                <option value="URGENTE">URGENTE</option>
+                <option value="ALTA">ALTA</option>
+                <option value="MEDIA" selected="selected">MEDIA</option>
+                <option value="BAJA">BAJA</option>
+              </select>            
+            </div>
+            <label class="col-sm-1 control-label">N° Folios:</label>
+            <div class="col-sm-2">
+              <input type="text" class="form-control" (blur) = "OnFolios()" name = "folios" [(ngModel)]="documento.folios" maxlength="4" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+            </div>
+            <label class="col-sm-1 control-label">Estado:</label>
+            <div class="col-sm-2 m-t-xs" [ngSwitch]="documento.estado">
+              <span *ngSwitchCase="'INGRESADO'" class="label label-default">INGRESADO</span>
+              <span *ngSwitchCase="'PENDIENTE'" class="label label-danger">PENDIENTE</span>
+              <span *ngSwitchCase="'DERIVADO'" class="label label-warning">DERIVADO</span>
+              <span *ngSwitchCase="'ATENDIDO'" class="label label-primary">ATENDIDO</span>
+            </div>
+          </div>
+          <hr class="hr-line-dashed">
+          <div class="form-group" [hidden]="documento.origen=='EXTERNO'">
+            <label class="col-sm-1 control-label">Remitente:</label>
+            <label class="col-sm-1 control-label">Área:</label>
+            <div class="col-sm-5">
+              <ng-select [items]="destinos"
+                         bindLabel="descripcion"
+                         [multiple]="false"
+                         name="derivado"                         
+                         placeholder="Seleccione área"
+                         [searchFn]="OnBuscarAreasRemitente"
+                         (change)="OnCambiarAreaRemitente()"
+                         [clearable]="false"
+                         [(ngModel)]="documento.areaOrigen">
+                         <ng-template ng-label-tmp let-clear="clear" let-item="item">
+                          <span class="m-xs">[{{item.abreviatura}}] {{item.descripcion}}</span>
+                          <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+                        </ng-template>
+                        <ng-template ng-option-tmp let-item="item" let-index="index">
+                          <span class="label label-primary">{{item.abreviatura}}</span> {{item.descripcion}}
+                        </ng-template>
+              </ng-select>
+            </div>
+            <label class="col-sm-1 control-label">Trabajador:</label>
+            <div class="col-sm-4">
+              <ng-select [items]="trabajadores"
+                         bindLabel="nombreCompleto"
+                         placeholder="Seleccione trabajador"
+                         name="trabajadoresPrincipal"
+                         [clearable]="false"
+                         [(ngModel)]="documento.trabajadorOrigen">
+              </ng-select>
+            </div>
+          </div>
+          <div class="form-group" [hidden]="documento.origen=='INTERNO'">
+            <label class="col-sm-1 control-label">Remitente:</label>
+            <label class="col-sm-1 control-label">Empresa:</label>
+            <!-- [addTag]="agregarItem" -->
+            <div class="col-sm-5">
+              <ng-select [items]="remitentes"
+                         allowClear="true"
+                         bindLabel="descripcion"
+                         [multiple]="false"
+                         clearable="false"
+                         (input)="OnCambiarRemitente($event.target.value)"
+                         (change) = "OnCambiarRepresentantes($event)"
+                         placeholder="Ingrese nombre de empresa"
+                         name="remitentes"
+                         [(ngModel)]="documento.remitente">
+              </ng-select>
+            </div>
+            <label class="col-sm-1 control-label">Representante:</label>
+            <div class="col-sm-4">
+              <ng-select [items]="representantes"
+                         clearable="false"
+                         bindLabel="nombre"
+                         [multiple]="false"
+                         name="representante"
+                         placeholder="Ingrese Representante"
+                         [(ngModel)]="documento.representante">
+              </ng-select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-1 control-label">Dirigido A:</label>
+            <label class="col-sm-1 control-label">TO :</label>
+            <div class="col-sm-10">
+              <ng-select [items]="trabajadoresDirigidos"
+                         bindLabel="nombreCompleto"
+                         [multiple]="false"
+                         placeholder="Seleccione trabajador destino"
+                         name="trabajadoresDirigidos"
+                         [clearable]="false"
+                         (change)="OnAgregar_TO()"                        
+                         [(ngModel)]="trabajador_to">
+              </ng-select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-1 col-sm-offset-1 control-label">CC :</label>
+            <div class="col-sm-10">
+              <ng-select [items]="destinos"
+                         bindLabel="descripcion"
+                         [searchFn]="OnBuscarAreas"
+                         [multiple]="true"
+                         placeholder="Ingrese áreas de destino"
+                         name="destinos-copia"
+                         (change)="OnAgregar_CC()"                       
+                         [(ngModel)]="areaAux">
+                         <ng-template ng-label-tmp let-clear="clear" let-item="item">
+                          <span class="m-xs">[{{item.abreviatura}}] {{item.descripcion}}</span>
+                          <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+                        </ng-template>
+                        <ng-template ng-option-tmp let-item="item" let-index="index">
+                          <span class="label label-primary">{{item.abreviatura}}</span> {{item.descripcion}}
+                        </ng-template>
+              </ng-select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-1 control-label">Asunto:</label>
+            <div class="col-sm-11">
+              <div class="input-group">
+                <input  
+                        type="text" 
+                        class="form-control" 
+                        autocomplete="off" 
+                        name="asunto" 
+                        maxlength="1000"
+                        [(ngModel)]="documento.asunto">
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-info" [swal]="seleccionarAsuntoSwal"><i class="fa fa-search"></i></button>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-1 control-label">Referencia:</label>
+            <div class="col-sm-11">
+              <textarea 
+                        class="form-control" 
+                        rows="3" 
+                        name="referencia" 
+                        maxlength="1000"
+                        [(ngModel)]="documento.referencia">
+              </textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-1 control-label">Observaciones:</label>
+            <div class="col-sm-11">
+              <textarea  
+                        class="form-control" 
+                        rows="3" 
+                        name="observaciones" 
+                        maxlength="1000"
+                        [(ngModel)]="documento.observaciones">
+              </textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" style="text-align: left;">Acciones a asignar:</label>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-3" *ngFor="let accion of acciones | keyvalues; let i = index">
+              <div class="checkbox checkbox-primary">
+                <input name="acciones" id="accion-{{accion.key}}" value="{{accion}}" [checked]="seleccionados.includes(accion.key)"
+                       type="checkbox" (change)="OnChecked(accion.key)"><label for="accion-{{accion.key}}">{{accion.value}}</label>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<swal
+  #descartarSwal
+  type="question"
+  title="¿Está seguro que desea cancelar la creación del documento?"
+  confirmButtonText="Sí, descartar"
+  cancelButtonText="No, continuar editando"
+  [showCancelButton]="true"
+  [focusCancel]="true"
+  (confirm)="OnDescartar()"
+></swal>
+
+<swal
+  #seleccionarAsuntoSwal
+  title="Seleccionar Asunto"
+  customClass="asunto-swal"
+  [showCancelButton]="true"
+  [focusCancel]="true"
+  [allowOutsideClick]="false"
+  confirmButtonText="Seleccionar"
+  cancelButtonText="Cancelar"
+  (confirm)="OnSeleccionarAsunto()">
+  <form *swalPartial>
+    <seleccionar-asunto (select)="dialogItemAsunto = $event"></seleccionar-asunto>
+  </form>
+</swal>
+

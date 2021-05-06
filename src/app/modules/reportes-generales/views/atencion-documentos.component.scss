@@ -1,0 +1,12 @@
+.table {
+  tr {
+    td[data-col='correlativo'] {width: 30px;}
+    td[data-col='numero-documento'] {width: 100px;}
+    td[data-col='descripcion'] {width: 20%;}
+    td[data-col='fecha-documento'] {width: 70px;}
+    td[data-col='asunto'] {}
+    td[data-col='fecha-derivacion'] {width: 70px;}
+    td[data-col='estado'] {width: 100px;}
+    td[data-col='nombres'] {width: 20%;}
+  }
+}

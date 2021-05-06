@@ -1,0 +1,526 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+      <h2>{{documentoTitle}}</h2>
+      <ol class="breadcrumb">
+        <li>
+          <a routerLink="starterview">Inicio</a>
+        </li>
+        <li>
+          <a>Bandeja de Salida</a>
+        </li>
+        <li class="active">
+          <strong>Nuevo Documento</strong>
+        </li>
+      </ol>
+    </div>
+  </div>
+  <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row m-b-md">
+      <div class="col-lg-12">
+        <button class="btn btn-primary m-r-xs" (click)="OnGuardar()"[disabled]="loading"><i class="fa fa-check"></i> Guardar</button>
+        <button class="btn btn-info m-r-xs" [disabled]="loading || textoCambio || documento.urlDocumento==null"  (click)="urlPDF=documento.urlDocumento; visorPdfSwal.show(); $event.stopPropagation()"><i class="fa fa-file-text"></i> Vista Preliminar</button>
+        <button [style.display]="documento.codigo!=null ? 'inline-block' : 'none'" class="btn btn-info m-r-xs right-sidebar-toggle" [disabled]="loading"><i class="fa fa-comment"></i> Comentarios</button>
+        <button class="btn btn-primary m-r-xs" [disabled]="(documento.codigo == null || documento.codigo == 0 || loading || envioSignal || documento.urlDocumento==null)" [swal]="enviarSwal"><i class="fa fa-send"></i> Enviar</button>
+        <button *ngIf="documento.codigo!=null" class="btn btn-danger m-r-xs" [swal]="eliminarSwal" [disabled]="loading"><i class="fa fa-trash"></i> Eliminar</button>
+        <button class="btn btn-default m-r-xs" [swal]="descartarSwal" [disabled]="loading"><i class="fa fa-arrow-left"></i> Regresar</button>
+        <div *ngIf="documento.correlativoEntrada!=null" class="pull-right">
+          <h5 class="m-r-sm" style="display: inline-block">Asociado al Registro Entrada: <code>{{nano_seguimiento}} - {{correlativo_seguimiento}}</code></h5>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+  
+        <div class="ibox-content" [class.sk-loading]="loading">
+          <sk-three-bounce></sk-three-bounce>
+  
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label class="col-sm-1 control-label">Área Remite:</label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control" disabled="disabled" name="area" [ngModel]="areaOrigen.descripcion">
+              </div>
+              <label class="col-sm-1 control-label">N° Reg.:</label>
+              <div class="col-sm-2">
+                <input type="text" class="form-control" disabled="disabled" name="codigo" [ngModel]="documento.codigo">
+              </div>
+              <label class="col-sm-1 control-label">Año:</label>
+              <div class="col-sm-2">
+                <input type="text" class="form-control" disabled="disabled" name="anno" [ngModel]="documento.nano">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1 control-label">Tipo Doc.:</label>
+              <div class="col-sm-5">
+                <ng-select [items]="tiposDocumento"
+                           bindLabel= "descripcion"
+                           [disabled]="documento.codigo"
+                           placeholder="Seleccionar"
+                           name ="TipoDocumento"
+                           [clearable]="false"
+                           [(ngModel)]="documento.tipoDocumento">
+                </ng-select>
+              </div>
+              <label class="col-sm-1 control-label">N° Doc.:</label>
+              <div class="col-sm-2">
+                <input type="text" class="form-control" disabled="disabled" name="numerodocumento" [(ngModel)]="documento.numero">
+              </div>
+              <label class="col-sm-1 control-label">Origen:</label>
+              <div class="col-sm-2">
+                <ng-select [items]="itemsOrigen"
+                           bindLabel="descripcion"
+                           [disabled]="documento.codigo || documento.nanoEntrada"
+                           placeholder="Seleccionar"
+                           name ="TipoOrigen"
+                           [clearable]="false"
+                           [(ngModel)]="documento.origen">
+                </ng-select>
+              </div>
+
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1 control-label">Fecha Reg.:</label>
+              <div class="col-sm-2">
+                <div class="input-group">
+                  <input type="text" class="form-control" disabled="disabled" name="fecha" [ngModel]="documento.fechaRegistro | date : 'dd/MM/yyyy'">
+                  <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                </div>
+              </div>
+              <label class="col-sm-1 control-label" >Fec. Doc.:</label>
+              <div class="col-sm-2">
+                <div class="input-group date">
+                  <input bsDatepicker #dp="bsDatepicker" name='fechaDocumento' [(bsValue)]="documento.fechaDocumento"  (bsValueChange)="DetectChange()" value="{{ documento.fechaDocumento | date:'dd/MM/yyyy' }}" type="text" class="form-control" (change)="OnPlazo()" >
+                  <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                </div>
+                
+              </div>
+              <label class="col-sm-1 control-label">Plazo:</label>
+              <div class="col-sm-2">
+                <div class="input-group">
+                  <input type="text" class="form-control" name="dias" autocomplete="off" [(ngModel)]="documento.plazo" (change)="OnPlazo()"  onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                  <span class="input-group-addon">días</span>
+                </div>
+              </div>
+              <label class="col-sm-1 control-label">Vence:</label>
+              <div class="col-sm-2">
+                <div class="input-group">
+                  <input type="text" class="form-control" disabled="disabled" name="fechaPlazo" [ngModel]="documento.fechaPlazo | date : 'dd/MM/yyyy'">
+                  <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1 control-label">Remitente:</label>
+              <div class="col-sm-5">
+                <ng-select [items]="remitentesFlujo"
+                           bindLabel="nombreCompleto"
+                           bindValue="ficha"
+                           placeholder="Seleccionar"
+                           name="remitentes"
+                           [disabled] = "true"
+                           [clearable]="false"
+                           [(ngModel)]="documento.trabajadorOrigen.ficha">
+                </ng-select>
+              </div>
+              <label class="col-sm-1 control-label">Prioridad:</label>
+              <div class="col-sm-2">
+                <select class="form-control" name="prioridad" [(ngModel)]="documento.prioridad">
+                  <option value="URGENTE">URGENTE</option>
+                  <option value="ALTA">ALTA</option>
+                  <option value="MEDIA" selected="selected">MEDIA</option>
+                  <option value="BAJA">BAJA</option>
+                </select>
+              </div>
+              <label class="col-sm-1 control-label">Estado:</label>
+              <div class="col-sm-2 m-t-xs">
+                <span class="label label-default">{{documento.estado}}</span>
+              </div>
+            </div>
+            <hr class="hr-line-dashed">
+            <div class="form-group" [hidden]="documento.origen=='EXTERNO'">
+              <label class="col-sm-1 control-label">Dirigido A:</label>
+              
+              <label class="col-sm-1 control-label">Área:</label>
+              <div class="col-sm-4">
+                <ng-select [items]="destinosAreaGrupo"
+                           bindLabel="descripcion"
+                           name="destinodirigido"
+                           [searchFn]="OnBuscarAreas"
+                           placeholder="Seleccione área"
+                           (change)="ObtenerTrabajador()"
+                           [clearable]="false"
+                           [(ngModel)]="areaGrupoDestino">
+                           <ng-template ng-label-tmp let-clear="clear" let-item="item">
+                            <span class="m-xs"><span class="label" [class.label-primary]="item.areaGrupo=='A'" [class.label-orange]="item.areaGrupo=='G'">{{item.abreviatura}}</span> {{item.descripcion}}</span>
+                            <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+                          </ng-template>
+                          <ng-template ng-option-tmp let-item="item" let-index="index">
+                            <span class="label" [class.label-primary]="item.areaGrupo=='A'" [class.label-orange]="item.areaGrupo=='G'">{{item.abreviatura}}</span> {{item.descripcion}}
+                            <i *ngIf="item.areaGrupo=='G'" class="fa fa-group pull-right"></i>
+                          </ng-template> 
+                </ng-select>
+                <br>
+              </div>
+              <div *ngIf="areaGrupoDestino.areaGrupo=='A'">
+                <label class="col-sm-1 control-label">Trabajador:</label>
+                <div class="col-sm-4">
+                  <ng-select
+                            #ngselect_1 
+                            [items]="remitentes"
+                            bindLabel="nombreCompleto"
+                            name="trabajador"
+                            placeholder="Seleccione trabajador"
+                            [clearable]="false"
+                            [(ngModel)]="documento.trabajadorDestino">
+                            <ng-template ng-option-tmp let-item="item" let-index="index">
+                                <span *ngIf="item.jefe==1" class="label label-default pull-right">Jefe</span> {{item.nombreCompleto}}
+                             </ng-template>
+                  </ng-select>
+                </div>
+              </div>
+              <div class="col-sm-1">
+                <button class="btn btn-info btn-sm" (click)="AgregarComponente()" [disabled]="loading || cargaDirigido"><i class="fa fa-plus"></i> Agregar</button>
+              </div>
+            
+              <br>
+              <!-- Generador de Filas -->
+              <div *ngIf="items.length>0" class="ibox-content">
+                <item-dirigido *ngFor="let item of items; let i = index" [item]="item" [index]="i" (itemSend)="deleteRegister($event)" [loading]="loading"></item-dirigido>
+              </div>
+            </div>
+            <div class="form-group" [hidden]="documento.origen=='INTERNO'">
+              <div *ngIf="itemsEmpresa.length==0">
+                <label class="col-sm-1 control-label">Dirigido A:</label>
+                <label class="col-sm-1 control-label">Empresa:</label>
+                <div class="col-sm-4">
+                  <ng-select [items]="empresas"
+                            bindLabel="descripcion"
+                            name="empresa"
+                            [multiple]="false"
+                            [addTag]="agregarItem"
+                            [clearable]="true"
+                            placeholder="Ingrese nombre de empresa"
+                            (input)="OnCambiarDerivado($event.target.value)"
+                            (change) = "OnCambiarRepresentantes($event)"
+                            [clearable]="false"
+                            [(ngModel)]="documento.empresaDestino">
+                  </ng-select>
+                </div>
+                <label class="col-sm-1 control-label">Representante:</label>
+                <div class="col-sm-4">
+                    <ng-select  [items]="representantes"
+                                bindLabel="nombre"
+                                name="representante"
+                                [multiple]="false"
+                                [addTag]="agregarItem"
+                                [clearable]="false"
+                                placeholder="Ingrese nombre de representante"
+                                [(ngModel)]="documento.representanteDestino">
+                    </ng-select>
+                </div>
+                <div class="col-sm-1">
+                  <button class="btn btn-info btn-sm" (click)="AgregarComponenteEmpresa()" [disabled]="loading || cargaDirigido"><i class="fa fa-plus"></i> Agregar</button>
+                <br>
+                </div>
+              </div>
+
+              <div *ngIf="itemsEmpresa.length>0">
+                  <label class="col-sm-1 control-label">Dirigido A:</label>
+                  <label class="col-sm-1 control-label">Área:</label>
+                  <div class="col-sm-4">
+                    <ng-select [items]="destinosAreaGrupo"
+                               bindLabel="nombre"
+                               name="destinodirigido"
+                               [searchFn]="OnBuscarAreas"
+                               placeholder="Seleccione área"
+                               (change)="ObtenerTrabajador()"
+                               [clearable]="false"
+                               [(ngModel)]="areaGrupoDestino">
+                               <ng-template ng-label-tmp let-clear="clear" let-item="item">
+                                  <span class="m-xs"><span class="label" [class.label-primary]="item.areaGrupo=='A'" [class.label-orange]="item.areaGrupo=='G'">{{item.abreviatura}}</span> {{item.descripcion}}</span>
+                                  <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+                                </ng-template>
+                                <ng-template ng-option-tmp let-item="item" let-index="index">
+                                  <span class="label" [class.label-primary]="item.areaGrupo=='A'" [class.label-orange]="item.areaGrupo=='G'">{{item.abreviatura}}</span> {{item.descripcion}}
+                                  <i *ngIf="item.areaGrupo=='G'" class="fa fa-group pull-right"></i>
+                                </ng-template> 
+                    </ng-select>
+                    <br>
+                  </div>
+                  <div *ngIf="areaGrupoDestino.areaGrupo=='A'">
+                  <label class="col-sm-1 control-label">Trabajador:</label>
+                  <div class="col-sm-4">
+                    <ng-select #ngselect_2
+                               [items]="remitentes"
+                               bindLabel="nombreCompleto"
+                               name="trabajador"
+                               placeholder="Seleccione trabajador"
+                               [clearable]="false"
+                               [(ngModel)]="documento.trabajadorDestino">
+                               <ng-template ng-option-tmp let-item="item" let-index="index">
+                                  <span *ngIf="item.jefe==1" class="label label-default pull-right">Jefe</span> {{item.nombreCompleto}}
+                               </ng-template>
+                    </ng-select>
+                  </div>
+                </div>
+                  <div class="col-sm-1">
+                    <button class="btn btn-info btn-sm" (click)="AgregarComponente()" [disabled]="loading || cargaDirigido" ><i class="fa fa-plus"></i> Agregar</button>
+                  </div>
+                  
+                  <br>
+
+              </div>
+
+                <!-- Generador de Filas -->
+                <div class="ibox-content">
+                <div *ngIf="itemsEmpresa.length>0">
+                  <item-dirigido-empresa *ngFor="let item of itemsEmpresa; let i = index" [itemEmpresa]="item"  [indexEmpresa]="i" (itemSendRepresentante)="deleteRegisterEmpresa($event)" [loading]="loading"></item-dirigido-empresa>
+                </div>
+                <div *ngIf="items.length>0">
+                  <item-dirigido *ngFor="let item of items; let i = index" [item]="item" [index]="i" (itemSend)="deleteRegister($event)" [loading]="loading"></item-dirigido>
+              </div>
+              </div>
+            </div>
+
+            <hr class="hr-line-dashed">
+            <div class="form-group">
+              <label class="col-sm-1 control-label">Flujo:</label>
+              <div class="col-sm-4">
+                <div class="radio radio-primary"><input id="chkArea" name="flujo" type="radio" value="A" [(ngModel)]="tipoFlujo" checked="checked" (change)="ChangeTipoFlujo()"><label for="chkArea">Revisión en el mismo equipo/área.</label></div>
+                <div class="radio radio-primary"><input id="chkOrg" name="flujo" type="radio" value="O" [(ngModel)]="tipoFlujo" (change)="ChangeTipoFlujo()"><label for="chkOrg">Requiere V°B° de múltiples áreas.</label></div>
+              </div>
+              <div class="col-sm-7">
+                <strong>Definir Flujo</strong>
+                <p class="text-small">
+                  El flujo de aprobación permite establecer si el documento debe ser revisado por
+                  personal del mismo equipo o debe ser visado por los jefes y gerentes de
+                  otras áreas de SEDAPAL.
+                </p>
+              </div>
+            </div>
+            <div class="" [hidden]="tipoFlujo=='O'">
+              <div class="form-group">
+                <label class="col-sm-1 col-sm-offset-1 control-label">Visante:</label>
+                <div class="col-sm-9">
+                  <ng-select [(items)]="remitentesFlujo"
+                             bindLabel="nombreCompleto"
+                             bindValue="ficha"
+                             name="visante"
+                             placeholder="Seleccione trabajador que revisará documento"
+                             [clearable]="false"
+                             [(ngModel)]="dirigido.ficha"
+                             (change)="visanteAreaChange($event)">
+                             <ng-template ng-option-tmp let-item="item" let-index="index">
+                                <span *ngIf="item.jefe==1" class="label label-default pull-right">Jefe</span> {{item.nombreCompleto}}
+                             </ng-template>
+                  </ng-select>
+                </div>
+                
+              </div>
+              
+              <div class="form-group">
+                <label class="col-sm-1 col-sm-offset-1 control-label">Firmante:</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" disabled="disabled" name="firmante" [ngModel]="firmante.nombreCompleto">
+                </div>
+              </div>
+            </div>
+            <div class="" [hidden]="tipoFlujo=='A'">
+              <item-visante *ngFor="let item of listCombos; let i = index" [index]="i" [item]="item" [listaAreas]="destinos" [firmanteArea]="firmanteArea.areaFirmante" [listCombos]="listCombos" [loading]="loading" (itemEliminar)="deleteRegisterVisante($event)" (itemAgregar)="OnAgregarComponenteBox()"></item-visante>
+              <div class="form-group">
+                <label class="col-sm-1 col-sm-offset-1 control-label">Firmante :</label>
+                <div class="col-sm-9">
+                  <ng-select [items]="destinos"
+                             bindLabel="descripcion"
+                             name="destinofirmante"
+                             [searchFn]="OnBuscarAreas"
+                             placeholder="Seleccione área que firmará documento"
+                             (change)="modelChanged($event)"
+                             [clearable]="false"
+                             [(ngModel)]="firmanteArea.areaFirmante">
+                             <ng-template ng-label-tmp let-clear="clear" let-item="item">
+                                <span class="m-xs"><span class="label label-primary">{{item.abreviatura}}</span> {{item.descripcion}}</span>
+                                <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+                              </ng-template>
+                              <ng-template ng-option-tmp let-item="item" let-index="index">
+                                <span class="label label-primary">{{item.abreviatura}}</span> {{item.descripcion}}
+                              </ng-template>
+                  </ng-select>
+                </div>
+              </div>
+            </div>
+            <hr class="hr-line-dashed">
+            <div class="form-group">
+              <label class="col-sm-1 control-label">Asunto:</label>
+              <div class="col-sm-11">
+                <div class="input-group">
+                  <input type="text" class="form-control" name="asunto" autocomplete="off" [(ngModel)]="documento.asunto"  #asunto="ngModel" [class.ng-invalid]="errors?.asunto" (ngModelChange)="Validar(referencia)" [tooltip]="errors?.asunto" [tooltipIsOpen]="asunto.dirty && (asunto.invalid || errors?.asunto)">
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-info" [swal]="seleccionarAsuntoSwal" [disabled]="loading"><i class="fa fa-search"></i></button>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1 control-label">Referencia:</label>
+              <div class="col-sm-11">
+                <textarea class="form-control" name="referencia" rows="3" [(ngModel)]="documento.referencia"  #referencia="ngModel" [class.ng-invalid]="errors?.referencia" (ngModelChange)="Validar(referencia)" [tooltip]="errors?.referencia" [tooltipIsOpen]="referencia.dirty && (referencia.invalid || errors?.referencia)" ></textarea>
+              </div>
+            </div>
+            <hr class="hr-line-dashed">
+            <div class="form-group">
+              <label class="col-sm-1 control-label">Contenido:</label>
+              <div class="col-sm-11">
+                <div [ngxSummernote]="editorConfig" name="contenido" [disabled]="loading" (ngModelChange)="OnChageText($event)" [(ngModel)]="documento.contenido"></div>
+              </div>
+            </div>
+            <hr class="hr-line-dashed">
+            <div class="form-group">
+              <label class="col-sm-1 control-label">Observaciones:</label>
+              <div class="col-sm-11">
+                <textarea class="form-control" rows="3" name="observaciones" [(ngModel)]="documento.observaciones" #observaciones="ngModel" [class.ng-invalid]="errors?.observaciones" (ngModelChange)="Validar(observaciones)" [tooltip]="errors?.observaciones" [tooltipIsOpen]="observaciones.dirty && (observaciones.invalid || errors?.observaciones)" ></textarea>
+              </div>
+            </div>
+            <hr class="hr-line-dashed">
+            <!-- <div class="form-group">
+              <label class="col-sm-1 control-label">Reg. Entrada:</label> -->
+              <!--
+              <div class="col-sm-2">
+                <input type="text" class="form-control" name="registro-entrada-numero" [disabled] = "documento.correlativoEntrada" [(ngModel)]="ncorrelativo" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+              </div>
+              <div class="col-sm-2">
+                <ng-select  [items]="periodos"
+                            name="periodos"
+                            placeholder="Seleccione el año del registro"
+                            [disabled] = "true"
+                            [(ngModel)]="nanoEntrada">
+                </ng-select>
+              </div>-->
+              <!-- <div class="col-sm-2">
+                  <input value="{{nano_seguimiento}} - {{correlativo_seguimiento}}" type="text" class="form-control text-center" name="registro-entrada-numero" [disabled] = "true">
+                </div>
+            </div> -->
+
+            <div class="form-group" *ngIf="!correlativo_seguimiento">
+              <label class="col-sm-1 control-label">Reg. Entrada :</label>
+              <div class="col-sm-2">
+                <input type="text" class="form-control" autocomplete="off" name="documentoEntrada" [(ngModel)]="documento.codEntrada">
+              </div>
+              <div class="col-sm-2">
+                  <ng-select  [items]="periodos"
+                              bindLabel="nanos"
+                              name="nanoEntrada"                
+                              [(ngModel)]="documento.nanoEntrada">
+                  </ng-select>
+              </div>
+            </div>
+            <div class="form-group" *ngIf="documento.correlativoEntrada!=null">
+                <label class="col-sm-1 control-label">Reg. Entrada :</label>
+                <div class="col-sm-2">
+                  <input value="{{correlativo_seguimiento}}" type="text" class="form-control text-center" name="registro-entrada-numero" [disabled] = "true">
+              </div>
+                <div class="col-sm-2">
+                    <input value="{{nano_seguimiento}}" type="text" class="form-control text-center" name="registro-entrada-numero" [disabled] = "true">
+                </div>
+                
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <swal
+    #descartarSwal
+    type="question"
+    title="¿Está seguro que desea cancelar la {{documentoMessage}} del documento?"
+    confirmButtonText="Sí, descartar"
+    cancelButtonText="No, continuar editando"
+    [showCancelButton]="true"
+    [focusCancel]="true"
+    (confirm)="OnRegresar()"
+  ></swal>
+  
+  <swal
+    #enviarSwal
+    type="question"
+    title="¿Está seguro que desea enviar el documento?"
+    confirmButtonText="Sí, enviar"
+    cancelButtonText="No, continuar editando"
+    [showCancelButton]="true"
+    [focusCancel]="true"
+    (confirm)="OnEnviar()"
+  ></swal>
+  
+  <swal
+    #eliminarSwal
+    type="question"
+    title="¿Está seguro que desea eliminar el documento?"
+    confirmButtonText="Sí, eliminar"
+    cancelButtonText="No, regresar"
+    [showCancelButton]="true"
+    [focusCancel]="true"
+    (confirm)="OnEliminar()">
+  </swal>
+
+  <swal
+    #duplicadoFirmanteSwal
+    type="question"
+    title="El documento contiene firmante duplicado como visante ¿Está seguro que desea guardar el documento?"
+    confirmButtonText="Sí, eliminar"
+    cancelButtonText="No, regresar"
+    [showCancelButton]="true"
+    [focusCancel]="true"
+    (confirm)="OnConfirmarDuplicadoButton()">
+  </swal>
+
+  <swal
+    #seleccionarAsuntoSwal
+    title="Seleccionar Asunto"
+    customClass="asunto-swal"
+    [showCancelButton]="true"
+    [focusCancel]="true"
+    [allowOutsideClick]="false"
+    confirmButtonText="Seleccionar"
+    cancelButtonText="Cancelar"
+    (confirm)="OnSeleccionarAsunto()">
+    <form *swalPartial>
+      <seleccionar-asunto (select)="dialogItemAsunto = $event"></seleccionar-asunto>
+    </form>
+  </swal>
+  
+  <swal
+  #visorPdfSwal
+  [showCloseButton]="true"
+  [allowOutsideClick]="false"
+  [showConfirmButton]="false"
+  customClass="pdf-swal">
+  <form *swalPartial>
+    <visor-pdf [url]="urlPDF"></visor-pdf>
+  </form>
+</swal>
+  
+<right-sidebar title="Comentarios" icon="comments" description="Observaciones de usuarios.">
+    <div class="sidebar-container col-sm-12">
+      <div class="tooltip-demo">
+        <div class="sidebar-message"  style="padding:8px;">
+        <div *ngFor="let comentario of documentoComentario">
+            <div class="pull-left text-center">
+              <button class="btn btn-circle btn-primary" data-toggle="tooltip" data-placement="left"
+                          title="{{comentario.trabajador.nombre.substr(0, 1).concat(comentario.trabajador.apellidoPaterno)}}">
+                    {{comentario.trabajador.nombre.substr(0, 1).concat(comentario.trabajador.apellidoPaterno.substr(0, 1))}}
+                  </button>
+            </div>
+            <div class="media-body">
+              {{comentario.descripcion}}
+                  <br><small>{{comentario.fechaComentario | date:'dd/MM/yyyy hh:mm:ss a'}}</small>
+            </div>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </right-sidebar>
+  

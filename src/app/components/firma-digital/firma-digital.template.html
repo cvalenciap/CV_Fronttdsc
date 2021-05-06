@@ -1,0 +1,24 @@
+<div class="firma-container">
+    <h4>Espere mientras la aplicación se conecta con el servicio de Firma Digital...</h4>
+    <form method="post" #ssoForm id="ssoForm" name="ssoForm" target="iframeFirma" [action]="firma.endpoint" >
+      <input type="hidden" name="tipoFirma" [value]="firma.tipoFirma">
+      <input type="hidden" name="rutaOrigen" [value]="firma.rutaOrigen">
+      <input type="hidden" name="rutaDestino" [value]="firma.rutaDestino">
+      <input type="hidden" name="rutaImagen" [value]="firma.rutaImagenes">
+      <input type="hidden" name="invisible" [value]="firma.invisible ? '0' : '1'">
+      <input type="hidden" name="estiloFirma" [value]="firma.estiloFirma">
+      <input type="hidden" name="posicionFirma" [value]="firma.posicionFirma">
+      <input type="hidden" name="ubicacionPagina" [value]="firma.ubicacionPagina">
+      <input type="hidden" name="razon" [value]="firma.razon">
+      <input type="hidden" name="alias" [value]="firma.alias">
+      <input *ngIf="firma.comentario" type="hidden" name="comentario" [value]="firma.comentario">
+      <input *ngIf="firma.cargo" type="hidden" name="cargo" [value]="firma.cargo">
+      <input *ngIf="firma.nombreImagen" type="hidden" name="imagen" [value]="firma.nombreImagen">
+      <input *ngIf="firma.tamanoFuente" type="hidden" name="tamanoFuente" [value]="firma.tamanoFuente">
+      <input *ngIf="firma.altoRubrica" type="hidden" name="altoRubrica" [value]="firma.altoRubrica">
+      <input *ngIf="firma.anchoRubrica" type="hidden" name="anchoRubrica" [value]="firma.anchoRubrica">
+      <input *ngIf="firma.numeroPagina" type="hidden" name="numeroPagina" [value]="firma.numeroPagina">
+      <input type="hidden" name="nombreArchivos" [value]="firma.archivos.join('|')">
+    </form>
+    <iframe frameborder="0" name="iframeFirma" id="iframeFirma" width="{{anchoFrame}}" height="{{altoFrame}}"></iframe>
+</div>

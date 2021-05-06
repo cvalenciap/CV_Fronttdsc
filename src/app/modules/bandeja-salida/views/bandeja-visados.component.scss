@@ -1,0 +1,19 @@
+.table {
+  tr {
+    cursor: pointer;
+    td[data-col='check'] {width: 20px;}
+    td[data-col='codigo'] {}
+    td[data-col='estado'] {width: 80px;}
+    td[data-col='fecha-recibido'] {width: 80px;}
+    td[data-col='documento'] {width: 30%}
+    td[data-col='dirigido'] {width: 30%}
+    td[data-col='prioridad'] {width: 20px;}
+    td[data-col='plazo'] {width: 100px; white-space: nowrap;}
+    td[data-col='pdf'] {width: 20px;}
+  }
+}
+.asunto {font-size: 11px;}
+
+.margin-bottom-5 {
+  margin-bottom: 5px;
+}
